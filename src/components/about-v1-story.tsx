@@ -1,75 +1,94 @@
-import Image from "next/image";
+'use client';
+
 import Link from "next/link";
-import { Calendar, Heart, GraduationCap, ArrowRight } from "lucide-react";
+import {
+  GraduationCap,
+  Lightbulb,
+  Dumbbell,
+  Briefcase,
+  ArrowRight,
+  Target,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import ImageReveal from "@/components/ui/image-tiles";
 
-type Pillar = { icon: LucideIcon; title: string; text: string };
+type MissionItem = { icon: LucideIcon; text: string };
 
-const pillars: Pillar[] = [
-  { icon: Calendar, title: "Founded in 1999", text: "Over 25 years of serving rural families with quality education." },
-  { icon: Heart, title: "Rural Community Focus", text: "Built by a foundation to uplift children in underserved villages." },
-  { icon: GraduationCap, title: "CBSE Aligned", text: "Structured curriculum from Pre-Primary to Grade 10 with proven results." },
+const missionItems: MissionItem[] = [
+  { icon: GraduationCap, text: "Deliver academic excellence" },
+  { icon: Lightbulb, text: "Develop leadership skills" },
+  { icon: Target, text: "Promote innovation and creativity" },
+  { icon: Dumbbell, text: "Encourage healthy lifestyles" },
+  { icon: Briefcase, text: "Build future career readiness" },
 ];
 
 export function AboutV1Story() {
   return (
     <section className="bg-white py-16 md:py-20" aria-labelledby="about-v1-heading">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Split: Image + Story */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-center">
-          {/* Image */}
-          <div className="relative h-[360px] w-full shrink-0 overflow-hidden md:w-1/2">
-            <Image
-              src="https://picsum.photos/seed/rural-school-campus/800/600"
-              alt="School campus"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+        {/* Split: Image Tiles + Story */}
+        <div className="flex flex-col gap-10 md:flex-row md:items-start">
+          {/* Image Tiles */}
+          <div className="flex w-full items-center justify-center md:w-1/2">
+            <ImageReveal
+              leftImage="https://picsum.photos/seed/rural-children-classroom/400/400"
+              middleImage="https://picsum.photos/seed/village-school-kids/400/400"
+              rightImage="https://picsum.photos/seed/rural-kids-playing/400/400"
             />
           </div>
 
-          {/* Story text */}
+          {/* Content */}
           <div className="flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Our Foundation</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Apollo Vidhyalayam</p>
             <h2 id="about-v1-heading" className="mt-2 font-display text-3xl font-bold text-ink-900 md:text-4xl">
-              A School Born from Purpose
+              About Us
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-ink-600">
-              In 1999, a group of educators and philanthropists came together with a single mission — to bring
-              quality education to rural children who had no access to it. What began as a small classroom
-              with 30 students has grown into a thriving campus serving over 1,200 families.
+              Apollo Vidhyalayam is committed to transforming education by combining strong academics,
+              technology-enabled learning, leadership development, healthcare exposure, and experiential learning.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-ink-600">
-              Our foundation believes every child deserves the same opportunities as those in cities.
-              Through smart classrooms, trained teachers and innovative programs like Brighter Minds,
-              we bridge the gap between ambition and access.
+              The school is evolving into a future-ready institution focused on preparing students
+              for success in academics, careers, and life.
             </p>
+
+            {/* Vision & Mission in boxes */}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {/* Vision */}
+              <div className="border border-line-200 bg-canvas-50 p-5">
+                <h3 className="text-sm font-bold text-ink-900">Our Vision</h3>
+                <div className="mt-2 mb-3 h-px w-full bg-teal-800" />
+                <p className="text-sm leading-relaxed text-ink-600">
+                  To nurture confident, compassionate, and capable learners prepared to thrive in an ever-changing world.
+                </p>
+              </div>
+
+              {/* Mission */}
+              <div className="border border-line-200 bg-canvas-50 p-5">
+                <h3 className="text-sm font-bold text-ink-900">Our Mission</h3>
+                <div className="mt-2 mb-3 h-px w-full bg-teal-800" />
+                <ul className="mt-2 space-y-2">
+                  {missionItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <li key={item.text} className="flex items-center gap-2">
+                        <Icon className="size-3.5 shrink-0 text-teal-800" />
+                        <span className="text-sm text-ink-600">{item.text}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+
             <Link
               href="#"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-800 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-teal-800 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900"
             >
-              Learn Our Full Story
+              Learn More About Us
               <ArrowRight className="size-3.5" />
             </Link>
           </div>
-        </div>
-
-        {/* Pillars */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-3">
-          {pillars.map((p) => {
-            const Icon = p.icon;
-            return (
-              <div key={p.title} className="flex gap-4 border border-line-200 bg-canvas-50 p-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-teal-800/5 border border-teal-800/15">
-                  <Icon className="size-5 text-teal-800" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-ink-900">{p.title}</h3>
-                  <p className="mt-1 text-xs text-ink-600">{p.text}</p>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>

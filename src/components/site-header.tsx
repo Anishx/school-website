@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PrimaryNavBar } from "@/components/primary-nav-bar";
 import { MobileNav } from "@/components/mobile-nav";
 import { AnnouncementsBar } from "@/components/announcements-bar";
@@ -10,8 +11,8 @@ export function SiteHeader() {
       <AnnouncementsBar />
 
       {/* Logo bar */}
-      <div className="border-b border-line-200 px-4 py-3">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <div className="border-b border-line-200">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           {/* Left: hamburger (mobile) + logo */}
           <div className="flex items-center gap-3">
             <MobileNav />
@@ -36,9 +37,10 @@ export function SiteHeader() {
             </Link>
             <Link
               href="#"
-              className="inline-flex rounded-full bg-yellow-600 px-4 py-2 text-sm font-semibold text-ink-900 transition hover:bg-yellow-500"
+              className="inline-flex items-center gap-1.5 rounded-full bg-yellow-600 px-4 py-2 text-sm font-semibold text-ink-900 transition hover:bg-yellow-500"
             >
               Apply Now
+              <ArrowRight className="size-3.5" />
             </Link>
           </div>
         </div>

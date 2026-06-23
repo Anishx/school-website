@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BarChart2, UserPlus, Zap } from "lucide-react";
+import { BarChart2, UserPlus, Zap, ArrowRight } from "lucide-react";
 
 const stats = [
   { icon: BarChart2, value: "85%",  label: "Academic Performance" },
@@ -17,8 +17,8 @@ export function HeroSection() {
     >
       {/* Background image */}
       <Image
-        src="https://picsum.photos/seed/graduation/1600/900"
-        alt="Students at school"
+        src="https://picsum.photos/seed/rural-kids-uniform/1600/900"
+        alt="Rural school children in uniform"
         fill
         priority
         className="object-cover object-center"
@@ -31,7 +31,7 @@ export function HeroSection() {
 
       {/* Content — fills remaining space, text at bottom */}
       <div className="relative z-10 flex flex-1 items-end">
-        <div className="mx-auto w-full max-w-7xl px-6 pb-8 md:px-10 md:pb-12">
+        <div className="mx-auto w-full max-w-7xl px-6 pb-8 md:pb-12">
           <div className="max-w-2xl">
             <h1 className="font-display text-3xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
               Building{" "}
@@ -41,12 +41,14 @@ export function HeroSection() {
             <p className="mt-3 text-sm leading-relaxed text-white/80 md:mt-4 md:text-lg">
               Where academic excellence, innovation, leadership, and holistic development come together.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3 md:mt-8">
               <Link
                 href="#"
-                className="inline-flex items-center rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-bold text-ink-900 transition-colors hover:bg-yellow-400 md:px-6 md:py-3"
+                className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-sm font-bold text-ink-900 transition-colors hover:bg-yellow-400 md:px-6 md:py-3"
               >
-                Admissions Open
+                Apply Now
+                <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="#"
@@ -61,12 +63,9 @@ export function HeroSection() {
                 Explore Student Life
               </Link>
             </div>
-          </div>
         </div>
       </div>
-
-      {/* Metrics strip — pinned to bottom of hero */}
-      <div className="relative z-10 bg-teal-800/90 backdrop-blur-sm">
+      {/* <div className="relative z-10 bg-teal-800/90 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl">
           <ul className="grid grid-cols-3 divide-x divide-white/10">
             {stats.map((stat) => {
@@ -84,7 +83,7 @@ export function HeroSection() {
             })}
           </ul>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

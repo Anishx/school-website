@@ -65,6 +65,8 @@ function NavigationMenuTrigger({
         "hover:bg-white/8 hover:text-white",
         "focus:bg-white/8 focus:text-white",
         "data-[state=open]:bg-white/12 data-[state=open]:text-white",
+        "data-[active]:bg-white/12 data-[active]:text-white",
+        "data-[active]:bg-white/12 data-[active]:text-white",
         "focus-visible:ring-2 focus-visible:ring-white/30",
         className,
       )}
@@ -130,6 +132,7 @@ function NavigationMenuLink({
       data-slot="navigation-menu-link"
       className={cn(
         "block px-3 py-2 text-sm font-semibold text-ink-700 transition hover:bg-canvas-100 hover:text-teal-900 focus:bg-canvas-100",
+        "data-[active]:text-teal-900",
         className,
       )}
       {...props}

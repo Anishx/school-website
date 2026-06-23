@@ -17,9 +17,10 @@ const stats: Stat[] = [
 
 export function MetricsCard() {
   return (
-    <div className="relative z-20 mx-auto max-w-7xl px-6 -mt-14 md:-mt-16">
-      <div className="overflow-hidden border border-line-200 bg-white shadow-[0_8px_30px_rgba(47,49,58,0.12)]">
-        <div className="flex flex-col md:flex-row">
+    <section className="bg-canvas-50 py-12 md:py-16" aria-labelledby="metrics-heading">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="overflow-hidden border border-line-200 bg-white shadow-[0_8px_30px_rgba(47,49,58,0.12)]">
+          <div className="flex flex-col md:flex-row">
           {/* Left — Image (50% width) */}
           <div className="relative h-52 md:h-auto md:w-1/2 shrink-0">
             <Image
@@ -33,7 +34,7 @@ export function MetricsCard() {
 
           {/* Right — Content */}
           <div className="flex-1 p-6 md:p-8 lg:p-10">
-            <h3 className="font-display text-xl font-bold uppercase tracking-wide text-teal-800 md:text-2xl">
+            <h3 id="metrics-heading" className="font-display text-xl font-bold uppercase tracking-wide text-teal-800 md:text-2xl">
               Why Choose Us?
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-600">
@@ -56,8 +57,9 @@ export function MetricsCard() {
               })}
             </div>
           </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

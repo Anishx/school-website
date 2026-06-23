@@ -173,7 +173,7 @@ export function PrimaryNavBar() {
 
   return (
     <nav className="relative z-40 border-t border-white/10 bg-teal-900" aria-label="Main navigation">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-6">
         <NavigationMenu
           value={openValue}
           onValueChange={setOpenValue}
@@ -203,7 +203,7 @@ export function PrimaryNavBar() {
                   <NavigationMenuLink asChild>
                     <Link
                       href={item.href || "/"}
-                      className="flex h-full w-full items-center justify-center px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/8 hover:text-white"
+                      className="flex h-full w-full items-center justify-center px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/8 hover:text-white data-[active]:bg-white/12 data-[active]:text-white"
                     >
                       {item.title}
                     </Link>

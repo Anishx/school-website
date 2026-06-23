@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -29,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${merriweather.variable} ${sourceSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">{children}<SiteFooter /></body>
     </html>
   );
 }
