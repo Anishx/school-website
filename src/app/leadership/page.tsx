@@ -30,7 +30,7 @@ function LeaderCard({ leader }: { leader: Leader }) {
       <div className="flex h-24 w-24 items-center justify-center rounded-full bg-canvas-100">
         <User className="size-10 text-teal-800" />
       </div>
-      <h3 className="mt-4 text-base font-bold text-ink-900">{leader.name}</h3>
+      <h3 className="font-display mt-4 text-base uppercase text-ink-900">{leader.name}</h3>
       <p className="mt-1 text-sm font-semibold text-teal-800">{leader.title}</p>
       <p className="mt-1 text-xs text-ink-600">{leader.organization}</p>
     </div>
@@ -46,7 +46,7 @@ export default function LeadershipPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Management</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400"></p>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
               Our Leadership
             </h1>

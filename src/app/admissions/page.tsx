@@ -48,7 +48,6 @@ export default function AdmissionsPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Join Our Community</p>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
               Admissions
             </h1>
@@ -66,7 +65,7 @@ export default function AdmissionsPage() {
               {steps.map((step) => (
                 <div key={step.number} className="relative border border-line-200 p-5">
                   <span className="font-display text-3xl text-teal-800">{step.number}</span>
-                  <h3 className="mt-2 text-sm font-bold text-ink-900">{step.title}</h3>
+                  <h3 className="font-display mt-2 text-sm uppercase text-ink-900">{step.title}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-ink-600">{step.description}</p>
                 </div>
               ))}
@@ -97,7 +96,7 @@ export default function AdmissionsPage() {
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {feeStructure.map((fee) => (
                 <div key={fee.category} className="border border-line-200 p-6">
-                  <h3 className="text-base font-bold text-teal-800">{fee.category}</h3>
+                  <h3 className="font-display text-base uppercase text-teal-800">{fee.category}</h3>
                   <p className="mt-2 text-sm text-ink-600">{fee.description}</p>
                 </div>
               ))}

@@ -215,11 +215,11 @@ function GalleryRow({ category }: { category: GalleryCategory }) {
           {category.title}
         </h2>
         <div className="flex shrink-0 gap-2">
-          <Button size="icon" variant="ghost" onClick={() => api?.scrollPrev()} disabled={!canScrollPrev} className="h-8 w-8">
-            <ArrowLeft className="size-4" />
+          <Button size="icon" variant="ghost" onClick={() => api?.scrollPrev()} disabled={!canScrollPrev} className="h-10 w-10 rounded-full border-2 border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white disabled:opacity-30">
+            <ArrowLeft className="size-5" />
           </Button>
-          <Button size="icon" variant="ghost" onClick={() => api?.scrollNext()} disabled={!canScrollNext} className="h-8 w-8">
-            <ArrowRight className="size-4" />
+          <Button size="icon" variant="ghost" onClick={() => api?.scrollNext()} disabled={!canScrollNext} className="h-10 w-10 rounded-full border-2 border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white disabled:opacity-30">
+            <ArrowRight className="size-5" />
           </Button>
         </div>
       </div>
@@ -256,7 +256,7 @@ export default function GalleryPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Life at Apollo Vidhyalayam</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400"></p>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">Gallery</h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80">
               Moments captured across academics, sports, culture, and community.

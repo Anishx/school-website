@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const programmes = [
   {
@@ -50,9 +50,10 @@ export function AcademicProgrammesSection() {
         {/* Cards grid */}
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {programmes.map((prog) => (
-            <div
+            <Link
               key={prog.title}
-              className="group relative overflow-hidden"
+              href="/programs"
+              className="group relative overflow-hidden block"
             >
               {/* Image */}
               <div className="relative aspect-[4/5] w-full">
@@ -68,17 +69,15 @@ export function AcademicProgrammesSection() {
 
               {/* Content overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h3 className="font-display text-xl uppercase text-white md:text-2xl">
+                <h3 className="font-display flex items-center gap-2 text-xl uppercase text-white md:text-2xl">
                   {prog.title}
+                  <ArrowUpRight className="size-5 text-white/80" />
                 </h3>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-white/70">
-                    {prog.subtitle}
-                  </span>
-                  <ArrowRight className="size-5 text-white/80 transition-transform group-hover:translate-x-1" />
-                </div>
+                <span className="mt-1 block text-xs font-semibold uppercase tracking-wider text-white/70">
+                  {prog.subtitle}
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

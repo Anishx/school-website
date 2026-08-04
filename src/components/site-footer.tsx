@@ -3,10 +3,9 @@ import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 const quickLinks = [
-  { name: "Admissions", href: "#admissions" },
-  { name: "Academic Calendar", href: "#academic-calendar" },
-  { name: "Circulars", href: "#circulars" },
-  { name: "Fee Structure", href: "#fees" },
+  { name: "Admissions", href: "/admissions" },
+  { name: "Academics", href: "/programs" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -130,7 +129,7 @@ export function SiteFooter() {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-8">
             {/* Quick Links */}
             <div>
               <h3 className="text-sm font-semibold text-white">Quick Links</h3>
@@ -148,22 +147,26 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            {/* Portals */}
+            {/* About Us */}
             <div>
-              <h3 className="text-sm font-semibold text-white">Portals</h3>
+              <h3 className="text-sm font-semibold text-white">About Us</h3>
               <ul className="mt-4 space-y-3">
-                {portalLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-white/60 transition-colors hover:text-white"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
+                <li><Link href="/about-us" className="text-sm text-white/60 transition-colors hover:text-white">Know Us</Link></li>
+                <li><Link href="/leadership" className="text-sm text-white/60 transition-colors hover:text-white">Leadership</Link></li>
+                <li><Link href="/why-us" className="text-sm text-white/60 transition-colors hover:text-white">Why Us</Link></li>
+                <li><Link href="/gallery" className="text-sm text-white/60 transition-colors hover:text-white">Gallery</Link></li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h3 className="text-sm font-semibold text-white">Resources</h3>
+              <ul className="mt-4 space-y-3">
+                <li><Link href="/news-events?tab=latest" className="text-sm text-white/60 transition-colors hover:text-white">Latest News</Link></li>
+                <li><Link href="/news-events?tab=announcements" className="text-sm text-white/60 transition-colors hover:text-white">Announcements</Link></li>
+                <li><Link href="/news-events?tab=circulars" className="text-sm text-white/60 transition-colors hover:text-white">Circulars</Link></li>
+                <li><Link href="/news-events?tab=holidays" className="text-sm text-white/60 transition-colors hover:text-white">Holiday List</Link></li>
+                <li><Link href="/news-events?tab=downloads" className="text-sm text-white/60 transition-colors hover:text-white">Downloads</Link></li>
               </ul>
             </div>
 

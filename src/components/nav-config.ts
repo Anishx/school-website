@@ -26,7 +26,6 @@ export const navItems: NavItem[] = [
     title: "About Us",
     compact: [
       { title: "Know Us", href: "/about-us", icon: GraduationCap },
-      { title: "Why Us", href: "/why-us" },
       { title: "Leadership", href: "/leadership" },
       { title: "Gallery", href: "/gallery" },
       { title: "Download School Brochure", href: "#brochure", icon: Download },
@@ -36,13 +35,13 @@ export const navItems: NavItem[] = [
     title: "Academics",
     compact: [
       { title: "Programs", href: "/programs" },
-      { title: "Curriculum", href: "#curriculum" },
       { title: "Faculty", href: "#faculty" },
     ],
   },
   {
     title: "Admissions",
     compact: [
+      { title: "Why Us", href: "/why-us" },
       { title: "Admission Process", href: "/admissions" },
       { title: "Fee Structure", href: "/admissions#fee-structure" },
       { title: "Apply Now", href: "#apply" },

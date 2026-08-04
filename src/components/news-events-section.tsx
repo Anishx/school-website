@@ -1,139 +1,105 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import eventsData from "@/data/events.json";
 
 type EventItem = {
   id: string;
   title: string;
   date: string;
-  category?: string;
-  featured?: boolean;
+  category: string;
+  featured: boolean;
   image: string;
 };
 
-const events: EventItem[] = eventsData;
+const events: EventItem[] = eventsData as EventItem[];
+const sortedEvents = [...events].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 
 export function NewsEventsSection() {
-  const [api, setApi] = useState<CarouselApi>();
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [scrollEl, setScrollEl] = useState<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!api) return;
-    const update = () => {
-      setCanScrollPrev(api.canScrollPrev());
-      setCanScrollNext(api.canScrollNext());
-    };
-    update();
-    api.on("select", update);
-    return () => { api.off("select", update); };
-  }, [api]);
-
-  // Auto-scroll
-  useEffect(() => {
-    if (!api) return;
-    const interval = setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [api]);
+  function scrollRight() {
+    scrollEl?.scrollBy({ left: 320, behavior: "smooth" });
+  }
+  function scrollLeft() {
+    scrollEl?.scrollBy({ left: -320, behavior: "smooth" });
+  }
 
   return (
-    <section className="bg-canvas-50 py-16 md:py-20">
+    <section className="bg-canvas-50 py-16 md:py-20" aria-labelledby="news-events-heading">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-teal-800">What&apos;s Happening</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 md:text-4xl">
-              News & Events
-            </h2>
-          </div>
-          <div className="hidden shrink-0 gap-2 md:flex">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => api?.scrollPrev()}
-              disabled={!canScrollPrev}
-              className="h-10 w-10"
-            >
-              <ArrowLeft className="size-5" />
-            </Button>
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => api?.scrollNext()}
-              disabled={!canScrollNext}
-              className="h-10 w-10"
-            >
-              <ArrowRight className="size-5" />
-            </Button>
-          </div>
+        <div className="mb-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-teal-800">
+            What&apos;s Happening
+          </p>
+          <h2
+            id="news-events-heading"
+            className="mt-2 font-display text-3xl uppercase text-ink-900 md:text-4xl"
+          >
+            News &amp; Events
+          </h2>
         </div>
-      </div>
 
-      {/* Carousel — full width for edge-to-edge scrolling feel */}
-      <div className="mx-auto max-w-7xl px-6">
-        <Carousel
-          setApi={setApi}
-          opts={{ dragFree: true, align: "start" }}
-        >
-          <CarouselContent className="-ml-4">
-            {events.map((event) => (
-              <CarouselItem
+        {/* Horizontal scrolling cards */}
+        <div className="relative">
+          <div
+            ref={setScrollEl}
+            className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
+            style={{ scrollbarWidth: "none" }}
+          >
+            {sortedEvents.map((event) => (
+              <Link
                 key={event.id}
-                className="basis-[280px] pl-4 md:basis-[320px] lg:basis-[380px]"
+                href={`/news-events/${event.id}`}
+                className="group flex-shrink-0 w-[260px] md:w-[300px]"
               >
-                <div className="group relative aspect-[3/2] overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas-100">
                   <Image
                     src={event.image}
                     alt={event.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="380px"
+                    sizes="300px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="block text-xs font-semibold text-white/70">
-                      {new Date(event.date).toLocaleDateString("en-IN", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </span>
-                    <span className="mt-1 block text-base font-bold text-white">
-                      {event.title}
-                    </span>
-                  </div>
                 </div>
-              </CarouselItem>
+                <p className="mt-3 text-sm leading-snug font-medium text-ink-900 line-clamp-2 group-hover:text-teal-800 transition-colors">
+                  {event.title}
+                </p>
+              </Link>
             ))}
-          </CarouselContent>
-        </Carousel>
+          </div>
 
-        {/* View All link */}
-        <div className="mt-8 flex justify-end">
-          <Link
-            href="/news-events"
-            className="text-sm font-semibold text-ink-900 underline underline-offset-4 transition-colors hover:text-teal-800"
-          >
-            View All News & Events
-          </Link>
+          {/* Controls */}
+          <div className="mt-4 flex items-center justify-end gap-3">
+            <Link
+              href="/news-events"
+              className="mr-auto inline-flex items-center gap-1.5 rounded-full border-2 border-teal-800 px-5 py-2 text-xs font-bold uppercase tracking-wider text-teal-800 transition hover:bg-teal-800 hover:text-white"
+            >
+              More News
+            </Link>
+            <button
+              type="button"
+              onClick={scrollLeft}
+              className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-800 bg-white text-teal-800 shadow transition hover:bg-teal-800 hover:text-white"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={scrollRight}
+              className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-800 bg-white text-teal-800 shadow transition hover:bg-teal-800 hover:text-white"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="size-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { ProgramsListSection } from "@/components/programs-list-section";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -113,7 +114,6 @@ export default function ProgramsPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">From Pre-Primary to Grade X</p>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
               Academic Programmes
             </h1>
@@ -139,6 +139,9 @@ export default function ProgramsPage() {
           </div>
         </section>
 
+        {/* Academic Support */}
+        <ProgramsListSection />
+
         {/* Educational Philosophy, Teaching Methodology, Assessment — colorful cards */}
         <section className="bg-canvas-50 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
@@ -146,28 +149,28 @@ export default function ProgramsPage() {
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {/* Educational Philosophy */}
-              <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[320px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[320px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-yellow-400 opacity-30" viewBox="0 0 48 48" fill="currentColor"><circle cx="24" cy="24" r="18"/></svg>
                 <p className="font-display text-2xl uppercase text-white md:text-3xl">Educational Philosophy</p>
-                <p className="mt-3 text-sm leading-relaxed text-white/85">
+                <p className="mt-4 text-sm leading-relaxed text-white/85">
                   At Apollo Vidyalayam, we believe that education is about shaping character as much as building knowledge. Our approach nurtures intellectual curiosity, discipline, creativity, and compassion, enabling students to become confident learners and responsible citizens. By integrating academics with values, sports, yoga, and experiential learning, we prepare children not only for examinations but for life.
                 </p>
               </div>
 
               {/* Teaching Methodology */}
-              <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[320px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[320px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-emerald-400 opacity-30" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/></svg>
                 <p className="font-display text-2xl uppercase text-white md:text-3xl">Teaching Methodology</p>
-                <p className="mt-3 text-sm leading-relaxed text-white/85">
+                <p className="mt-4 text-sm leading-relaxed text-white/85">
                   Our teaching methodology is designed to make learning engaging, interactive, and meaningful. We combine classroom instruction with hands-on activities, collaborative learning, digital resources, projects, and real-world experiences to strengthen conceptual understanding and critical thinking. Teachers provide individual attention, encourage inquiry, and create an inclusive environment where every student is inspired to participate, explore, and excel.
                 </p>
               </div>
 
               {/* Assessment */}
-              <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[320px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[320px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-teal-800 opacity-25" viewBox="0 0 48 48" fill="currentColor"><rect x="8" y="6" width="32" height="36" rx="3"/><path d="M16 16h16M16 24h16M16 32h10" stroke="#fff" strokeWidth="2" fill="none"/></svg>
                 <p className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Assessment</p>
-                <p className="mt-3 text-sm leading-relaxed text-ink-900/85">
+                <p className="mt-4 text-sm leading-relaxed text-ink-900/85">
                   At Apollo Vidyalayam, assessment is viewed as an integral part of the learning process. Students are evaluated through a balanced combination of class participation, assignments, projects, practical activities, periodic tests, and examinations to monitor both academic progress and skill development. During the school&apos;s transition to the CBSE curriculum, assessments continue to follow the Andhra Pradesh State Board pattern, ensuring academic continuity while preparing students for the future.
                 </p>
               </div>

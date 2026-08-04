@@ -19,8 +19,8 @@ export default function AboutUsPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Know Our Story</p>
-            <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">About Us</h1>
+            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400"></p>
+            <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">Know Us</h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80">
               Building futures rooted in discipline, values, and academic excellence since 2012.
             </p>
@@ -96,20 +96,16 @@ function OverviewTab() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Our Direction</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[280px] flex flex-col justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Our Vision</p>
-                <h3 className="font-display mt-2 text-2xl uppercase text-white md:text-3xl">Vision</h3>
-              </div>
+            <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[280px] flex flex-col justify-start">
+              <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Our Vision</p>
+              <h3 className="font-display mt-2 text-2xl uppercase text-white md:text-3xl">Vision</h3>
               <p className="mt-4 text-sm leading-relaxed text-white/85 md:text-base">
                 To nurture confident, compassionate, and future-ready learners through holistic education, empowering every child to realise their fullest potential and contribute meaningfully to society.
               </p>
             </div>
-            <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-teal-900">Our Mission</p>
-                <h3 className="font-display mt-2 text-2xl uppercase text-ink-900 md:text-3xl">Mission</h3>
-              </div>
+            <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-start">
+              <p className="text-xs font-bold uppercase tracking-widest text-teal-900">Our Mission</p>
+              <h3 className="font-display mt-2 text-2xl uppercase text-ink-900 md:text-3xl">Mission</h3>
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-900/85 md:text-base">
                 <li>• Deliver a balanced education that fosters academic excellence, critical thinking, and lifelong learning.</li>
                 <li>• Cultivate character through discipline, integrity, empathy, and respect.</li>
@@ -255,7 +251,7 @@ function InfrastructureTab() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {facilities.map((facility) => (
               <div key={facility.title} className="border border-line-200 p-6">
-                <h3 className="text-base font-bold text-teal-800">{facility.title}</h3>
+                <h3 className="font-display text-base uppercase text-teal-800">{facility.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-600">{facility.description}</p>
               </div>
             ))}
@@ -273,7 +269,7 @@ function InfrastructureTab() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {labs.map((lab) => (
               <div key={lab.title} className="bg-white border border-line-200 p-5">
-                <h4 className="text-sm font-bold text-teal-800">{lab.title}</h4>
+                <h4 className="font-display text-sm uppercase text-teal-800">{lab.title}</h4>
                 <p className="mt-2 text-xs leading-relaxed text-ink-600">{lab.description}</p>
               </div>
             ))}

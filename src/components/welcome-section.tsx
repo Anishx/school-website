@@ -1,60 +1,62 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 
 const categories = [
-  { title: "Academics", image: "/images/classroom/hands-up.jpg" },
-  { title: "Sports", image: "/images/sports/sports-1.jpg" },
-  { title: "Yoga & Wellness", image: "/images/yoga/group-yoga.jpg" },
-  { title: "Student Life", image: "/images/cultural/cultural-1.jpg" },
-  { title: "Values & Discipline", image: "/images/campus/walking.jpg" },
-  { title: "Campus", image: "/images/campus/entrance.jpg" },
+  { title: "Academics", image: "/images/classroom/hands-up.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/programs" },
+  { title: "Sports", image: "/images/sports/sports-1.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, throwball, and more.", href: "/student-life?tab=sports" },
+  { title: "Yoga & Wellness", image: "/images/yoga/group-yoga.jpg", description: "Daily yoga sessions promoting physical, emotional, and mental well-being.", href: "/student-life?tab=clubs" },
+  { title: "Student Life", image: "/images/cultural/cultural-1.jpg", description: "Clubs, cultural events, and leadership opportunities that build well-rounded individuals.", href: "/student-life" },
+  { title: "Values & Discipline", image: "/images/campus/walking.jpg", description: "Character education woven into everyday school life through Isha-affiliated values.", href: "/about-us" },
+  { title: "Campus", image: "/images/campus/entrance.jpg", description: "Modern infrastructure with smart classrooms, labs, sports grounds, and safe hostels.", href: "/about-us" },
 ];
 
-// Triple the items for infinite scroll illusion
+// Triple for infinite scroll
 const infiniteCategories = [...categories, ...categories, ...categories];
-const CARD_WIDTH = 260;
+const CARD_WIDTH = 320;
 const GAP = 16;
 const SCROLL_AMOUNT = CARD_WIDTH + GAP;
 
 export function WelcomeSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // After scroll ends, if we've gone past the bounds, silently reset position
-  const handleScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const totalSingleSet = categories.length * SCROLL_AMOUNT;
-    // If scrolled past the 2nd set (going right), jump back
-    if (el.scrollLeft >= totalSingleSet * 2) {
-      el.scrollLeft -= totalSingleSet;
-    }
-    // If scrolled before the 1st set (going left), jump forward
-    if (el.scrollLeft < totalSingleSet - SCROLL_AMOUNT) {
-      el.scrollLeft += totalSingleSet;
-    }
-  }, []);
-
-  function scroll(direction: "left" | "right") {
+  function scrollRight() {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({
-      left: direction === "left" ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
-      behavior: "smooth",
-    });
-    // Check bounds after animation
-    setTimeout(handleScroll, 350);
+    scrollRef.current.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
+    // Reset for infinite loop
+    setTimeout(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const totalSingleSet = categories.length * SCROLL_AMOUNT;
+      if (el.scrollLeft >= totalSingleSet * 2) {
+        el.scrollLeft -= totalSingleSet;
+      }
+    }, 400);
   }
 
-  // On mount, start at the middle set
-  const initScroll = useCallback((el: HTMLDivElement | null) => {
+  function scrollLeft() {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" });
+    setTimeout(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const totalSingleSet = categories.length * SCROLL_AMOUNT;
+      if (el.scrollLeft < totalSingleSet - SCROLL_AMOUNT) {
+        el.scrollLeft += totalSingleSet;
+      }
+    }, 400);
+  }
+
+  // Start at middle set on mount
+  const initScroll = (el: HTMLDivElement | null) => {
     if (el) {
       el.scrollLeft = categories.length * SCROLL_AMOUNT;
       (scrollRef as React.MutableRefObject<HTMLDivElement>).current = el;
     }
-  }, []);
+  };
 
   return (
     <section className="relative bg-white py-16 md:py-24 overflow-hidden">
@@ -81,38 +83,34 @@ export function WelcomeSection() {
 
         {/* Description */}
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-700 md:text-base">
-          Founded in Aragonda in 2012, Apollo Vidhyalayam integrates yoga,
-          discipline, and value-based education into the everyday learning
-          experience. With 12+ years of Isha-affiliated holistic education,
-          daily yoga sessions guided by the Apollo Foundation Total Health Yoga Trainer,
-          and a strong transition to CBSE, we nurture confident, compassionate, and
-          future-ready learners. Our students are state-level sports achievers — sporty, brave, and disciplined.
+          Apollo Vidhyalayam is committed to transforming education by combining strong academics, technology-enabled learning, leadership development, healthcare exposure, and experiential learning. The school is evolving into a future-ready institution focused on preparing students for success in academics, careers, and life.
         </p>
 
-        {/* Learn More button — same rounded pill style as site buttons */}
+        {/* Learn More button */}
         <Link
           href="/about-us"
-          className="mt-6 inline-flex items-center gap-1.5 rounded-full border-2 border-teal-800 px-5 py-2.5 text-sm font-semibold text-teal-800 transition hover:bg-teal-800 hover:text-white"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-500"
         >
-          LEARN MORE
+          LEARN MORE ABOUT US
+          <ArrowUpRight className="size-4" />
         </Link>
       </div>
 
-      {/* Horizontal scroll carousel — aligned with max-w-7xl */}
+      {/* Horizontal scroll carousel */}
       <div className="relative z-10 mt-12">
         {/* Scroll buttons */}
-        <div className="absolute left-4 bottom-6 z-10 flex flex-col gap-2 md:left-6">
+        <div className="absolute left-4 top-1/2 z-10 -translate-y-1/2 flex flex-col gap-2 md:left-8">
           <button
             type="button"
-            onClick={() => scroll("left")}
+            onClick={scrollLeft}
             className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-800 bg-white text-teal-800 shadow transition hover:bg-teal-800 hover:text-white"
             aria-label="Scroll left"
           >
-            <ChevronLeft className="size-5" />
+            <ChevronRight className="size-5 rotate-180" />
           </button>
           <button
             type="button"
-            onClick={() => scroll("right")}
+            onClick={scrollRight}
             className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-800 bg-white text-teal-800 shadow transition hover:bg-teal-800 hover:text-white"
             aria-label="Scroll right"
           >
@@ -120,39 +118,58 @@ export function WelcomeSection() {
           </button>
         </div>
 
-        {/* Cards — start aligned with max-w-7xl content, extend to right edge */}
+        {/* Cards */}
         <div
           ref={initScroll}
-          className="flex gap-4 overflow-x-auto overflow-y-hidden pb-4 scrollbar-hide"
+          className="flex gap-4 overflow-x-auto overflow-y-visible pb-4 scrollbar-hide"
           style={{
             scrollbarWidth: "none",
             paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))",
-            paddingRight: "0px",
+            paddingRight: "3rem",
           }}
         >
-          {infiniteCategories.map((cat, idx) => (
-            <div
-              key={`${cat.title}-${idx}`}
-              className="group relative flex-shrink-0 w-[220px] md:w-[260px] overflow-hidden"
-            >
-              <div className="relative aspect-[3/4] w-full">
-                <Image
-                  src={cat.image}
-                  alt={cat.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="260px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-display flex items-center gap-1 text-lg uppercase text-white md:text-xl">
-                  {cat.title}
-                  <ArrowUpRight className="size-4 text-white/80" />
-                </h3>
-              </div>
-            </div>
-          ))}
+          {infiniteCategories.map((cat, idx) => {
+            const isOdd = idx % 2 !== 0;
+            return (
+              <Link
+                key={`${cat.title}-${idx}`}
+                href={cat.href}
+                className={`group relative flex-shrink-0 w-[280px] md:w-[320px] overflow-hidden ${isOdd ? "translate-y-2" : "-translate-y-2"}`}
+              >
+                <div className="relative aspect-[3/4] w-full">
+                  <Image
+                    src={cat.image}
+                    alt={cat.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="320px"
+                  />
+                  {/* Default: gradient at bottom with title */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-300 group-hover:opacity-0" />
+                  
+                  {/* Hover: full teal overlay with description */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-teal-900/85 p-6 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <h3 className="font-display text-2xl uppercase text-white">
+                      {cat.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/85">
+                      {cat.description}
+                    </p>
+                    <div className="mt-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/60">
+                      <ArrowUpRight className="size-5 text-white" />
+                    </div>
+                  </div>
+                </div>
+                {/* Default title at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 transition-opacity duration-300 group-hover:opacity-0">
+                  <h3 className="font-display flex items-center gap-1.5 text-xl uppercase text-white">
+                    {cat.title}
+                    <ArrowUpRight className="size-4 text-white/80" />
+                  </h3>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

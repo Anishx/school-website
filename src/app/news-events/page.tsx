@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
 import Image from "next/image";
@@ -31,7 +32,35 @@ function formatDate(dateStr: string) {
 const tabList = ["Latest News", "Announcements", "Circulars", "Holiday List", "Downloads", "Newsletter"];
 
 export default function NewsEventsPage() {
-  const [activeTab, setActiveTab] = useState(0);
+  return (
+    <Suspense fallback={null}>
+      <NewsEventsContent />
+    </Suspense>
+  );
+}
+
+function NewsEventsContent() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+
+  const tabMap: Record<string, number> = {
+    latest: 0,
+    announcements: 1,
+    circulars: 2,
+    holidays: 3,
+    downloads: 4,
+    newsletter: 5,
+  };
+
+  const [activeTab, setActiveTab] = useState(() => {
+    return tabParam && tabMap[tabParam] !== undefined ? tabMap[tabParam] : 0;
+  });
+
+  useEffect(() => {
+    if (tabParam && tabMap[tabParam] !== undefined) {
+      setActiveTab(tabMap[tabParam]);
+    }
+  }, [tabParam]);
 
   return (
     <>
@@ -41,9 +70,8 @@ export default function NewsEventsPage() {
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
             <Breadcrumb />
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Stay Updated</p>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
-              News &amp; Downloads
+              Resources
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80">
               The latest happenings, circulars, and resources from Apollo Vidhyalayam.

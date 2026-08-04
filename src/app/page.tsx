@@ -4,9 +4,7 @@ import { CtaBar } from "@/components/cta-bar";
 import { WelcomeSection } from "@/components/welcome-section";
 import { AcademicProgrammesSection } from "@/components/academic-programmes-section";
 import { MetricsCarousel } from "@/components/metrics-carousel";
-import { AboutV1Story } from "@/components/about-v1-story";
 import { HighlightsGrid } from "@/components/highlights-grid";
-import { ProgramsListSection } from "@/components/programs-list-section";
 import { NewsEventsSection } from "@/components/news-events-section";
 import { ContactSection } from "@/components/contact-section";
 
@@ -18,9 +16,7 @@ export default function Home() {
       <WelcomeSection />
       <AcademicProgrammesSection />
       <MetricsCarousel />
-      <AboutV1Story />
       <HighlightsGrid />
-      <ProgramsListSection />
       <NewsEventsSection />
       <ContactSection />
       <CtaBar />

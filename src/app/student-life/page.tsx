@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -15,7 +16,7 @@ type TabContent = {
   houses?: { name: string; color: string; value: string }[];
   houseDescription?: string;
   leadershipDescription?: string;
-  items: { title: string; description: string; image?: string }[];
+  items: { title: string; description: string; image?: string; objectPosition?: string }[];
 };
 
 const tabs: TabContent[] = [
@@ -30,7 +31,7 @@ const tabs: TabContent[] = [
       { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/sports/sports-1.jpg" },
       { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/sports/sports-3.jpg" },
       { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/sports/sports-2.jpg" },
-      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/badminton.jpg" },
+      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/badminton.jpg", objectPosition: "top" },
       { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/sports/sports-4.jpg" },
     ],
   },
@@ -90,7 +91,34 @@ const tabs: TabContent[] = [
 ];
 
 export default function StudentLifePage() {
-  const [activeTab, setActiveTab] = useState(0);
+  return (
+    <Suspense fallback={null}>
+      <StudentLifeContent />
+    </Suspense>
+  );
+}
+
+function StudentLifeContent() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  
+  const tabMap: Record<string, number> = {
+    sports: 0,
+    clubs: 1,
+    stem: 2,
+    leadership: 3,
+    achievements: 4,
+  };
+
+  const [activeTab, setActiveTab] = useState(() => {
+    return tabParam && tabMap[tabParam] !== undefined ? tabMap[tabParam] : 0;
+  });
+
+  useEffect(() => {
+    if (tabParam && tabMap[tabParam] !== undefined) {
+      setActiveTab(tabMap[tabParam]);
+    }
+  }, [tabParam]);
 
   return (
     <>
@@ -229,7 +257,7 @@ export default function StudentLifePage() {
               </div>
             )}
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {tabs[activeTab].items.map((item) => (
                 <div key={item.title} className="group relative overflow-hidden">
                   <div className="relative aspect-[4/3] w-full bg-canvas-100">
@@ -238,16 +266,22 @@ export default function StudentLifePage() {
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      style={{ objectPosition: item.objectPosition || "center" }}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/20 to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h4 className="font-display text-lg uppercase text-white">{item.title}</h4>
+                  {/* Default visible: title only */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transition-transform duration-300 group-hover:-translate-y-12">
+                    <h4 className="font-display text-base uppercase text-white">{item.title}</h4>
                   </div>
-                  <div className="border border-line-200 border-t-0 p-4">
-                    <p className="text-sm leading-relaxed text-ink-600">{item.description}</p>
+                  {/* Hidden details: slides up from bottom on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-teal-900/90 p-4 transition-transform duration-300 group-hover:translate-y-0">
+                    <h4 className="font-display text-sm uppercase text-white">{item.title}</h4>
+                    <p className="mt-2 text-xs leading-relaxed text-white/80">{item.description}</p>
                   </div>
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 z-10" />
                 </div>
               ))}
             </div>
