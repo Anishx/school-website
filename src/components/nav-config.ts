@@ -1,18 +1,6 @@
 import {
-  BookOpen,
-  Users,
-  MapPin,
   GraduationCap,
-  Lightbulb,
-  Globe,
-  HeartHandshake,
-  Calendar,
-  HelpCircle,
-  FileText,
   Download,
-  Star,
-  BookOpenCheck,
-  Microscope,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,50 +15,59 @@ export type NavLink = {
 export type NavItem = {
   title: string;
   href?: string;
-  featured?: NavLink[];   // large top cards (2 columns)
-  compact?: NavLink[];    // small bottom cards (3 columns)
-  sidebar?: NavLink[];    // right column list
+  featured?: NavLink[];
+  compact?: NavLink[];
+  sidebar?: NavLink[];
 };
 
 export const navItems: NavItem[] = [
-  {
-    title: "Home",
-    href: "/",
-  },
+  { title: "Home", href: "/" },
   {
     title: "About Us",
     compact: [
-      { title: "Know Us", href: "/#about", description: "Learn about Apollo Vidhyalayam", icon: GraduationCap },
-      { title: "Book a Campus Tour", href: "/contact", description: "Schedule a visit to our school", icon: MapPin },
-      { title: "Mandatory Public Disclosure", href: "/mandatory-public-disclosure", description: "Regulatory documents", icon: FileText },
+      { title: "Know Us", href: "/about-us", icon: GraduationCap },
+      { title: "Why Us", href: "/why-us" },
+      { title: "Leadership", href: "/leadership" },
+      { title: "Gallery", href: "/gallery" },
+      { title: "Download School Brochure", href: "#brochure", icon: Download },
     ],
   },
   {
     title: "Academics",
     compact: [
-      { title: "Our Programs", href: "/programs", description: "Pre-Primary to Std. X curriculum", icon: BookOpen },
-      { title: "Academic Support", href: "/programs#support", description: "Bridge courses, coaching & more", icon: BookOpenCheck },
+      { title: "Programs", href: "/programs" },
+      { title: "Curriculum", href: "#curriculum" },
+      { title: "Faculty", href: "#faculty" },
     ],
-  },
-  {
-    title: "Student Life",
-    href: "/student-life",
-  },
-  {
-    title: "Gallery",
-    href: "/gallery",
   },
   {
     title: "Admissions",
     compact: [
-      { title: "Apply Now", href: "#", description: "Start your admission process", icon: HeartHandshake },
-      { title: "Book Campus Visit", href: "#", description: "Schedule a visit to our school", icon: MapPin },
-      { title: "FAQ", href: "#", description: "Common parent questions", icon: HelpCircle },
-      { title: "Download Fee Structure", href: "#", description: "Fee details as PDF", icon: Download },
+      { title: "Admission Process", href: "/admissions" },
+      { title: "Fee Structure", href: "/admissions#fee-structure" },
+      { title: "Apply Now", href: "#apply" },
     ],
   },
   {
-    title: "Contact",
-    href: "/contact",
+    title: "Student Life",
+    compact: [
+      { title: "Sports", href: "/student-life?tab=sports" },
+      { title: "Clubs & Activities", href: "/student-life?tab=clubs" },
+      { title: "STEM Activities", href: "/student-life?tab=stem" },
+      { title: "Leadership Programmes", href: "/student-life?tab=leadership" },
+      { title: "Achievements", href: "/student-life?tab=achievements" },
+    ],
   },
+  {
+    title: "News & Downloads",
+    compact: [
+      { title: "Latest News", href: "/news-events?tab=latest" },
+      { title: "Announcements", href: "/news-events?tab=announcements" },
+      { title: "Circulars", href: "/news-events?tab=circulars" },
+      { title: "Holiday List", href: "/news-events?tab=holidays" },
+      { title: "Downloads", href: "/news-events?tab=downloads" },
+      { title: "Newsletter", href: "/news-events?tab=newsletter" },
+    ],
+  },
+  { title: "Contact Us", href: "#contact" },
 ];

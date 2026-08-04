@@ -1,5 +1,8 @@
 import { SiteHeader } from "@/components/site-header";
 import { HeroSection } from "@/components/hero-section";
+import { CtaBar } from "@/components/cta-bar";
+import { WelcomeSection } from "@/components/welcome-section";
+import { AcademicProgrammesSection } from "@/components/academic-programmes-section";
 import { MetricsCarousel } from "@/components/metrics-carousel";
 import { AboutV1Story } from "@/components/about-v1-story";
 import { HighlightsGrid } from "@/components/highlights-grid";
@@ -12,12 +15,15 @@ export default function Home() {
     <>
       <SiteHeader />
       <HeroSection />
+      <WelcomeSection />
+      <AcademicProgrammesSection />
       <MetricsCarousel />
       <AboutV1Story />
       <HighlightsGrid />
       <ProgramsListSection />
       <NewsEventsSection />
       <ContactSection />
+      <CtaBar />
     </>
   );
 }

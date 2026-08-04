@@ -2,8 +2,8 @@
 @plugin "tailwindcss-animate";
 
 @theme inline {
-  --color-teal-900: #0E5A78;
-  --color-teal-800: #12739A;
+  --color-teal-900: #047DA0;
+  --color-teal-800: #047DA0;
   --color-yellow-600: #F2C230;
   --color-yellow-500: #FFD15A;
 
@@ -24,11 +24,11 @@
 body {
   background: var(--color-canvas-100);
   color: var(--color-ink-800);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-body), 'Poppins', Arial, sans-serif;
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), 'Anton', sans-serif;
 }
 
 @keyframes marquee {
@@ -38,4 +38,30 @@ body {
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* 10px stroke borders for layout sections */
+/* Hero: left, right (no top, no bottom) */
+section[aria-label="Hero"] {
+  border-left: 10px solid var(--color-teal-900);
+  border-right: 10px solid var(--color-teal-900);
+}
+
+/* Nav menu bar: left and right only */
+nav[aria-label="Main navigation"] {
+  border-left: 10px solid var(--color-teal-900);
+  border-right: 10px solid var(--color-teal-900);
+}
+
+/* Other sections: left and right only */
+section:not([aria-label="Hero"]) {
+  border-left: 10px solid var(--color-teal-900);
+  border-right: 10px solid var(--color-teal-900);
+}
+
+/* Footer: bottom, left, right */
+footer {
+  border-bottom: 10px solid var(--color-teal-900);
+  border-left: 10px solid var(--color-teal-900);
+  border-right: 10px solid var(--color-teal-900);
 }

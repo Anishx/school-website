@@ -1,0 +1,98 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+const programmes = [
+  {
+    title: "Pre-Primary",
+    subtitle: "KINDERGARTEN",
+    description:
+      "A joyful environment where young learners develop foundational skills through play-based learning, storytelling, and creative activities.",
+    image: "/hero-image.jpg",
+  },
+  {
+    title: "Primary School",
+    subtitle: "GRADES I – V",
+    description:
+      "Strong academic foundation in languages, mathematics, science, and environmental studies through activity-based learning.",
+    image: "/hero-image.jpg",
+  },
+  {
+    title: "Middle School",
+    subtitle: "GRADES VI – VIII",
+    description:
+      "Deeper conceptual understanding with balanced curriculum strengthening analytical thinking, leadership, and collaboration.",
+    image: "/hero-image.jpg",
+  },
+  {
+    title: "Secondary School",
+    subtitle: "GRADES IX – X",
+    description:
+      "Rigorous curriculum, focused mentoring, and continuous assessment preparing students for board examinations.",
+    image: "/hero-image.jpg",
+  },
+];
+
+export function AcademicProgrammesSection() {
+  return (
+    <section className="bg-teal-900 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Heading */}
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-yellow-500">
+            From Pre-Primary to Grade X
+          </p>
+          <h2 className="font-display mt-3 text-3xl uppercase text-white md:text-5xl lg:text-6xl">
+            Our Learning Journey
+          </h2>
+        </div>
+
+        {/* Cards grid */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {programmes.map((prog) => (
+            <div
+              key={prog.title}
+              className="group relative overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src={prog.image}
+                  alt={prog.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              </div>
+
+              {/* Content overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-display text-xl uppercase text-white md:text-2xl">
+                  {prog.title}
+                </h3>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white/70">
+                    {prog.subtitle}
+                  </span>
+                  <ArrowRight className="size-5 text-white/80 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA button */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/programs"
+            className="inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-500"
+          >
+            LEARNING AT AVN
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

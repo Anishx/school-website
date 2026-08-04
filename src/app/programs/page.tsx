@@ -2,68 +2,45 @@
 
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type ProgramItem = {
   title: string;
+  grades: string;
   description: string;
-  details: string;
 };
 
-const stages: ProgramItem[] = [
+const programmes: ProgramItem[] = [
   {
-    title: "Pre-Primary",
-    description: "Foundation years focused on play-based learning, motor skills, and early literacy.",
-    details: "Our Pre-Primary program nurtures young minds through structured play, storytelling, art, and sensory activities. Children develop social skills, early numeracy, phonics awareness, and fine motor coordination in a safe, stimulating environment guided by trained early childhood educators.",
+    title: "Pre-Primary (Kindergarten)",
+    grades: "Kindergarten",
+    description:
+      "Our Pre-Primary programme provides a joyful and nurturing environment where young learners develop foundational skills through play-based learning, storytelling, music, art, and interactive activities. At Apollo Vidhyalayam, we focus on building confidence, communication, creativity, and social-emotional development while fostering a love for learning from an early age.",
   },
   {
-    title: "Std. I–V",
-    description: "Building strong fundamentals in language, mathematics, science, and social awareness.",
-    details: "The primary years curriculum focuses on developing reading fluency, logical thinking, and scientific curiosity. Students engage in project-based learning, environmental studies, and value education alongside core academics. Regular assessments and parent-teacher collaboration ensure every child progresses confidently.",
+    title: "Primary (Grades I – V)",
+    grades: "Grades I – V",
+    description:
+      "The Primary School programme lays a strong academic foundation in languages, mathematics, science, and environmental studies. Through activity-based learning, hands-on experiences, and individual attention, Apollo Vidhyalayam encourages students to develop critical thinking, curiosity, and essential life skills in a supportive and engaging environment.",
   },
   {
-    title: "Std. VI–X",
-    description: "CBSE-aligned curriculum preparing students for board exams and future academic pathways.",
-    details: "Secondary education at Apollo Vidhyalayam combines rigorous CBSE academics with practical application. Students benefit from dedicated subject teachers, laboratory work, career counselling, and intensive board exam preparation. Our structured approach has consistently delivered 85%+ pass rates with top mandal rankings.",
-  },
-];
-
-const academicSupport: ProgramItem[] = [
-  {
-    title: "Bridge Courses",
-    description: "Filling learning gaps for students transitioning between levels.",
-    details: "Bridge courses are short-term intensive programs designed to help students who join mid-year or have gaps in foundational concepts. Focused on core subjects, these courses bring students up to speed with their peers through small-group instruction and personalised attention.",
+    title: "Middle School (Grades VI – VIII)",
+    grades: "Grades VI – VIII",
+    description:
+      "During the middle school years, students build deeper conceptual understanding while becoming more independent learners. Apollo Vidhyalayam offers a balanced curriculum that strengthens analytical thinking, communication, leadership, and collaboration, complemented by opportunities in sports, arts, and co-curricular activities.",
   },
   {
-    title: "Remedial Classes (Std. I–IX)",
-    description: "Extra support for students who need additional help in core subjects.",
-    details: "Remedial classes run after school hours for students identified through regular assessments as needing additional support. Teachers provide one-on-one guidance in mathematics, science, and language, ensuring no student is left behind in their learning journey.",
-  },
-  {
-    title: "After-School Learning Support",
-    description: "Extended learning hours for homework help and concept reinforcement.",
-    details: "Our after-school program provides a structured environment for completing homework, revising lessons, and engaging in enrichment activities. Supervised by teachers, this program is especially valuable for students whose parents work late or lack resources for home tutoring.",
-  },
-  {
-    title: "Std. X Intensive Coaching",
-    description: "Board exam preparation with focused practice and mock tests.",
-    details: "Starting from the first term, Std. X students receive intensive coaching that includes topic-wise revision, previous year paper analysis, timed mock exams, and individual performance tracking. This systematic preparation has contributed to our consistently high board results.",
-  },
-  {
-    title: "Spoken English Development",
-    description: "Building confidence and fluency in English communication.",
-    details: "Our Spoken English program goes beyond textbook grammar. Students participate in daily conversation practice, debates, storytelling, and presentation sessions. The program builds vocabulary, pronunciation, and the confidence to communicate effectively in academic and professional settings.",
-  },
-  {
-    title: "Handwriting Improvement Programs",
-    description: "Developing neat, legible handwriting through structured practice.",
-    details: "Good handwriting reflects discipline and clarity of thought. Our dedicated handwriting sessions use guided worksheets, posture correction, and regular practice to help students develop clean, consistent writing that serves them well in exams and beyond.",
+    title: "Secondary School (Grades IX – X)",
+    grades: "Grades IX – X",
+    description:
+      "The Secondary School programme prepares students for academic excellence and future success through a rigorous curriculum, focused mentoring, and continuous assessment. At Apollo Vidhyalayam, students develop the knowledge, discipline, and confidence required to excel in board examinations while cultivating the skills needed for higher education and lifelong learning.",
   },
 ];
 
-function AccordionList({ items, sectionId }: { items: ProgramItem[]; sectionId: string }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+function AccordionList({ items }: { items: ProgramItem[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -73,7 +50,7 @@ function AccordionList({ items, sectionId }: { items: ProgramItem[]; sectionId: 
     <div>
       <hr className="border-line-200" />
       {items.map((item, index) => (
-        <div key={`${sectionId}-${item.title}`}>
+        <div key={item.title}>
           <button
             onClick={() => toggle(index)}
             className="group flex w-full items-center gap-4 py-5 text-left transition-colors hover:bg-canvas-50/50 md:py-6"
@@ -87,7 +64,7 @@ function AccordionList({ items, sectionId }: { items: ProgramItem[]; sectionId: 
                 {item.title}
               </span>
               <span className="mt-1 block text-sm text-ink-600">
-                {item.description}
+                {item.grades}
               </span>
             </span>
             <span
@@ -112,7 +89,7 @@ function AccordionList({ items, sectionId }: { items: ProgramItem[]; sectionId: 
                   <div className="w-16 shrink-0 md:w-24" />
                   <div className="flex-1">
                     <p className="text-base leading-relaxed text-ink-600">
-                      {item.details}
+                      {item.description}
                     </p>
                   </div>
                 </div>
@@ -135,50 +112,65 @@ export default function ProgramsPage() {
         {/* Hero */}
         <section className="bg-teal-900 py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-6">
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Academics</p>
-            <h1 className="mt-3 font-display text-4xl font-bold text-white md:text-5xl">
-              Programs
+            <Breadcrumb />
+            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">From Pre-Primary to Grade X</p>
+            <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
+              Academic Programmes
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80">
-              CBSE-aligned curriculum from Pre-Primary to Std. X with targeted academic support at every level.
+              CBSE-aligned curriculum nurturing confident, compassionate, and future-ready learners at every stage.
             </p>
           </div>
         </section>
 
-        {/* Curriculum */}
+        {/* Programmes */}
         <section className="bg-white py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
             <div className="md:w-2/3">
-              <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Curriculum</p>
-              <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 md:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Our Learning Journey</p>
+              <h2 className="mt-2 font-display text-3xl uppercase text-ink-900 md:text-4xl lg:text-5xl">
                 Learning at every stage
               </h2>
             </div>
 
             <div className="mt-12 md:mt-16">
-              <AccordionList items={stages} sectionId="curriculum" />
+              <AccordionList items={programmes} />
             </div>
           </div>
         </section>
 
-        {/* Academic Support */}
+        {/* Educational Philosophy, Teaching Methodology, Assessment — colorful cards */}
         <section className="bg-canvas-50 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
-            <div className="md:w-2/3">
-              <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Academic Support</p>
-              <h2 className="mt-2 font-display text-3xl font-bold text-ink-900 md:text-4xl lg:text-[2.75rem] lg:leading-tight">
-                Our programs address the most significant challenges students face.
-              </h2>
-            </div>
+            <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Our Approach</h2>
 
-            <div className="mt-12 md:mt-16">
-              <AccordionList items={academicSupport} sectionId="support" />
-            </div>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {/* Educational Philosophy */}
+              <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[320px] flex flex-col justify-end">
+                <svg className="absolute top-4 right-4 size-16 text-yellow-400 opacity-30" viewBox="0 0 48 48" fill="currentColor"><circle cx="24" cy="24" r="18"/></svg>
+                <p className="font-display text-2xl uppercase text-white md:text-3xl">Educational Philosophy</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/85">
+                  At Apollo Vidyalayam, we believe that education is about shaping character as much as building knowledge. Our approach nurtures intellectual curiosity, discipline, creativity, and compassion, enabling students to become confident learners and responsible citizens. By integrating academics with values, sports, yoga, and experiential learning, we prepare children not only for examinations but for life.
+                </p>
+              </div>
 
-            {/* Notes */}
-            <div className="mt-10 space-y-3 text-sm leading-relaxed text-ink-600">
-              <p className="italic">Academic performance improved significantly from 65–70% to 85%.</p>
-              <p><span className="font-semibold text-ink-900">Academic Leadership:</span> Featuring curriculum support from education specialists including academic consultants focused on improving learning outcomes.</p>
+              {/* Teaching Methodology */}
+              <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[320px] flex flex-col justify-end">
+                <svg className="absolute top-4 right-4 size-16 text-emerald-400 opacity-30" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/></svg>
+                <p className="font-display text-2xl uppercase text-white md:text-3xl">Teaching Methodology</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/85">
+                  Our teaching methodology is designed to make learning engaging, interactive, and meaningful. We combine classroom instruction with hands-on activities, collaborative learning, digital resources, projects, and real-world experiences to strengthen conceptual understanding and critical thinking. Teachers provide individual attention, encourage inquiry, and create an inclusive environment where every student is inspired to participate, explore, and excel.
+                </p>
+              </div>
+
+              {/* Assessment */}
+              <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[320px] flex flex-col justify-end">
+                <svg className="absolute top-4 right-4 size-16 text-teal-800 opacity-25" viewBox="0 0 48 48" fill="currentColor"><rect x="8" y="6" width="32" height="36" rx="3"/><path d="M16 16h16M16 24h16M16 32h10" stroke="#fff" strokeWidth="2" fill="none"/></svg>
+                <p className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Assessment</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-900/85">
+                  At Apollo Vidyalayam, assessment is viewed as an integral part of the learning process. Students are evaluated through a balanced combination of class participation, assignments, projects, practical activities, periodic tests, and examinations to monitor both academic progress and skill development. During the school&apos;s transition to the CBSE curriculum, assessments continue to follow the Andhra Pradesh State Board pattern, ensuring academic continuity while preparing students for the future.
+                </p>
+              </div>
             </div>
           </div>
         </section>

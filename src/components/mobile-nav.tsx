@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navItems } from "@/components/nav-config";
@@ -108,13 +109,7 @@ export function MobileNav() {
         {/* Drawer header */}
         <div className="flex items-center justify-between border-b border-line-200 px-4 py-4">
           <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-800">
-              <span className="text-sm font-bold text-white">S</span>
-            </div>
-            <div>
-              <p className="text-sm font-bold text-ink-900">School Name</p>
-              <p className="text-[10px] text-ink-600">Rural · Quality · Aspiration</p>
-            </div>
+            <Image src="/apollo-logo.png" alt="Apollo Vidhyalayam" width={40} height={40} className="h-10 w-auto" />
           </Link>
           <button
             onClick={() => setOpen(false)}

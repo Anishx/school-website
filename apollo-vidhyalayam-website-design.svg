@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="5200" viewBox="0 0 1440 5200">
+<defs>
+  <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#083A55"/><stop offset=".58" stop-color="#0B6174"/><stop offset="1" stop-color="#1794A3"/></linearGradient>
+  <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFE7A1"/><stop offset="1" stop-color="#F3B51B"/></linearGradient>
+  <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF9E8"/><stop offset="1" stop-color="#F2E8CC"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#092D41" flood-opacity=".13"/></filter>
+  <clipPath id="heroClip"><rect x="0" y="150" width="1440" height="680"/></clipPath>
+  <style>
+    .sans{font-family:Inter,Arial,sans-serif}.serif{font-family:Georgia,'Times New Roman',serif}.nav{font:600 15px Inter,Arial,sans-serif;fill:#14334A}.eyebrow{font:700 13px Inter,Arial,sans-serif;letter-spacing:2px;fill:#D58B00}.h2{font:700 48px Georgia,serif;fill:#12314D}.body{font:400 18px Inter,Arial,sans-serif;fill:#52636F}.small{font:400 14px Inter,Arial,sans-serif;fill:#6B7A84}.cardTitle{font:700 23px Georgia,serif;fill:#12314D}.white{fill:#fff}.mutedWhite{fill:#DCECF0}.pill{font:700 12px Inter,Arial,sans-serif;letter-spacing:1.2px}.value{font:700 18px Inter,Arial,sans-serif;fill:#12314D}
+  </style>
+</defs>
+
+<!-- Page background -->
+<rect width="1440" height="5200" fill="#FCFBF7"/>
+
+<!-- ===== TOP UTILITY BAR ===== -->
+<rect width="1440" height="42" fill="#0B6174"/>
+<text x="96" y="27" class="sans white" font-size="13">ARAGONDA, CHITTOOR DISTRICT, ANDHRA PRADESH</text>
+<text x="1102" y="27" class="sans white" font-size="13">+91 81227 61667</text>
+<circle cx="1082" cy="22" r="3" fill="#F3B51B"/>
+
+<!-- ===== LOGO BAR (logo + search icon + login buttons) ===== -->
+<rect y="42" width="1440" height="108" fill="#FFFFFF"/>
+<!-- Logo -->
+<image x="96" y="54" width="64" height="64" href="public/apollo-logo.jpg" preserveAspectRatio="xMidYMid meet"/>
+<text x="172" y="83" class="serif" font-size="26" font-weight="700" fill="#12314D">APOLLO VIDHYALAYAM</text>
+<text x="173" y="104" class="sans" font-size="11" letter-spacing="2.2" fill="#0B6174">LEARN • LEAD • SERVE</text>
+
+<!-- Search icon (expandable on click) -->
+<g transform="translate(820 78)">
+  <circle cx="12" cy="12" r="11" fill="none" stroke="#0B6174" stroke-width="2.5"/>
+  <line x1="20" y1="20" x2="27" y2="27" stroke="#0B6174" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="36" y="17" class="sans" font-size="12" fill="#8A9BA3">Search...</text>
+</g>
+
+<!-- Parent Login button -->
+<rect x="1020" y="68" width="120" height="38" rx="19" fill="none" stroke="#0B6174" stroke-width="2"/>
+<text x="1042" y="92" class="sans" font-size="13" font-weight="600" fill="#0B6174">Parent Login</text>
+
+<!-- Teacher Login button -->
+<rect x="1155" y="68" width="128" height="38" rx="19" fill="none" stroke="#0B6174" stroke-width="2"/>
+<text x="1175" y="92" class="sans" font-size="13" font-weight="600" fill="#0B6174">Teacher Login</text>
+
+<!-- Apply Now button -->
+<rect x="1298" y="68" width="118" height="38" rx="19" fill="#F3B51B"/>
+<text x="1320" y="92" class="sans" font-size="13" font-weight="800" fill="#12314D">Apply Now</text>
+
+<!-- ===== MAIN NAVIGATION BAR ===== -->
+<rect y="150" width="1440" height="52" fill="#12314D"/>
+<g transform="translate(96 182)">
+  <text x="0" y="0" class="sans white" font-size="14" font-weight="600">HOME</text>
+  <text x="90" y="0" class="sans white" font-size="14" font-weight="600">ABOUT US ▾</text>
+  <text x="220" y="0" class="sans white" font-size="14" font-weight="600">ADMISSIONS</text>
+  <text x="360" y="0" class="sans white" font-size="14" font-weight="600">CONTACT US</text>
+  <text x="498" y="0" class="sans white" font-size="14" font-weight="600">GALLERY</text>
+</g>
+<!-- About Us dropdown indicator note -->
+<text x="186" y="210" class="sans" font-size="10" fill="#9FBDC5">• Know Us  • Download School Brochure</text>
+
+<!-- ===== HERO SECTION ===== -->
+<g>
+  <rect y="202" width="1440" height="620" fill="url(#hero)"/>
+  <!-- Hero background image overlay -->
+  <image x="0" y="202" width="1440" height="620" href="public/hero-image.jpg" preserveAspectRatio="xMidYMid slice" opacity=".35"/>
+  <!-- Dark gradient overlay for text readability -->
+  <rect y="202" width="720" height="620" fill="#083A55" opacity=".55"/>
+
+  <!-- Hero text content -->
+  <g transform="translate(96 380)">
+    <rect width="200" height="30" rx="15" fill="#FFFFFF" opacity=".12"/>
+    <circle cx="16" cy="15" r="5" fill="#F3B51B"/>
+    <text x="30" y="20" class="pill white">CBSE SCHOOL</text>
+
+    <text y="90" class="serif white" font-size="54" font-weight="700">Rooted in Aragonda.</text>
+    <text y="152" class="serif" font-size="54" font-weight="700" fill="#F8C84A">Raised with Discipline,</text>
+    <text y="214" class="serif" font-size="54" font-weight="700" fill="#F8C84A">Values, and Strength.</text>
+
+    <text y="270" class="sans mutedWhite" font-size="22" font-weight="600" letter-spacing="3">Learning. Leading. Excelling.</text>
+
+    <rect y="310" width="176" height="54" rx="27" fill="#F3B51B"/>
+    <text x="35" y="344" class="sans" font-size="15" font-weight="800" fill="#12314D">EXPLORE SCHOOL</text>
+    <rect x="194" y="310" width="154" height="54" rx="27" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="2"/>
+    <text x="222" y="344" class="sans white" font-size="15" font-weight="700">ADMISSIONS</text>
+  </g>
+
+  <!-- School building illustration on the right -->
+  <g transform="translate(900 400)">
+    <rect x="0" y="125" width="420" height="160" rx="4" fill="#F5EAD1" opacity=".7"/>
+    <rect x="30" y="80" width="360" height="70" fill="#FFF8E9" opacity=".6"/>
+    <path d="M10 125 210 20l200 105Z" fill="#D9504F" opacity=".75"/>
+    <rect x="180" y="170" width="60" height="115" fill="#0B6174" opacity=".7"/>
+    <g fill="#62A5AF" opacity=".6"><rect x="50" y="165" width="55" height="50"/><rect x="125" y="165" width="42" height="50"/><rect x="263" y="165" width="42" height="50"/><rect x="320" y="165" width="55" height="50"/></g>
+  </g>
+</g>
+
+<!-- ===== HIGHLIGHTS STRIP ===== -->
+<g transform="translate(96 870)" filter="url(#shadow)">
+  <rect width="1248" height="128" rx="18" fill="#fff"/>
+  <g transform="translate(50 29)"><text class="serif" font-size="36" font-weight="700" fill="#0B6174">12+</text><text y="56" class="small">YEARS OF VALUE EDUCATION</text></g>
+  <line x1="330" y1="28" x2="330" y2="100" stroke="#DDE5E6"/>
+  <g transform="translate(382 29)"><text class="serif" font-size="36" font-weight="700" fill="#0B6174">Daily</text><text y="56" class="small">YOGA &amp; WELL-BEING</text></g>
+  <line x1="650" y1="28" x2="650" y2="100" stroke="#DDE5E6"/>
+  <g transform="translate(704 29)"><text class="serif" font-size="36" font-weight="700" fill="#0B6174">CBSE</text><text y="56" class="small">STRONG ACADEMIC FOUNDATION</text></g>
+  <line x1="966" y1="28" x2="966" y2="100" stroke="#DDE5E6"/>
+  <g transform="translate(1018 29)"><text class="serif" font-size="36" font-weight="700" fill="#0B6174">State</text><text y="56" class="small">LEVEL SPORTS ACHIEVERS</text></g>
+</g>
+
+<!-- ===== ABOUT US SECTION ===== -->
+<g transform="translate(96 1120)">
+  <text class="eyebrow">WELCOME TO APOLLO VIDHYALAYAM</text>
+  <text y="72" class="h2">A school shaped by purpose,</text>
+  <text y="128" class="h2">possibility and strong values.</text>
+  <text y="178" class="body">Founded in Aragonda in 2012, our school blends rigorous learning with</text>
+  <text y="208" class="body">yoga, discipline and value-based education—preparing every child to thrive.</text>
+  <rect y="250" width="162" height="50" rx="25" fill="#0B6174"/>
+  <text x="30" y="282" class="sans white" font-size="14" font-weight="700">OUR JOURNEY  &#x2192;</text>
+  <!-- Download Brochure button -->
+  <rect x="185" y="250" width="240" height="50" rx="25" fill="none" stroke="#0B6174" stroke-width="2"/>
+  <text x="210" y="282" class="sans" font-size="14" font-weight="700" fill="#0B6174">&#x1F4C4; Download Brochure</text>
+</g>
+
+<!-- About Us visual -->
+<g transform="translate(760 1090)">
+  <rect x="80" y="0" width="470" height="390" rx="26" fill="url(#warm)"/>
+  <rect x="0" y="70" width="330" height="270" rx="22" fill="#DCECEF" filter="url(#shadow)"/>
+  <circle cx="92" cy="151" r="42" fill="#F3B51B"/>
+  <path d="M55 275c48-110 78-110 126 0Z" fill="#0B6174"/>
+  <circle cx="241" cy="155" r="38" fill="#E65368"/>
+  <path d="M203 275c45-104 73-104 116 0Z" fill="#12314D"/>
+  <path d="M45 298h248" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+  <g transform="translate(315 105)">
+    <rect width="265" height="225" rx="20" fill="#0B6174"/>
+    <circle cx="165" cy="62" r="34" fill="#F3B51B"/>
+    <path d="M165 98c-54 30-73 78-77 116m77-116c55 28 72 76 75 116M165 111v90" stroke="#F6EFE2" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="165" cy="106" r="10" fill="#E65368"/>
+    <text x="24" y="194" class="sans white" font-size="12" letter-spacing="1.5">DAILY YOGA &#x2022; BALANCED LIVING</text>
+  </g>
+</g>
+
+<!-- ===== THE APOLLO EXPERIENCE (Cards) ===== -->
+<rect y="1568" width="1440" height="780" fill="#F2F6F5"/>
+<g transform="translate(96 1660)">
+  <text class="eyebrow">THE APOLLO EXPERIENCE</text>
+  <text y="70" class="h2">Learning that goes beyond</text>
+  <text y="126" class="h2">the classroom.</text>
+</g>
+<g transform="translate(96 1848)">
+  <g filter="url(#shadow)"><rect width="390" height="360" rx="22" fill="#fff"/><rect width="390" height="176" rx="22" fill="#0B6174"/><circle cx="307" cy="80" r="55" fill="#F3B51B" opacity=".95"/><path d="M52 142 142 58l62 54 51-44 86 74Z" fill="#167F8E"/><path d="M48 142h294" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="95" cy="104" r="16" fill="#F3B51B"/><text x="28" y="224" class="cardTitle">Academic Excellence</text><text x="28" y="260" class="small">Concept-led CBSE learning, curiosity and</text><text x="28" y="283" class="small">critical thinking for lifelong confidence.</text><text x="28" y="329" class="pill" fill="#0B6174">EXPLORE ACADEMICS  &#x2192;</text></g>
+  <g transform="translate(429)" filter="url(#shadow)"><rect width="390" height="360" rx="22" fill="#fff"/><rect width="390" height="176" rx="22" fill="#F3B51B"/><circle cx="191" cy="65" r="29" fill="#0B6174"/><path d="M191 98c-58 31-78 78-83 74m83-74c57 30 77 76 82 74m-82-62v62" stroke="#fff" stroke-width="13" stroke-linecap="round"/><text x="28" y="224" class="cardTitle">Yoga &amp; Well-being</text><text x="28" y="260" class="small">Daily guided yoga builds focus, balance,</text><text x="28" y="283" class="small">self-awareness and emotional strength.</text><text x="28" y="329" class="pill" fill="#0B6174">DISCOVER WELL-BEING  &#x2192;</text></g>
+  <g transform="translate(858)" filter="url(#shadow)"><rect width="390" height="360" rx="22" fill="#fff"/><rect width="390" height="176" rx="22" fill="#E65368"/><circle cx="196" cy="62" r="25" fill="#F3B51B"/><path d="M196 92v55m0-31-56 20m56-20 55 18m-55-7-34 46m34-46 35 46" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path d="M75 157h240" stroke="#12314D" stroke-width="6" stroke-linecap="round"/><text x="28" y="224" class="cardTitle">Sports &amp; Leadership</text><text x="28" y="260" class="small">Teamwork, discipline and state-level</text><text x="28" y="283" class="small">achievement on and beyond the field.</text><text x="28" y="329" class="pill" fill="#0B6174">VIEW STUDENT LIFE  &#x2192;</text></g>
+</g>
+
+<!-- ===== VISION & MISSION ===== -->
+<g transform="translate(96 2465)">
+  <text class="eyebrow">OUR DIRECTION</text>
+  <text y="70" class="h2">One vision. A purposeful mission.</text>
+  <g transform="translate(0 125)">
+    <rect width="600" height="285" rx="24" fill="#0B6174"/>
+    <circle cx="524" cy="65" r="40" fill="#F3B51B"/>
+    <text x="38" y="52" class="pill" fill="#9FDFE6">OUR VISION</text>
+    <text x="38" y="102" class="serif white" font-size="29" font-weight="700">Confident. Compassionate.</text>
+    <text x="38" y="138" class="serif white" font-size="29" font-weight="700">Future-ready.</text>
+    <text x="38" y="188" class="sans mutedWhite" font-size="16">Empowering every child to realise their fullest</text>
+    <text x="38" y="214" class="sans mutedWhite" font-size="16">potential and contribute meaningfully to society.</text>
+  </g>
+  <g transform="translate(648 125)">
+    <rect width="600" height="285" rx="24" fill="#FFF3CB"/>
+    <circle cx="524" cy="65" r="40" fill="#E65368"/>
+    <path d="M508 65h32M524 49v32" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <text x="38" y="52" class="pill" fill="#A86D00">OUR MISSION</text>
+    <text x="38" y="102" class="serif" font-size="29" font-weight="700" fill="#12314D">Balanced learning for</text>
+    <text x="38" y="138" class="serif" font-size="29" font-weight="700" fill="#12314D">the whole child.</text>
+    <text x="38" y="188" class="sans" font-size="16" fill="#5E6466">Academic excellence, character, well-being,</text>
+    <text x="38" y="214" class="sans" font-size="16" fill="#5E6466">innovation and social responsibility&#x2014;together.</text>
+  </g>
+</g>
+
+<!-- ===== CORE VALUES ===== -->
+<g transform="translate(96 3010)">
+  <text class="eyebrow">THE VALUES WE LIVE BY</text>
+  <text y="70" class="h2">Character is our everyday curriculum.</text>
+  <g transform="translate(0 128)">
+    <g><rect width="288" height="132" rx="18" fill="#F2F7F6"/><circle cx="52" cy="48" r="24" fill="#0B6174"/><path d="m42 49 7 7 14-17" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/><text x="90" y="47" class="value">Excellence</text><text x="90" y="72" class="small">Personal growth</text></g>
+    <g transform="translate(320)"><rect width="288" height="132" rx="18" fill="#FFF5D5"/><circle cx="52" cy="48" r="24" fill="#F3B51B"/><path d="M42 51h20M52 40v22" stroke="#12314D" stroke-width="4" stroke-linecap="round"/><text x="90" y="47" class="value">Integrity</text><text x="90" y="72" class="small">Honesty in action</text></g>
+    <g transform="translate(640)"><rect width="288" height="132" rx="18" fill="#FBECEF"/><circle cx="52" cy="48" r="24" fill="#E65368"/><path d="M39 49c8-13 18-13 26 0-10 14-16 17-26 0Z" fill="#fff"/><text x="90" y="47" class="value">Discipline</text><text x="90" y="72" class="small">Focus and courage</text></g>
+    <g transform="translate(960)"><rect width="288" height="132" rx="18" fill="#EEF1F6"/><circle cx="52" cy="48" r="24" fill="#12314D"/><path d="M39 53c6-15 18-20 27-8" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><text x="90" y="47" class="value">Respect</text><text x="90" y="72" class="small">Value every voice</text></g>
+    <g transform="translate(0 160)"><rect width="288" height="132" rx="18" fill="#FBECEF"/><circle cx="52" cy="48" r="24" fill="#E65368"/><path d="M52 61C30 49 39 34 52 43c13-9 22 6 0 18Z" fill="#fff"/><text x="90" y="47" class="value">Compassion</text><text x="90" y="72" class="small">Kindness and service</text></g>
+    <g transform="translate(320 160)"><rect width="288" height="132" rx="18" fill="#F2F7F6"/><circle cx="52" cy="48" r="24" fill="#0B6174"/><path d="M52 34v28M38 48h28" stroke="#fff" stroke-width="4" stroke-linecap="round"/><text x="90" y="47" class="value">Innovation</text><text x="90" y="72" class="small">Curiosity and ideas</text></g>
+    <g transform="translate(640 160)"><rect width="288" height="132" rx="18" fill="#FFF5D5"/><circle cx="52" cy="48" r="24" fill="#F3B51B"/><path d="m40 57 12-20 12 20" stroke="#12314D" stroke-width="4" fill="none" stroke-linecap="round"/><text x="90" y="47" class="value">Leadership</text><text x="90" y="72" class="small">Initiative and purpose</text></g>
+    <g transform="translate(960 160)"><rect width="288" height="132" rx="18" fill="#EEF1F6"/><circle cx="52" cy="48" r="24" fill="#12314D"/><circle cx="52" cy="48" r="12" stroke="#fff" stroke-width="4" fill="none"/><text x="90" y="47" class="value">Holistic Growth</text><text x="90" y="72" class="small">Mind, body, character</text></g>
+  </g>
+</g>
+
+<!-- ===== PRINCIPAL MESSAGE ===== -->
+<g transform="translate(0 3488)">
+  <rect width="1440" height="550" fill="#12314D"/>
+  <circle cx="120" cy="180" r="160" fill="#0B6174" opacity=".32"/>
+  <circle cx="1260" cy="420" r="210" fill="#0B6174" opacity=".28"/>
+  <g transform="translate(96 82)">
+    <rect width="420" height="386" rx="24" fill="#E5EFF0"/>
+    <circle cx="210" cy="130" r="68" fill="#F3B51B"/>
+    <path d="M112 355c22-110 72-158 98-158s76 48 98 158Z" fill="#0B6174"/>
+    <path d="M165 127c14 19 76 19 90 0" stroke="#12314D" stroke-width="7" fill="none"/>
+    <rect x="137" y="335" width="146" height="14" rx="7" fill="#E65368"/>
+  </g>
+  <g transform="translate(600 102)">
+    <text class="pill" fill="#F3B51B">FROM THE PRINCIPAL'S DESK</text>
+    <text y="60" class="serif white" font-size="39" font-weight="700">"Every child arrives with</text>
+    <text y="108" class="serif white" font-size="39" font-weight="700">unique potential."</text>
+    <text y="166" class="sans mutedWhite" font-size="17">Our responsibility is to help them discover it, nurture it,</text>
+    <text y="194" class="sans mutedWhite" font-size="17">and give them confidence to pursue their aspirations with</text>
+    <text y="222" class="sans mutedWhite" font-size="17">integrity and purpose. Learning here extends far beyond</text>
+    <text y="250" class="sans mutedWhite" font-size="17">textbooks&#x2014;to curiosity, resilience and leadership.</text>
+    <text y="317" class="serif white" font-size="21" font-weight="700">Vice-Principal / Principal</text>
+    <text y="345" class="sans" font-size="14" fill="#9FBDC5">APOLLO VIDHYALAYAM</text>
+  </g>
+</g>
+
+<!-- ===== NEWS & EVENTS ===== -->
+<g transform="translate(96 4150)">
+  <text class="eyebrow">WHAT'S HAPPENING</text>
+  <text y="66" class="h2">News &amp; events</text>
+  <text x="1080" y="57" class="sans" font-size="14" font-weight="700" fill="#0B6174">VIEW ALL  &#x2192;</text>
+  <g transform="translate(0 112)">
+    <g><rect width="390" height="232" rx="20" fill="#E6EFF0"/><rect x="0" y="0" width="390" height="112" rx="20" fill="#0B6174"/><circle cx="325" cy="52" r="28" fill="#F3B51B"/><path d="M47 95 126 35l62 45 48-33 89 48Z" fill="#178494"/><rect x="24" y="92" width="342" height="9" rx="4" fill="#fff"/><text x="22" y="145" class="pill" fill="#E65368">ACHIEVEMENT</text><text x="22" y="180" class="cardTitle">State sports champions</text><text x="22" y="208" class="small">Celebrating teamwork and discipline.</text></g>
+    <g transform="translate(429)"><rect width="390" height="232" rx="20" fill="#FFF5D5"/><rect x="0" y="0" width="390" height="112" rx="20" fill="#F3B51B"/><circle cx="195" cy="48" r="25" fill="#0B6174"/><path d="M195 76v28m0-17-30 14m30-14 30 14" stroke="#fff" stroke-width="8" stroke-linecap="round"/><text x="22" y="145" class="pill" fill="#A86D00">WELL-BEING</text><text x="22" y="180" class="cardTitle">International Yoga Day</text><text x="22" y="208" class="small">A campus-wide celebration of balance.</text></g>
+    <g transform="translate(858)"><rect width="390" height="232" rx="20" fill="#FBECEF"/><rect x="0" y="0" width="390" height="112" rx="20" fill="#E65368"/><path d="M64 88h260M92 88V39h204v49M126 39V22h136v17" stroke="#fff" stroke-width="8" fill="none"/><text x="22" y="145" class="pill" fill="#E65368">CAMPUS</text><text x="22" y="180" class="cardTitle">CBSE transition update</text><text x="22" y="208" class="small">Building a nationally benchmarked future.</text></g>
+  </g>
+</g>
+
+<!-- ===== CONTACT US / CTA SECTION ===== -->
+<g transform="translate(96 4580)">
+  <rect width="1248" height="220" rx="28" fill="url(#hero)"/>
+  <circle cx="1090" cy="78" r="120" fill="#F3B51B" opacity=".16"/>
+  <text x="54" y="50" class="pill" fill="#F3B51B">CONTACT US</text>
+  <text x="54" y="92" class="serif white" font-size="28" font-weight="700">Apollo Vidhyalayam, Jonnagurukula Road,</text>
+  <text x="54" y="126" class="serif white" font-size="28" font-weight="700">Aragonda &#x2014; 517129, Chittoor District, AP</text>
+  <text x="54" y="166" class="sans mutedWhite" font-size="15">Phone: +91 81227 61667  |  Email: avn.viceprincipal@gmail.com</text>
+  <rect x="54" y="186" width="170" height="20" rx="10" fill="none"/>
+  <rect x="986" y="80" width="206" height="58" rx="29" fill="#F3B51B"/>
+  <text x="1034" y="116" class="sans" font-size="14" font-weight="800" fill="#12314D">BOOK A VISIT  &#x2192;</text>
+</g>
+
+<!-- ===== FOOTER ===== -->
+<g transform="translate(0 4880)">
+  <rect width="1440" height="320" fill="#082F43"/>
+  <!-- Logo and tagline -->
+  <image x="96" y="40" width="50" height="50" href="public/apollo-logo.jpg" preserveAspectRatio="xMidYMid meet"/>
+  <text x="160" y="63" class="serif white" font-size="20" font-weight="700">APOLLO VIDHYALAYAM</text>
+  <text x="160" y="85" class="sans" font-size="11" letter-spacing="1.4" fill="#9CBBC4">LEARN &#x2022; LEAD &#x2022; SERVE</text>
+  <text x="96" y="125" class="sans" font-size="13" fill="#C5D8DE">Apollo Vidhyalayam, Jonnagurukula Road,</text>
+  <text x="96" y="145" class="sans" font-size="13" fill="#C5D8DE">Aragonda &#x2014; 517129, Chittoor District, Andhra Pradesh</text>
+  <text x="96" y="175" class="sans" font-size="13" fill="#C5D8DE">Phone: +91 81227 61667</text>
+  <text x="96" y="195" class="sans" font-size="13" fill="#C5D8DE">Email: avn.viceprincipal@gmail.com</text>
+
+  <!-- Footer navigation -->
+  <g transform="translate(600 50)">
+    <text class="sans" font-size="14" font-weight="700" fill="#F3B51B">QUICK LINKS</text>
+    <text y="30" class="sans" font-size="13" fill="#C5D8DE">Home</text>
+    <text y="52" class="sans" font-size="13" fill="#C5D8DE">About Us / Know Us</text>
+    <text y="74" class="sans" font-size="13" fill="#C5D8DE">Admissions</text>
+    <text y="96" class="sans" font-size="13" fill="#C5D8DE">Contact Us</text>
+    <text y="118" class="sans" font-size="13" fill="#C5D8DE">Gallery</text>
+    <text y="140" class="sans" font-size="13" fill="#C5D8DE">Download School Brochure</text>
+  </g>
+
+  <g transform="translate(870 50)">
+    <text class="sans" font-size="14" font-weight="700" fill="#F3B51B">PORTALS</text>
+    <text y="30" class="sans" font-size="13" fill="#C5D8DE">Parent Login</text>
+    <text y="52" class="sans" font-size="13" fill="#C5D8DE">Teacher Login</text>
+    <text y="74" class="sans" font-size="13" fill="#C5D8DE">Mandatory Public Disclosure</text>
+  </g>
+
+  <!-- Social Media Icons -->
+  <g transform="translate(1100 50)">
+    <text class="sans" font-size="14" font-weight="700" fill="#F3B51B">FOLLOW US</text>
+    <!-- Instagram -->
+    <g transform="translate(0 25)">
+      <rect width="38" height="38" rx="10" fill="#0B6174"/>
+      <rect x="9" y="9" width="20" height="20" rx="5" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="19" cy="19" r="5" fill="none" stroke="#fff" stroke-width="2"/>
+      <circle cx="25" cy="13" r="2" fill="#fff"/>
+      <text x="0" y="57" class="sans" font-size="10" fill="#9CBBC4">Instagram</text>
+    </g>
+    <!-- LinkedIn -->
+    <g transform="translate(55 25)">
+      <rect width="38" height="38" rx="10" fill="#0B6174"/>
+      <text x="11" y="27" class="sans white" font-size="18" font-weight="700">in</text>
+      <text x="0" y="57" class="sans" font-size="10" fill="#9CBBC4">LinkedIn</text>
+    </g>
+    <!-- Facebook -->
+    <g transform="translate(110 25)">
+      <rect width="38" height="38" rx="10" fill="#0B6174"/>
+      <text x="13" y="27" class="sans white" font-size="18" font-weight="700">f</text>
+      <text x="0" y="57" class="sans" font-size="10" fill="#9CBBC4">Facebook</text>
+    </g>
+  </g>
+
+  <!-- Copyright bar -->
+  <rect y="240" width="1440" height="80" fill="#061E2D"/>
+  <text x="96" y="275" class="sans" font-size="12" fill="#7A9AA5">&#xA9; 2026 Apollo Vidhyalayam. All rights reserved.</text>
+  <text x="1050" y="275" class="sans" font-size="12" fill="#7A9AA5">Instagram  |  LinkedIn  |  Facebook</text>
+</g>
+
+</svg>

@@ -15,11 +15,11 @@ import ImageReveal from "@/components/ui/image-tiles";
 type MissionItem = { icon: LucideIcon; text: string };
 
 const missionItems: MissionItem[] = [
-  { icon: GraduationCap, text: "Deliver academic excellence" },
-  { icon: Lightbulb, text: "Develop leadership skills" },
-  { icon: Target, text: "Promote innovation and creativity" },
-  { icon: Dumbbell, text: "Encourage healthy lifestyles" },
-  { icon: Briefcase, text: "Build future career readiness" },
+  { icon: GraduationCap, text: "Deliver a balanced education that fosters academic excellence, critical thinking, and lifelong learning." },
+  { icon: Target, text: "Cultivate character through discipline, integrity, empathy, and respect." },
+  { icon: Dumbbell, text: "Promote physical, emotional, and intellectual well-being through sports, yoga, and co-curricular learning." },
+  { icon: Lightbulb, text: "Inspire leadership, innovation, and social responsibility in every student." },
+  { icon: Briefcase, text: "Provide a safe, inclusive, and nurturing environment where every child can learn, grow, and thrive." },
 ];
 
 export function AboutV1Story() {
@@ -59,7 +59,7 @@ export function AboutV1Story() {
                 <h3 className="text-sm font-bold text-ink-900">Our Vision</h3>
                 <div className="mt-2 mb-3 h-px w-full bg-teal-800" />
                 <p className="text-sm leading-relaxed text-ink-600">
-                  To nurture confident, compassionate, and capable learners prepared to thrive in an ever-changing world.
+                  To nurture confident, compassionate, and future-ready learners through holistic education, empowering every child to realise their fullest potential and contribute meaningfully to society.
                 </p>
               </div>
 

@@ -5,17 +5,17 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Campus Address",
-    value: "Apollo Vidhyalayam, Warangal Rural, Telangana, India",
+    value: "Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129, Chittoor District, Andhra Pradesh",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
+    value: "+91 81227 61667",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@apollovidhyalayam.edu.in",
+    value: "avn.viceprincipal@gmail.com",
   },
 ];
 

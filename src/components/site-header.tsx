@@ -1,8 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PrimaryNavBar } from "@/components/primary-nav-bar";
 import { MobileNav } from "@/components/mobile-nav";
 import { AnnouncementsBar } from "@/components/announcements-bar";
+import { SearchToggle } from "@/components/search-toggle";
+import { LoginDropdown } from "@/components/login-dropdown";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 export function SiteHeader() {
   return (
@@ -16,25 +20,20 @@ export function SiteHeader() {
           {/* Left: hamburger (mobile) + logo */}
           <div className="flex items-center gap-3">
             <MobileNav />
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center bg-teal-800">
-                <span className="text-base font-bold text-white">S</span>
-              </div>
-              <div>
-                <p className="font-display text-base font-bold leading-tight text-ink-900">School Name</p>
-                <p className="text-[11px] text-ink-600">Rural • Quality • Aspiration</p>
-              </div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/apollo-logo.png"
+                alt="Apollo Vidhyalayam"
+                width={56}
+                height={56}
+                className="h-14 w-auto"
+              />
             </Link>
           </div>
 
-          {/* Right: CTA buttons */}
+          {/* Right: Login + Apply Now + Search */}
           <div className="flex items-center gap-2">
-            <Link
-              href="#"
-              className="hidden sm:inline-flex rounded-full border-2 border-teal-800 px-4 py-2 text-sm font-semibold text-teal-800 transition hover:bg-teal-800 hover:text-white"
-            >
-              Contact Us
-            </Link>
+            <LoginDropdown />
             <Link
               href="#"
               className="inline-flex items-center gap-1.5 rounded-full bg-yellow-600 px-4 py-2 text-sm font-semibold text-ink-900 transition hover:bg-yellow-500"
@@ -42,6 +41,7 @@ export function SiteHeader() {
               Apply Now
               <ArrowRight className="size-3.5" />
             </Link>
+            <SearchToggle />
           </div>
         </div>
       </div>

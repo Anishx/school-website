@@ -13,28 +13,28 @@ type MetricSlide = {
 
 const slides: MetricSlide[] = [
   {
-    title: "Academic Achievement",
+    title: "Isha-Affiliated Value Education",
     image: "https://picsum.photos/seed/rural-kids-studying/800/600",
-    stat: "85%",
-    description: "Students consistently score above 85% in board exams, with top mandal rankings every year.",
+    stat: "12+",
+    description: "Years of Isha-affiliated value education integrating yoga, discipline, and character building into everyday learning.",
   },
   {
-    title: "New Admissions",
+    title: "Daily Yoga Sessions",
     image: "https://picsum.photos/seed/village-children-school-gate/800/600",
-    stat: "100+",
-    description: "New students enroll every year, a testament to the trust parents place in our school.",
+    stat: "Daily",
+    description: "Yoga sessions guided by the Apollo Foundation Total Health Yoga Trainer, promoting physical and emotional well-being.",
   },
   {
-    title: "School Events",
+    title: "CBSE Transition",
     image: "https://picsum.photos/seed/rural-school-cultural-fest/800/600",
-    stat: "25+",
-    description: "Annual events including sports days, cultural fests, science fairs, and community celebrations.",
+    stat: "CBSE",
+    description: "Transitioning to CBSE, building on a strong academic foundation with nationally benchmarked standards.",
   },
   {
-    title: "Technology Adoption",
+    title: "State-Level Sports Achievers",
     image: "https://picsum.photos/seed/kids-smartboard-learning/800/600",
-    stat: "95%",
-    description: "Classrooms equipped with smart boards and digital learning tools for an interactive experience.",
+    stat: "State",
+    description: "Our students are state-level sports achievers — sporty, brave, and disciplined both on and off the field.",
   },
 ];
 

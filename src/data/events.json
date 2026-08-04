@@ -1,74 +1,74 @@
 [
   {
-    "id": "annual-day-2025",
-    "title": "Annual Day Celebrations 2025",
+    "id": "best-school-mandal-2025",
+    "title": "Apollo Vidyalayam Recognised as Best School at Mandal Level",
+    "date": "2025-07-15",
+    "category": "Achievement",
+    "featured": true,
+    "image": "https://picsum.photos/seed/school-award-ceremony/600/400",
+    "body": "Apollo Vidyalayam has been recognised as the Best School at the Mandal Level for its outstanding performance across a wide range of sporting disciplines, reflecting our commitment to excellence in physical education and holistic student development."
+  },
+  {
+    "id": "school-elections-2025",
+    "title": "School Elections & Student Council Formation",
+    "date": "2025-06-20",
+    "category": "Current & Upcoming",
+    "featured": true,
+    "image": "https://picsum.photos/seed/school-election-students/600/400",
+    "body": "Students actively participated in the democratic process of school elections, electing House Captains, Vice Captains, and the School Captain. The Student Council formation builds leadership, responsibility, and civic awareness from an early age."
+  },
+  {
+    "id": "parent-council-2025",
+    "title": "Parent Council Formation",
+    "date": "2025-06-10",
+    "category": "Current & Upcoming",
+    "featured": false,
+    "image": "https://picsum.photos/seed/parent-meeting-school/600/400",
+    "body": "The Parent Council was formally constituted for the 2025-26 academic year, strengthening the partnership between parents and the school in supporting student development and institutional growth."
+  },
+  {
+    "id": "pocso-awareness-2025",
+    "title": "POCSO Awareness Sessions",
+    "date": "2025-05-25",
+    "category": "Current & Upcoming",
+    "featured": false,
+    "image": "https://picsum.photos/seed/awareness-session/600/400",
+    "body": "Awareness sessions on child safety and POCSO guidelines were conducted for students, staff, and parents, reinforcing the school's commitment to providing a safe and protective environment for every child."
+  },
+  {
+    "id": "posh-awareness-2025",
+    "title": "POSH Awareness Sessions",
+    "date": "2025-05-20",
+    "category": "Current & Upcoming",
+    "featured": false,
+    "image": "https://picsum.photos/seed/safety-awareness/600/400",
+    "body": "POSH awareness sessions were conducted to promote respectful behaviour, inclusivity, and safety across the school community, building an environment where every individual feels valued and protected."
+  },
+  {
+    "id": "smc-meeting-2025",
+    "title": "School Management Committee (SMC) Meeting",
+    "date": "2025-05-10",
+    "category": "Current & Upcoming",
+    "featured": false,
+    "image": "https://picsum.photos/seed/committee-meeting/600/400",
+    "body": "The School Management Committee convened to discuss academic progress, infrastructure development, and strategic initiatives for the academic year. Student representatives also participated, gaining first-hand experience in governance and decision-making."
+  },
+  {
+    "id": "space-day-winner-2025",
+    "title": "Winners of International Space Day Competition",
+    "date": "2025-04-12",
+    "category": "Achievement",
+    "featured": false,
+    "image": "https://picsum.photos/seed/space-science-project/600/400",
+    "body": "Apollo Vidyalayam students emerged as winners at the International Space Day Competition, competing against nearly 50 schools. The winning project, \"Emergency Oxygen Producer for Astronauts,\" demonstrated creativity, scientific thinking, and practical problem-solving."
+  },
+  {
+    "id": "throwball-state-champions",
+    "title": "State-Level Throwball Champions",
     "date": "2025-03-15",
-    "category": "Cultural Events",
-    "featured": true,
-    "image": "https://picsum.photos/seed/annual-day-event/600/400",
-    "body": "The Annual Day Celebrations 2025 brought together students, parents, and staff for a memorable evening of performances, awards, and community spirit. Students from Pre-Primary to Std. X showcased their talents through dance, drama, and musical performances. The event also featured the annual prize distribution ceremony recognizing academic excellence, sports achievements, and exemplary conduct throughout the year."
-  },
-  {
-    "id": "sports-day-2025",
-    "title": "Sports Day — Inter-House Championship",
-    "date": "2025-02-20",
-    "category": "Sports",
-    "featured": true,
-    "image": "https://picsum.photos/seed/sports-day-rural/600/400",
-    "body": "The Inter-House Sports Championship saw fierce yet friendly competition across multiple disciplines including athletics, volleyball, kabaddi, and cricket. Students from all houses participated with great enthusiasm. The event concluded with the Chief Guest presenting trophies to the winning house and individual champions. Parents cheered from the stands as young athletes showcased their training and determination."
-  },
-  {
-    "id": "science-fair-2025",
-    "title": "Science Fair & Innovation Showcase",
-    "date": "2025-01-28",
-    "category": "Academics",
+    "category": "Achievement",
     "featured": false,
-    "image": "https://picsum.photos/seed/science-fair-kids/600/400",
-    "body": "Students from Std. VI to X presented innovative science projects covering topics from renewable energy to water purification. The Science Fair encouraged critical thinking and hands-on experimentation. External judges from local colleges evaluated projects on creativity, scientific methodology, and presentation. Several projects were selected for the upcoming mandal-level science competition."
-  },
-  {
-    "id": "republic-day-2025",
-    "title": "Republic Day Flag Hoisting",
-    "date": "2025-01-26",
-    "category": "Cultural Events",
-    "featured": false,
-    "image": "https://picsum.photos/seed/republic-day-school/600/400",
-    "body": "Republic Day was celebrated with a flag hoisting ceremony followed by patriotic songs, speeches, and a march past by the school's NCC cadets. The Principal addressed students about the importance of civic responsibility and the values enshrined in our Constitution. Students also participated in essay writing and art competitions themed around national unity."
-  },
-  {
-    "id": "brighter-minds-launch",
-    "title": "Brighter Minds Program Launch",
-    "date": "2025-01-10",
-    "category": "Academics",
-    "featured": false,
-    "image": "https://picsum.photos/seed/brighter-minds-launch/600/400",
-    "body": "Apollo Vidhyalayam officially launched the Brighter Minds Program aimed at cognitive development for students across all grades. The program focuses on memory enhancement, concentration improvement, and creativity activation through scientifically designed exercises. Parents attended an orientation session where trainers demonstrated the methodology and expected outcomes for their children."
-  },
-  {
-    "id": "medical-visit-2024",
-    "title": "Medical College Exposure Visit",
-    "date": "2024-12-15",
-    "category": "Student Life",
-    "featured": false,
-    "image": "https://picsum.photos/seed/medical-visit-students/600/400",
-    "body": "Students from Std. VIII to X visited the Apollo Medical College as part of the Medical Pathways Program. They toured the anatomy lab, interacted with medical students, and attended a session on career opportunities in healthcare. The visit inspired many students to consider careers in medicine, nursing, and allied health sciences. Over 100 students have now participated in such exposure visits."
-  },
-  {
-    "id": "parent-meet-2024",
-    "title": "Parent-Teacher Meeting",
-    "date": "2024-12-01",
-    "category": "Community",
-    "featured": false,
-    "image": "https://picsum.photos/seed/parent-teacher-meet/600/400",
-    "body": "The quarterly Parent-Teacher Meeting provided parents with detailed insights into their children's academic progress, behaviour, and areas for improvement. Teachers shared individual report cards and discussed strategies for home support. The school also presented its upcoming plans for digital learning infrastructure and invited feedback from the parent community."
-  },
-  {
-    "id": "diwali-celebration",
-    "title": "Diwali Celebrations & Rangoli Competition",
-    "date": "2024-11-01",
-    "category": "Cultural Events",
-    "featured": false,
-    "image": "https://picsum.photos/seed/diwali-school-kids/600/400",
-    "body": "The school campus was transformed with colourful rangolis, diyas, and decorations as students celebrated Diwali with joy and creativity. A rangoli competition saw participation from all classes, with students creating stunning designs using natural colours. The celebrations also included a lamp-lighting ceremony, sweet distribution, and a brief programme on the significance of the festival of lights."
+    "image": "https://picsum.photos/seed/throwball-champions/600/400",
+    "body": "Our students won the State-Level Throwball Championship, showcasing the discipline, teamwork, and physical excellence nurtured through our sports programme. The team represented the school with distinction at the state tournament."
   }
 ]

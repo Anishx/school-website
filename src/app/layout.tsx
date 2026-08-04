@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { Anton, Poppins } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const merriweather = Merriweather({
+const anton = Anton({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
 });
 
-const sourceSans = Source_Sans_3({
+const poppins = Poppins({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "School Name | Section-by-section Build",
+  title: "Apollo Vidhyalayam | CBSE School in Aragonda",
   description: "Rural school website frontend",
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${merriweather.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${anton.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}<SiteFooter /></body>
     </html>

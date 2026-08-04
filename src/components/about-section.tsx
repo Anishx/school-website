@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Zap, Palette, Puzzle, BookOpen, Box, Brain, ArrowRight } from "lucide-react";
+import { Zap, Palette, Puzzle, BookOpen, Box, Brain, ArrowRight, Download } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Feature = {
@@ -135,13 +135,22 @@ export function AboutSection() {
               Our tech-enabled campus with smart classrooms, dedicated sports facilities and a nurturing
               environment ensures students are future-ready from day one.
             </p>
-            <Link
-              href="#"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-800 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900"
-            >
-              Read more
-              <ArrowRight className="size-3.5" />
-            </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link
+                href="#"
+                className="inline-flex items-center gap-2 rounded-full bg-teal-800 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+              >
+                Read more
+                <ArrowRight className="size-3.5" />
+              </Link>
+              <Link
+                href="#brochure"
+                className="inline-flex items-center gap-2 rounded-full border border-teal-800 px-6 py-2.5 text-sm font-semibold text-teal-800 transition hover:bg-teal-800/5"
+              >
+                <Download className="size-4" />
+                Download School Brochure
+              </Link>
+            </div>
           </div>
         </div>
       </div>
