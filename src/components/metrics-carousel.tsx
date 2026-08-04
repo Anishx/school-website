@@ -20,7 +20,7 @@ const slides: MetricSlide[] = [
   },
   {
     title: "Daily Yoga Sessions",
-    image: "/images/impact/impact-2.jpg",
+    image: "/images/yoga/group-yoga.jpg",
     stat: "Daily",
     description: "Yoga sessions guided by the Apollo Foundation Total Health Yoga Trainer, promoting physical and emotional well-being.",
   },
@@ -32,7 +32,7 @@ const slides: MetricSlide[] = [
   },
   {
     title: "State-Level Sports Achievers",
-    image: "/images/impact/impact-3.jpg",
+    image: "/images/sports/sports-1.jpg",
     stat: "State",
     description: "Our students are state-level sports achievers — sporty, brave, and disciplined both on and off the field.",
   },

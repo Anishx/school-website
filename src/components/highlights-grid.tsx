@@ -52,7 +52,7 @@ const tiles: Tile[] = [
     type: "image",
     title: "Brighter Minds Program",
     subtext: "Unlocking every child's potential.",
-    image: "/images/computer/computer-class.jpg",
+    image: "/images/brighter-minds/project-1.png",
     className: "col-span-2 row-span-2",
   },
   // color-2: col 2, row 2

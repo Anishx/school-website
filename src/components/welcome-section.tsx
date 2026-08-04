@@ -6,12 +6,12 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
 const categories = [
-  { title: "Academics", image: "/hero-image.jpg" },
-  { title: "Sports", image: "/hero-image.jpg" },
-  { title: "Yoga & Wellness", image: "/hero-image.jpg" },
-  { title: "Student Life", image: "/hero-image.jpg" },
-  { title: "Values & Discipline", image: "/hero-image.jpg" },
-  { title: "Campus", image: "/hero-image.jpg" },
+  { title: "Academics", image: "/images/classroom/hands-up.jpg" },
+  { title: "Sports", image: "/images/sports/sports-1.jpg" },
+  { title: "Yoga & Wellness", image: "/images/yoga/group-yoga.jpg" },
+  { title: "Student Life", image: "/images/cultural/cultural-1.jpg" },
+  { title: "Values & Discipline", image: "/images/campus/walking.jpg" },
+  { title: "Campus", image: "/images/campus/entrance.jpg" },
 ];
 
 // Triple the items for infinite scroll illusion

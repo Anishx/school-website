@@ -8,28 +8,28 @@ const programmes = [
     subtitle: "KINDERGARTEN",
     description:
       "A joyful environment where young learners develop foundational skills through play-based learning, storytelling, and creative activities.",
-    image: "/hero-image.jpg",
+    image: "/images/classroom/reading.jpg",
   },
   {
     title: "Primary School",
     subtitle: "GRADES I – V",
     description:
       "Strong academic foundation in languages, mathematics, science, and environmental studies through activity-based learning.",
-    image: "/hero-image.jpg",
+    image: "/images/classroom/hands-up.jpg",
   },
   {
     title: "Middle School",
     subtitle: "GRADES VI – VIII",
     description:
       "Deeper conceptual understanding with balanced curriculum strengthening analytical thinking, leadership, and collaboration.",
-    image: "/hero-image.jpg",
+    image: "/images/classroom/homework.jpg",
   },
   {
     title: "Secondary School",
     subtitle: "GRADES IX – X",
     description:
       "Rigorous curriculum, focused mentoring, and continuous assessment preparing students for board examinations.",
-    image: "/hero-image.jpg",
+    image: "/images/classroom/studying.jpg",
   },
 ];
 

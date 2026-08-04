@@ -28,10 +28,10 @@ const tabs: TabContent[] = [
     sports: ["Athletics", "Football", "Throwball", "Softball", "Cricket"],
     items: [
       { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/sports/sports-1.jpg" },
-      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/sports/sports-2.jpg" },
-      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/sports/sports-3.jpg" },
-      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/sports-4.jpg" },
-      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/sports/badminton.jpg" },
+      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/sports/sports-3.jpg" },
+      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/sports/sports-2.jpg" },
+      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/badminton.jpg" },
+      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/sports/sports-4.jpg" },
     ],
   },
   {
