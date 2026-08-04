@@ -15,7 +15,7 @@ type TabContent = {
   houses?: { name: string; color: string; value: string }[];
   houseDescription?: string;
   leadershipDescription?: string;
-  items: { title: string; description: string }[];
+  items: { title: string; description: string; image?: string }[];
 };
 
 const tabs: TabContent[] = [
@@ -27,32 +27,32 @@ const tabs: TabContent[] = [
     achievements: "Apollo Vidyalayam has consistently excelled in competitive sports, with students emerging as State-Level Throwball Champions and regularly representing the school with distinction in Government-conducted sports tournaments, earning numerous accolades across disciplines.",
     sports: ["Athletics", "Football", "Throwball", "Softball", "Cricket"],
     items: [
-      { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level." },
-      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field." },
-      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit." },
-      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship." },
-      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics." },
+      { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/sports/sports-1.jpg" },
+      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/sports/sports-2.jpg" },
+      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/sports/sports-3.jpg" },
+      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/sports-4.jpg" },
+      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/sports/badminton.jpg" },
     ],
   },
   {
     label: "Clubs & Activities",
     intro: "At Apollo Vidyalayam, learning extends beyond the classroom. Our clubs and enrichment programmes encourage students to explore their interests, discover new talents, and develop confidence, creativity, discipline, and teamwork in a fun and engaging environment.",
     items: [
-      { title: "Art & Craft", description: "Students express their creativity through drawing, painting, craftwork, and hands-on projects that enhance imagination, fine motor skills, and artistic expression." },
-      { title: "Karadi Path", description: "Our Karadi Path programme builds strong English language and communication skills through storytelling, songs, role-play, and interactive activities, making language learning enjoyable and effective." },
-      { title: "Karate", description: "Karate helps students develop self-discipline, focus, physical fitness, confidence, and self-defence skills while instilling respect, perseverance, and mental resilience." },
-      { title: "Western Dance", description: "Students explore rhythm, movement, and performance through Western dance, building coordination, creativity, teamwork, and stage confidence." },
-      { title: "Bharatanatyam", description: "Through the classical art of Bharatanatyam, students learn grace, discipline, cultural appreciation, and artistic expression while strengthening concentration and confidence." },
+      { title: "Art & Craft", description: "Students express their creativity through drawing, painting, craftwork, and hands-on projects that enhance imagination, fine motor skills, and artistic expression.", image: "/images/cultural/cultural-1.jpg" },
+      { title: "Karadi Path", description: "Our Karadi Path programme builds strong English language and communication skills through storytelling, songs, role-play, and interactive activities, making language learning enjoyable and effective.", image: "/images/classroom/reading.jpg" },
+      { title: "Karate", description: "Karate helps students develop self-discipline, focus, physical fitness, confidence, and self-defence skills while instilling respect, perseverance, and mental resilience.", image: "/images/sports/sports-3.jpg" },
+      { title: "Western Dance", description: "Students explore rhythm, movement, and performance through Western dance, building coordination, creativity, teamwork, and stage confidence.", image: "/images/cultural/cultural-2.jpg" },
+      { title: "Bharatanatyam", description: "Through the classical art of Bharatanatyam, students learn grace, discipline, cultural appreciation, and artistic expression while strengthening concentration and confidence.", image: "/images/cultural/cultural-3.jpg" },
     ],
   },
   {
     label: "STEM Activities",
     intro: "At Apollo Vidyalayam, STEM (Science, Technology, Engineering, and Mathematics) education goes far beyond the classroom. We encourage students to question, explore, experiment, and innovate through hands-on learning experiences that connect academic concepts with real-world applications.\n\nA unique advantage for our students is the opportunity to participate in annual educational visits to Apollo Medical College, where they gain first-hand exposure to advanced medical technologies, laboratories, healthcare professionals, and scientific research. These immersive experiences inspire curiosity, broaden career aspirations, and provide rural students with opportunities rarely available at the school level.\n\nOur commitment to experiential learning has also earned national recognition. Apollo Vidyalayam emerged winners at the International Space Day Competition, competing against nearly 50 schools. The winning student project, \"Emergency Oxygen Producer for Astronauts,\" demonstrated creativity, scientific thinking, and practical problem-solving—showcasing the innovative spirit nurtured within our classrooms.",
     items: [
-      { title: "Experiential STEM Learning", description: "Hands-on projects, experiments, and inquiry-based learning that foster innovation and critical thinking." },
-      { title: "Annual Educational Visits", description: "Exposure to advanced healthcare and scientific environments through visits to Apollo Medical College." },
-      { title: "National Recognition", description: "Winners of the International Space Day Competition among nearly 50 participating schools." },
-      { title: "Student Innovation", description: "Award-winning project — \"Emergency Oxygen Producer for Astronauts\" demonstrating creativity and scientific problem-solving." },
+      { title: "Experiential STEM Learning", description: "Hands-on projects, experiments, and inquiry-based learning that foster innovation and critical thinking.", image: "/images/brighter-minds/project-1.png" },
+      { title: "Annual Educational Visits", description: "Exposure to advanced healthcare and scientific environments through visits to Apollo Medical College.", image: "/images/educational-tour/tour-1.png" },
+      { title: "National Recognition", description: "Winners of the International Space Day Competition among nearly 50 participating schools.", image: "/images/brighter-minds/project-2.png" },
+      { title: "Student Innovation", description: "Award-winning project — \"Emergency Oxygen Producer for Astronauts\" demonstrating creativity and scientific problem-solving.", image: "/images/brighter-minds/project-3.png" },
     ],
   },
   {
@@ -67,24 +67,24 @@ const tabs: TabContent[] = [
     houseDescription: "Throughout the academic year, the four houses participate in a variety of inter-house competitions, cultural programmes, sports events, and community initiatives, fostering healthy competition, collaboration, leadership, and school spirit.",
     leadershipDescription: "Leadership at Apollo Vidyalayam begins with responsibility. Each house is represented by a House Captain and Vice Captain, elected by their peers to lead their teams and uphold the values of their house. The student body is further represented by the School Captain and School Vice Captain, who serve as role models and work closely with teachers in promoting discipline, participation, and student engagement.\n\nStudents also take active roles in a range of leadership platforms, including the Student Council, POCSO Awareness Committee, POSH Awareness Committee, and the School Management Committee (SMC). Through these initiatives, students gain first-hand experience in teamwork, communication, decision-making, and civic responsibility while contributing to a safe, inclusive, and supportive school environment.",
     items: [
-      { title: "House System", description: "Four houses — Chetana, Nirvana, Prarthana, Sadhana — each representing a core value." },
-      { title: "Student Council", description: "School Captain, Vice Captain, and house leaders elected by peers." },
-      { title: "POCSO Awareness Committee", description: "Student-led safety awareness and peer support." },
-      { title: "POSH Awareness Committee", description: "Promoting respectful and inclusive behaviour across campus." },
-      { title: "School Management Committee", description: "Students contributing to school governance and decision-making." },
-      { title: "Inter-House Competitions", description: "Cultural, sports, and academic events fostering healthy competition and school spirit." },
+      { title: "House System", description: "Four houses — Chetana, Nirvana, Prarthana, Sadhana — each representing a core value.", image: "/images/campus/student-day.jpg" },
+      { title: "Student Council", description: "School Captain, Vice Captain, and house leaders elected by peers.", image: "/images/campus/kids-camera.jpg" },
+      { title: "POCSO Awareness Committee", description: "Student-led safety awareness and peer support.", image: "/images/classroom/teacher.jpg" },
+      { title: "POSH Awareness Committee", description: "Promoting respectful and inclusive behaviour across campus.", image: "/images/classroom/girls-class.jpg" },
+      { title: "School Management Committee", description: "Students contributing to school governance and decision-making.", image: "/images/campus/walking.jpg" },
+      { title: "Inter-House Competitions", description: "Cultural, sports, and academic events fostering healthy competition and school spirit.", image: "/images/sports/sports-1.jpg" },
     ],
   },
   {
     label: "Achievements",
     intro: "Apollo Vidyalayam students consistently demonstrate outstanding performance across academics, sports, and innovation. Our holistic approach has produced state-level champions, national competition winners, and academic toppers year after year.",
     items: [
-      { title: "INSPIRE MANAK Award", description: "Recipients year after year, recognising excellence in scientific innovation and creative thinking." },
-      { title: "Mandal-Level Grade 10 Toppers", description: "Toppers for seven consecutive years, reflecting sustained academic excellence." },
-      { title: "State-Level Throwball Champions", description: "Our students emerged as State-Level Champions in Throwball." },
-      { title: "Government Sports Tournaments", description: "Consistent winners and achievers in Government-conducted Mandal and District-level sports tournaments across multiple disciplines." },
-      { title: "International Space Day Competition", description: "Winners competing against nearly 50 schools with the innovative project \"Emergency Oxygen Producer for Astronauts.\"" },
-      { title: "Best School at Mandal Level", description: "Recognised for outstanding performance across sporting disciplines and holistic student development." },
+      { title: "INSPIRE MANAK Award", description: "Recipients year after year, recognising excellence in scientific innovation and creative thinking.", image: "/images/brighter-minds/project-4.png" },
+      { title: "Mandal-Level Grade 10 Toppers", description: "Toppers for seven consecutive years, reflecting sustained academic excellence.", image: "/images/classroom/studying.jpg" },
+      { title: "State-Level Throwball Champions", description: "Our students emerged as State-Level Champions in Throwball.", image: "/images/sports/sports-2.jpg" },
+      { title: "Government Sports Tournaments", description: "Consistent winners and achievers in Government-conducted Mandal and District-level sports tournaments across multiple disciplines.", image: "/images/sports/sports-4.jpg" },
+      { title: "International Space Day Competition", description: "Winners competing against nearly 50 schools with the innovative project \"Emergency Oxygen Producer for Astronauts.\"", image: "/images/brighter-minds/project-1.png" },
+      { title: "Best School at Mandal Level", description: "Recognised for outstanding performance across sporting disciplines and holistic student development.", image: "/images/campus/entrance.jpg" },
     ],
   },
 ];
@@ -234,7 +234,7 @@ export default function StudentLifePage() {
                 <div key={item.title} className="group relative overflow-hidden">
                   <div className="relative aspect-[4/3] w-full bg-canvas-100">
                     <Image
-                      src="/hero-image.jpg"
+                      src={item.image || "/hero-image.jpg"}
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"

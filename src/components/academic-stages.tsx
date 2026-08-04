@@ -28,7 +28,7 @@ const stages: Stage[] = [
     color: "border-yellow-500/30 hover:border-yellow-500/60",
     iconBg: "bg-yellow-500/10 text-yellow-700",
     tagColor: "bg-yellow-500/10 text-yellow-700",
-    img: "https://picsum.photos/seed/preprimary/400/200",
+    img: "/images/classroom/reading.jpg",
   },
   {
     icon: BookOpen,
@@ -40,7 +40,7 @@ const stages: Stage[] = [
     color: "border-teal-600/30 hover:border-teal-600/60",
     iconBg: "bg-teal-800/10 text-teal-800",
     tagColor: "bg-teal-800/10 text-teal-800",
-    img: "https://picsum.photos/seed/primary/400/200",
+    img: "/images/classroom/classroom.jpg",
   },
   {
     icon: Lightbulb,
@@ -52,7 +52,7 @@ const stages: Stage[] = [
     color: "border-teal-700/30 hover:border-teal-700/60",
     iconBg: "bg-teal-700/10 text-teal-700",
     tagColor: "bg-teal-700/10 text-teal-700",
-    img: "https://picsum.photos/seed/middle/400/200",
+    img: "/images/classroom/hands-up.jpg",
   },
   {
     icon: GraduationCap,
@@ -64,7 +64,7 @@ const stages: Stage[] = [
     color: "border-teal-800/30 hover:border-teal-800/60",
     iconBg: "bg-teal-800/10 text-teal-800",
     tagColor: "bg-teal-800/10 text-teal-800",
-    img: "https://picsum.photos/seed/highschool/400/200",
+    img: "/images/classroom/studying.jpg",
   },
 ];
 

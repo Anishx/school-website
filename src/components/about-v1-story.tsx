@@ -31,9 +31,9 @@ export function AboutV1Story() {
           {/* Image Tiles */}
           <div className="flex w-full items-center justify-center md:w-1/2">
             <ImageReveal
-              leftImage="https://picsum.photos/seed/rural-children-classroom/400/400"
-              middleImage="https://picsum.photos/seed/village-school-kids/400/400"
-              rightImage="https://picsum.photos/seed/rural-kids-playing/400/400"
+              leftImage="/images/about/microscope.jpg"
+              middleImage="/images/about/bus.jpg"
+              rightImage="/images/campus/kids-camera.jpg"
             />
           </div>
 

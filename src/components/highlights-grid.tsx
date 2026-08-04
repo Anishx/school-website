@@ -36,7 +36,7 @@ const tiles: Tile[] = [
     type: "image",
     title: "Clubs & Leadership Development",
     subtext: "Designed to develop confidence, communication, leadership, and teamwork.",
-    image: "https://picsum.photos/seed/rural-kids-group-activity/600/600",
+    image: "/images/classroom/hands-up.jpg",
     className: "col-span-1 row-span-2",
   },
   // color-1: col 2, row 1
@@ -52,7 +52,7 @@ const tiles: Tile[] = [
     type: "image",
     title: "Brighter Minds Program",
     subtext: "Unlocking every child's potential.",
-    image: "https://picsum.photos/seed/children-brain-training/800/600",
+    image: "/images/computer/computer-class.jpg",
     className: "col-span-2 row-span-2",
   },
   // color-2: col 2, row 2
@@ -68,7 +68,7 @@ const tiles: Tile[] = [
     type: "image",
     title: "Sports & Physical Education",
     subtext: "Excellence Beyond Academics.",
-    image: "https://picsum.photos/seed/rural-kids-cricket-field/800/600",
+    image: "/images/sports/sports-1.jpg",
     className: "col-span-2 row-span-2",
   },
   // color-3: col 3, row 3
@@ -100,7 +100,7 @@ const tiles: Tile[] = [
     type: "image",
     title: "Campus Life",
     subtext: "A vibrant environment for learning and growth.",
-    image: "https://picsum.photos/seed/village-school-children-happy/400/400",
+    image: "/images/campus/entrance.jpg",
     className: "col-span-1 row-span-1",
   },
 ];

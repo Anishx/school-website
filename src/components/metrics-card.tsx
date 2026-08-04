@@ -24,7 +24,7 @@ export function MetricsCard() {
           {/* Left — Image (50% width) */}
           <div className="relative h-52 md:h-auto md:w-1/2 shrink-0">
             <Image
-              src="https://picsum.photos/seed/school-monument/600/400"
+              src="/images/campus/playground.jpg"
               alt="School campus"
               fill
               className="object-cover"

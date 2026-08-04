@@ -58,7 +58,7 @@ export function AboutV2Timeline() {
         <div className="mt-16 flex flex-col items-center gap-6 border border-line-200 bg-canvas-50 p-8 md:flex-row md:p-10">
           <div className="relative h-20 w-20 shrink-0 overflow-hidden">
             <Image
-              src="https://picsum.photos/seed/founder-portrait/200/200"
+              src="/images/campus/student-day.jpg"
               alt="Founder"
               fill
               className="object-cover"

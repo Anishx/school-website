@@ -81,7 +81,7 @@ export function AboutSection() {
           {/* Image */}
           <div className="relative shrink-0 overflow-hidden shadow-xl shadow-teal-900/10">
             <Image
-              src="https://picsum.photos/seed/school-kids-play/500/500"
+              src="/images/campus/kids-camera.jpg"
               alt="Students in school"
               width={450}
               height={450}
@@ -91,21 +91,21 @@ export function AboutSection() {
             <div className="absolute bottom-6 left-6 flex max-w-[280px] items-center gap-2 bg-white p-3 shadow-md">
               <div className="flex -space-x-3 shrink-0">
                 <Image
-                  src="https://picsum.photos/seed/face1/80/80"
+                  src="/images/impact/impact-1.jpg"
                   alt=""
                   width={32}
                   height={32}
                   className="h-8 w-8 rounded-full border-2 border-white object-cover"
                 />
                 <Image
-                  src="https://picsum.photos/seed/face2/80/80"
+                  src="/images/impact/impact-2.jpg"
                   alt=""
                   width={32}
                   height={32}
                   className="h-8 w-8 rounded-full border-2 border-white object-cover"
                 />
                 <Image
-                  src="https://picsum.photos/seed/face3/80/80"
+                  src="/images/impact/impact-3.jpg"
                   alt=""
                   width={32}
                   height={32}

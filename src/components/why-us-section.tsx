@@ -43,7 +43,7 @@ export function WhyUsSection() {
     <section className="relative overflow-hidden bg-teal-900 py-16 md:py-24" aria-labelledby="why-us-heading">
       {/* Background image with overlay */}
       <Image
-        src="https://picsum.photos/seed/school-wide/1600/800"
+        src="/images/campus/entrance.jpg"
         alt=""
         fill
         className="object-cover object-center opacity-20"

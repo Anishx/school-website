@@ -5,7 +5,7 @@
     "date": "2025-07-15",
     "category": "Achievement",
     "featured": true,
-    "image": "https://picsum.photos/seed/school-award-ceremony/600/400",
+    "image": "/images/campus/entrance.jpg",
     "body": "Apollo Vidyalayam has been recognised as the Best School at the Mandal Level for its outstanding performance across a wide range of sporting disciplines, reflecting our commitment to excellence in physical education and holistic student development."
   },
   {
@@ -14,7 +14,7 @@
     "date": "2025-06-20",
     "category": "Current & Upcoming",
     "featured": true,
-    "image": "https://picsum.photos/seed/school-election-students/600/400",
+    "image": "/images/campus/student-day.jpg",
     "body": "Students actively participated in the democratic process of school elections, electing House Captains, Vice Captains, and the School Captain. The Student Council formation builds leadership, responsibility, and civic awareness from an early age."
   },
   {
@@ -23,7 +23,7 @@
     "date": "2025-06-10",
     "category": "Current & Upcoming",
     "featured": false,
-    "image": "https://picsum.photos/seed/parent-meeting-school/600/400",
+    "image": "/images/campus/walking.jpg",
     "body": "The Parent Council was formally constituted for the 2025-26 academic year, strengthening the partnership between parents and the school in supporting student development and institutional growth."
   },
   {
@@ -32,7 +32,7 @@
     "date": "2025-05-25",
     "category": "Current & Upcoming",
     "featured": false,
-    "image": "https://picsum.photos/seed/awareness-session/600/400",
+    "image": "/images/classroom/teacher.jpg",
     "body": "Awareness sessions on child safety and POCSO guidelines were conducted for students, staff, and parents, reinforcing the school's commitment to providing a safe and protective environment for every child."
   },
   {
@@ -41,7 +41,7 @@
     "date": "2025-05-20",
     "category": "Current & Upcoming",
     "featured": false,
-    "image": "https://picsum.photos/seed/safety-awareness/600/400",
+    "image": "/images/classroom/girls-class.jpg",
     "body": "POSH awareness sessions were conducted to promote respectful behaviour, inclusivity, and safety across the school community, building an environment where every individual feels valued and protected."
   },
   {
@@ -50,7 +50,7 @@
     "date": "2025-05-10",
     "category": "Current & Upcoming",
     "featured": false,
-    "image": "https://picsum.photos/seed/committee-meeting/600/400",
+    "image": "/images/campus/kids-camera.jpg",
     "body": "The School Management Committee convened to discuss academic progress, infrastructure development, and strategic initiatives for the academic year. Student representatives also participated, gaining first-hand experience in governance and decision-making."
   },
   {
@@ -59,7 +59,7 @@
     "date": "2025-04-12",
     "category": "Achievement",
     "featured": false,
-    "image": "https://picsum.photos/seed/space-science-project/600/400",
+    "image": "/images/brighter-minds/project-1.png",
     "body": "Apollo Vidyalayam students emerged as winners at the International Space Day Competition, competing against nearly 50 schools. The winning project, \"Emergency Oxygen Producer for Astronauts,\" demonstrated creativity, scientific thinking, and practical problem-solving."
   },
   {
@@ -68,7 +68,7 @@
     "date": "2025-03-15",
     "category": "Achievement",
     "featured": false,
-    "image": "https://picsum.photos/seed/throwball-champions/600/400",
+    "image": "/images/sports/sports-2.jpg",
     "body": "Our students won the State-Level Throwball Championship, showcasing the discipline, teamwork, and physical excellence nurtured through our sports programme. The team represented the school with distinction at the state tournament."
   }
 ]

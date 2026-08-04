@@ -10,17 +10,17 @@ const cards: Card[] = [
   {
     title: "Our Foundation",
     description: "Built by educators and philanthropists to serve rural communities since 1999.",
-    image: "https://picsum.photos/seed/foundation-hands/600/400",
+    image: "/images/impact/impact-1.jpg",
   },
   {
     title: "Our Campus",
     description: "Smart classrooms, science labs, library and sports facilities on a green campus.",
-    image: "https://picsum.photos/seed/school-campus-green/600/400",
+    image: "/images/campus/entrance.jpg",
   },
   {
     title: "Our Impact",
     description: "1,200+ students from 15 villages with 85% academic achievement year on year.",
-    image: "https://picsum.photos/seed/kids-celebrating/600/400",
+    image: "/images/impact/impact-2.jpg",
   },
 ];
 
