@@ -24,8 +24,8 @@ export function SiteHeader() {
               <Image
                 src="/apollo-logo.png"
                 alt="Apollo Vidhyalayam"
-                width={56}
-                height={56}
+                width={112}
+                height={112}
                 className="h-14 w-auto"
               />
             </Link>

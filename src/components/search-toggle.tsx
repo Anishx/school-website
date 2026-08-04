@@ -34,7 +34,11 @@ export function SearchToggle({ className }: SearchToggleProps) {
           type="button"
           aria-label={expanded ? "Close search" : "Open search"}
           onClick={() => setExpanded(!expanded)}
-          className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-600 transition hover:text-ink-900"
+          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full transition ${
+            expanded
+              ? "text-ink-600 hover:text-ink-900"
+              : "bg-canvas-100 text-teal-800 shadow-sm hover:bg-canvas-50"
+          }`}
         >
           {expanded ? <X className="size-4" /> : <Search className="size-5 stroke-[2.5]" />}
         </button>

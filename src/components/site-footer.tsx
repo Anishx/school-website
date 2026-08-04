@@ -100,8 +100,8 @@ export function SiteFooter() {
               <Image
                 src="/apollo-logo-white.png"
                 alt="Apollo Vidhyalayam"
-                width={48}
-                height={48}
+                width={96}
+                height={96}
                 className="h-12 w-auto"
               />
             </Link>

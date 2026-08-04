@@ -57,8 +57,20 @@ export function WelcomeSection() {
   }, []);
 
   return (
-    <section className="bg-white py-16 md:py-24 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative bg-white py-16 md:py-24 overflow-hidden">
+      {/* Tiled logo background */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.06]"
+        style={{
+          backgroundImage: "url('/images/logo-tile.png')",
+          backgroundSize: "50px auto",
+          backgroundRepeat: "repeat",
+          backgroundPosition: "0 0",
+          filter: "grayscale(1) contrast(1.2)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Heading */}
         <p className="text-sm font-semibold uppercase tracking-widest text-teal-800">
           Welcome to
@@ -87,7 +99,7 @@ export function WelcomeSection() {
       </div>
 
       {/* Horizontal scroll carousel — aligned with max-w-7xl */}
-      <div className="relative mt-12">
+      <div className="relative z-10 mt-12">
         {/* Scroll buttons */}
         <div className="absolute left-4 bottom-6 z-10 flex flex-col gap-2 md:left-6">
           <button

@@ -109,7 +109,7 @@ export function MobileNav() {
         {/* Drawer header */}
         <div className="flex items-center justify-between border-b border-line-200 px-4 py-4">
           <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5">
-            <Image src="/apollo-logo.png" alt="Apollo Vidhyalayam" width={40} height={40} className="h-10 w-auto" />
+            <Image src="/apollo-logo.png" alt="Apollo Vidhyalayam" width={80} height={80} className="h-10 w-auto" />
           </Link>
           <button
             onClick={() => setOpen(false)}

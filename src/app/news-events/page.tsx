@@ -60,9 +60,9 @@ export default function NewsEventsPage() {
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(idx)}
-                  className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition md:px-4 md:text-sm ${
+                  className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200 md:px-4 md:text-sm ${
                     activeTab === idx
-                      ? "rounded-full bg-yellow-500 text-ink-900"
+                      ? "bg-yellow-500 text-ink-900"
                       : "text-white/80 hover:text-white"
                   }`}
                 >

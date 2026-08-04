@@ -131,9 +131,9 @@ export default function StudentLifePage() {
                     key={tab.label}
                     type="button"
                     onClick={() => setActiveTab(idx)}
-                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition md:text-sm ${
+                    className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200 md:text-sm ${
                       activeTab === idx
-                        ? "rounded-full bg-yellow-500 text-ink-900"
+                        ? "bg-yellow-500 text-ink-900"
                         : "text-white/80 hover:text-white"
                     }`}
                   >
