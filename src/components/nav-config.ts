@@ -66,6 +66,7 @@ export const navItems: NavItem[] = [
       { title: "Holiday List", href: "/news-events?tab=holidays" },
       { title: "Downloads", href: "/news-events?tab=downloads" },
       { title: "Newsletter", href: "/news-events?tab=newsletter" },
+      { title: "Mandatory Public Disclosure", href: "/mandatory-public-disclosure" },
     ],
   },
   { title: "Contact Us", href: "#contact" },
