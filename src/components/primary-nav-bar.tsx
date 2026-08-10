@@ -45,7 +45,7 @@ export function PrimaryNavBar() {
                   <>
                     <button
                       type="button"
-                      className="flex h-full w-full items-center justify-center gap-1 px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                      className="flex h-full w-full items-center justify-center gap-1 whitespace-nowrap px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
                     >
                       {item.title}
                       <svg
@@ -61,7 +61,7 @@ export function PrimaryNavBar() {
                 ) : (
                   <Link
                     href={item.href || "/"}
-                    className="flex h-full w-full items-center justify-center px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                    className="flex h-full w-full items-center justify-center whitespace-nowrap px-4 py-3 text-[14px] font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
                   >
                     {item.title}
                   </Link>

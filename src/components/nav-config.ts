@@ -32,18 +32,13 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    title: "Academics",
-    compact: [
-      { title: "Programs", href: "/programs" },
-      { title: "Faculty", href: "#faculty" },
-    ],
-  },
-  {
     title: "Admissions",
     compact: [
       { title: "Why Us", href: "/why-us" },
+      { title: "Programs", href: "/programs" },
       { title: "Admission Process", href: "/admissions" },
       { title: "Fee Structure", href: "/admissions#fee-structure" },
+      { title: "Faculty", href: "#faculty" },
       { title: "Apply Now", href: "#apply" },
     ],
   },
@@ -66,8 +61,8 @@ export const navItems: NavItem[] = [
       { title: "Holiday List", href: "/news-events?tab=holidays" },
       { title: "Downloads", href: "/news-events?tab=downloads" },
       { title: "Newsletter", href: "/news-events?tab=newsletter" },
-      { title: "Mandatory Public Disclosure", href: "/mandatory-public-disclosure" },
     ],
   },
+  { title: "Mandatory Disclosure", href: "/mandatory-public-disclosure" },
   { title: "Contact Us", href: "#contact" },
 ];
