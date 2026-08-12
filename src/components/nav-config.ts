@@ -38,8 +38,6 @@ export const navItems: NavItem[] = [
       { title: "Programs", href: "/programs" },
       { title: "Admission Process", href: "/admissions" },
       { title: "Fee Structure", href: "/admissions#fee-structure" },
-      { title: "Faculty", href: "#faculty" },
-      { title: "Apply Now", href: "#apply" },
     ],
   },
   {
@@ -64,5 +62,5 @@ export const navItems: NavItem[] = [
     ],
   },
   { title: "Mandatory Disclosure", href: "/mandatory-public-disclosure" },
-  { title: "Contact Us", href: "#contact" },
+  { title: "Contact Us", href: "/#contact" },
 ];

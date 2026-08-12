@@ -56,6 +56,7 @@ export function AboutV3Cards() {
                 src={card.image}
                 alt={card.title}
                 fill
+                quality={90}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, 33vw"
               />

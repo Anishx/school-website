@@ -73,6 +73,7 @@ export function HighlightsGrid() {
                     src={tile.image!}
                     alt={tile.title}
                     fill
+                    quality={90}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
                   />

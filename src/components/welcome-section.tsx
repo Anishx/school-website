@@ -6,12 +6,12 @@ import Link from "next/link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 
 const categories = [
-  { title: "Academics", image: "/images/classroom/hands-up.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/programs" },
-  { title: "Sports", image: "/images/sports/sports-1.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, throwball, and more.", href: "/student-life?tab=sports" },
-  { title: "Yoga & Wellness", image: "/images/yoga/group-yoga.jpg", description: "Daily yoga sessions promoting physical, emotional, and mental well-being.", href: "/student-life?tab=clubs" },
-  { title: "Student Life", image: "/images/cultural/cultural-1.jpg", description: "Clubs, cultural events, and leadership opportunities that build well-rounded individuals.", href: "/student-life" },
-  { title: "Values & Discipline", image: "/images/campus/walking.jpg", description: "Character education woven into everyday school life through Isha-affiliated values.", href: "/about-us" },
-  { title: "Campus", image: "/images/campus/entrance.jpg", description: "Modern infrastructure with smart classrooms, labs, sports grounds, and safe hostels.", href: "/about-us" },
+  { title: "Academics", image: "/images/welcome/academics.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/programs" },
+  { title: "Sports", image: "/images/welcome/sports.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, throwball, and more.", href: "/student-life?tab=sports" },
+  { title: "Yoga & Wellness", image: "/images/welcome/yoga-wellness.jpg", description: "Daily yoga sessions promoting physical, emotional, and mental well-being.", href: "/student-life?tab=clubs" },
+  { title: "Student Life", image: "/images/welcome/student-life.jpg", description: "Clubs, cultural events, and leadership opportunities that build well-rounded individuals.", href: "/student-life" },
+  { title: "Values & Discipline", image: "/images/welcome/values-discipline.jpg", description: "Character education woven into everyday school life through Isha-affiliated values.", href: "/about-us" },
+  { title: "Campus", image: "/images/welcome/campus.png", description: "Modern infrastructure with smart classrooms, labs, sports grounds, and safe hostels.", href: "/about-us" },
 ];
 
 // Triple for infinite scroll
@@ -141,8 +141,9 @@ export function WelcomeSection() {
                     src={cat.image}
                     alt={cat.title}
                     fill
+                    quality={95}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="320px"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 320px"
                   />
                   {/* Default: gradient at bottom with title */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-300 group-hover:opacity-0" />

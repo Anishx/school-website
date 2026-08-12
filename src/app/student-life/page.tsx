@@ -129,12 +129,13 @@ function StudentLifeContent() {
           {/* Background image */}
           <div className="relative h-[400px] md:h-[500px]">
             <Image
-              src="/hero-image.jpg"
+              src="/hero-cover.jpg"
               alt="Student Life at Apollo Vidhyalayam"
               fill
               className="object-cover"
               sizes="100vw"
               priority
+              quality={95}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
@@ -265,6 +266,7 @@ function StudentLifeContent() {
                       src={item.image || "/hero-image.jpg"}
                       alt={item.title}
                       fill
+                      quality={90}
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       style={{ objectPosition: item.objectPosition || "center" }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

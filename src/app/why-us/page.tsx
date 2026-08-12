@@ -131,7 +131,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/yoga/group-yoga.jpg" alt="Holistic Learning" fill className="object-cover" sizes="50vw" />
+                <Image src="/images/yoga/group-yoga.jpg" alt="Holistic Learning" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
@@ -148,7 +148,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/computer/computer-class.jpg" alt="Academic Excellence" fill className="object-cover" sizes="50vw" />
+                <Image src="/images/computer/computer-class.jpg" alt="Academic Excellence" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
@@ -165,7 +165,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/sports/sports-1.jpg" alt="Leadership and Sports" fill className="object-cover" sizes="50vw" />
+                <Image src="/images/sports/sports-1.jpg" alt="Leadership and Sports" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
@@ -182,7 +182,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/campus/entrance.jpg" alt="Safe Campus" fill className="object-cover" sizes="50vw" />
+                <Image src="/images/campus/entrance.jpg" alt="Safe Campus" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
           </div>

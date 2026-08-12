@@ -3,18 +3,19 @@ import Image from "next/image";
 export function HeroSection() {
   return (
     <section
-      className="relative flex flex-col"
+      className="relative flex flex-col overflow-hidden"
       style={{ height: "calc(100svh - var(--header-height, 110px))" }}
       aria-label="Hero"
     >
       {/* Background image */}
       <Image
-        src="/hero-image.jpg"
+        src="/hero-cover.jpg"
         alt="Apollo Vidhyalayam campus"
         fill
         priority
-        className="object-cover"
-        style={{ objectPosition: "calc(50% - 50px) center" }}
+        quality={95}
+        className="object-cover scale-110"
+        style={{ objectPosition: "calc(50% - 230px) center" }}
         sizes="100vw"
       />
 

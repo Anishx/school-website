@@ -105,6 +105,7 @@ export function ProgramsSpotlight() {
                     src={prog.img}
                     alt={prog.title}
                     fill
+                    quality={90}
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 50vw"
                   />

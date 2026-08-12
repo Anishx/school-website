@@ -66,26 +66,26 @@ function OverviewTab() {
       <section className="bg-white py-16 md:py-20 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Highlights</h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="relative overflow-hidden bg-yellow-500 p-6 aspect-square flex flex-col justify-end">
-              <svg className="absolute top-4 right-4 size-16 text-purple-700 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l2 8h-4l2-8zm0 36l-2-8h4l-2 8zm-20-20l8 2v-4l-8 2zm40 0l-8-2v4l8-2zm-6.3-13.7l-5.7 5.7 2.8 2.8 5.7-5.7-2.8-2.8zm-27.4 27.4l5.7-5.7-2.8-2.8-5.7 5.7 2.8 2.8zm0-27.4l2.8 2.8 5.7-5.7-2.8-2.8-5.7 5.7zm27.4 27.4l-2.8-2.8-5.7 5.7 2.8 2.8 5.7-5.7z"/></svg>
-              <p className="font-display text-4xl text-ink-900 md:text-5xl">12+</p>
-              <p className="mt-1 text-sm font-semibold text-ink-900">Years of Isha-Affiliated Value Education</p>
+          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div className="relative overflow-hidden bg-yellow-500 p-5 aspect-[1/0.7] flex flex-col justify-end">
+              <svg className="absolute top-3 right-3 size-12 text-purple-700 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l2 8h-4l2-8zm0 36l-2-8h4l-2 8zm-20-20l8 2v-4l-8 2zm40 0l-8-2v4l8-2zm-6.3-13.7l-5.7 5.7 2.8 2.8 5.7-5.7-2.8-2.8zm-27.4 27.4l5.7-5.7-2.8-2.8-5.7 5.7 2.8 2.8zm0-27.4l2.8 2.8 5.7-5.7-2.8-2.8-5.7 5.7zm27.4 27.4l-2.8-2.8-5.7 5.7 2.8 2.8 5.7-5.7z"/></svg>
+              <p className="font-display text-3xl text-ink-900 md:text-4xl">12+</p>
+              <p className="mt-1 text-xs font-semibold text-ink-900">Years of Nurturing Young Minds Through Isha-Affiliated Value-Based Education</p>
             </div>
-            <div className="relative overflow-hidden bg-purple-700 p-6 aspect-square flex flex-col justify-end">
-              <svg className="absolute top-4 right-4 size-16 text-yellow-500 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M14 8h20v6l-10 10-10-10V8z"/></svg>
-              <p className="font-display text-4xl text-white md:text-5xl">Daily</p>
-              <p className="mt-1 text-sm font-semibold text-white/90">Yoga Sessions by Apollo Foundation Total Health Trainer</p>
+            <div className="relative overflow-hidden bg-purple-700 p-5 aspect-[1/0.7] flex flex-col justify-end">
+              <svg className="absolute top-3 right-3 size-12 text-yellow-500 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M14 8h20v6l-10 10-10-10V8z"/></svg>
+              <p className="font-display text-3xl text-white md:text-4xl">Daily</p>
+              <p className="mt-1 text-xs font-semibold text-white/90">Yoga Sessions by Apollo Foundation Total Health Trainer</p>
             </div>
-            <div className="relative overflow-hidden bg-emerald-500 p-6 aspect-square flex flex-col justify-end">
-              <svg className="absolute top-4 right-4 size-16 text-purple-500 opacity-80" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="4"><circle cx="24" cy="20" r="12"/></svg>
-              <p className="font-display text-4xl text-ink-900 md:text-5xl">CBSE</p>
-              <p className="mt-1 text-sm font-semibold text-ink-900">Transitioning to CBSE, Strong Academic Foundation</p>
+            <div className="relative overflow-hidden bg-emerald-500 p-5 aspect-[1/0.7] flex flex-col justify-end">
+              <svg className="absolute top-3 right-3 size-12 text-purple-500 opacity-80" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="4"><circle cx="24" cy="20" r="12"/></svg>
+              <p className="font-display text-3xl text-ink-900 md:text-4xl">CBSE</p>
+              <p className="mt-1 text-xs font-semibold text-ink-900">Transitioning to CBSE, Strong Academic Foundation</p>
             </div>
-            <div className="relative overflow-hidden bg-pink-400 p-6 aspect-square flex flex-col justify-end">
-              <svg className="absolute top-4 right-4 size-16 text-teal-800 opacity-80" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/></svg>
-              <p className="font-display text-4xl text-ink-900 md:text-5xl">State</p>
-              <p className="mt-1 text-sm font-semibold text-ink-900">Level Sports Achievers — Sporty, Brave, Disciplined</p>
+            <div className="relative overflow-hidden bg-pink-400 p-5 aspect-[1/0.7] flex flex-col justify-end">
+              <svg className="absolute top-3 right-3 size-12 text-teal-800 opacity-80" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/></svg>
+              <p className="font-display text-3xl text-ink-900 md:text-4xl">State</p>
+              <p className="mt-1 text-xs font-semibold text-ink-900">Level Sports Achievers — Sporty, Brave, Disciplined</p>
             </div>
           </div>
         </div>
@@ -130,19 +130,6 @@ function OverviewTab() {
               <p>I invite you to visit Apollo Vidhyalayam, interact with our students and faculty, and experience the vibrant learning environment that makes our school a place where every child is encouraged to grow, excel, and thrive.</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Download Brochure */}
-      <section className="bg-white py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <Link
-            href="#brochure"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-teal-800 px-6 py-2.5 text-sm font-semibold text-teal-800 transition hover:bg-teal-800 hover:text-white"
-          >
-            <Download className="size-4" />
-            Download School Brochure
-          </Link>
         </div>
       </section>
     </>

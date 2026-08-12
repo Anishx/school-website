@@ -28,7 +28,7 @@ const stages: Stage[] = [
     color: "border-yellow-500/30 hover:border-yellow-500/60",
     iconBg: "bg-yellow-500/10 text-yellow-700",
     tagColor: "bg-yellow-500/10 text-yellow-700",
-    img: "/images/classroom/reading.jpg",
+    img: "",
   },
   {
     icon: BookOpen,
@@ -90,7 +90,7 @@ export function AcademicStages() {
 
         {/* Stage cards */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stages.map((stage) => {
+          {stages.map((stage, idx) => {
             const Icon = stage.icon;
             return (
               <div
@@ -102,13 +102,19 @@ export function AcademicStages() {
               >
                 {/* Stage image */}
                 <div className="relative h-36 w-full overflow-hidden">
-                  <Image
-                    src={stage.img}
-                    alt={stage.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 25vw"
-                  />
+                  {stage.img ? (
+                    <Image
+                      src={stage.img}
+                      alt={stage.title}
+                      fill
+                      priority={idx < 4}
+                      quality={90}
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 25vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-teal-700" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
 

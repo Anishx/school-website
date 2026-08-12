@@ -73,6 +73,7 @@ export function DigitalLearningCarousel() {
                 src={s.image}
                 alt={s.title}
                 fill
+                quality={90}
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 60vw"
               />
