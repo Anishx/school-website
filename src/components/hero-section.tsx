@@ -13,7 +13,8 @@ export function HeroSection() {
         alt="Apollo Vidhyalayam campus"
         fill
         priority
-        className="object-cover object-center"
+        className="object-cover"
+        style={{ objectPosition: "calc(50% - 50px) center" }}
         sizes="100vw"
       />
 
