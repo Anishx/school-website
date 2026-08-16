@@ -20,9 +20,9 @@ type Tile = {
 
 const tiles: Tile[] = [
   // Row 1-2
-  { title: "Sports", subtext: "Athletics, Football, Throwball, Softball, Cricket", href: "/student-life?tab=sports", type: "image", image: "/images/sports/sports-1.jpg", colSpan: 1, rowSpan: 2 },
+  { title: "Sports", subtext: "Athletics, Football, Throwball, Softball, Cricket", href: "/student-life?tab=sports", type: "image", image: "/images/new/koko-playground.jpg", colSpan: 1, rowSpan: 2 },
   { title: "STEM & Innovation", subtext: "Science fairs, AI learning, Space Day winners", href: "/student-life?tab=stem", type: "color", color: "bg-purple-700", colSpan: 1, rowSpan: 1 },
-  { title: "Clubs & Activities", subtext: "Art, Karadi Path, Karate, Dance, Bharatanatyam", href: "/student-life?tab=clubs", type: "image", image: "/images/cultural/cultural-1.jpg", colSpan: 1, rowSpan: 2 },
+  { title: "Clubs & Activities", subtext: "Art, Karadi Path, Karate, Dance, Bharatanatyam", href: "/student-life?tab=clubs", type: "image", image: "/images/new/students-play.jpg", colSpan: 1, rowSpan: 2 },
   { title: "Leadership", subtext: "House System, Student Council, POCSO & POSH Committees", href: "/student-life?tab=leadership", type: "color", color: "bg-teal-800", colSpan: 1, rowSpan: 1 },
   // Row 2
   { title: "Digital Learning", subtext: "28 smart classrooms, AI-enabled tools from Kindergarten", href: "/why-us", type: "color", color: "bg-yellow-500", colSpan: 1, rowSpan: 1 },
@@ -32,7 +32,7 @@ const tiles: Tile[] = [
   { title: "Achievements", subtext: "State champions, INSPIRE MANAK, 7-year mandal toppers", href: "/student-life?tab=achievements", type: "image", image: "/images/impact/impact-1.jpg", colSpan: 2, rowSpan: 2 },
   { title: "Brighter Minds", subtext: "Cognitive development, memory, and creativity activation", href: "/student-life?tab=stem", type: "color", color: "bg-emerald-700", colSpan: 1, rowSpan: 1 },
   // Row 4
-  { title: "Campus Life", subtext: "Corridor learning, chess, carrom, GK corners", href: "/about-us", type: "image", image: "/images/campus/entrance.jpg", colSpan: 1, rowSpan: 1 },
+  { title: "Campus Life", subtext: "Corridor learning, chess, carrom, GK corners", href: "/about-us", type: "image", image: "/images/new/school-stairway.jpg", colSpan: 1, rowSpan: 1 },
   { title: "Value Education", subtext: "Life skills, media literacy, financial literacy", href: "/why-us", type: "color", color: "bg-amber-600", colSpan: 1, rowSpan: 1 },
 ];
 

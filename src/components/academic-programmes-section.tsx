@@ -8,7 +8,7 @@ const programmes = [
     subtitle: "KINDERGARTEN",
     description:
       "A joyful environment where young learners develop foundational skills through play-based learning, storytelling, and creative activities.",
-    image: "/images/classroom/reading.jpg",
+    image: "/images/new/kids-playground.jpg",
   },
   {
     title: "Primary School",
@@ -22,7 +22,7 @@ const programmes = [
     subtitle: "GRADES VI – VIII",
     description:
       "Deeper conceptual understanding with balanced curriculum strengthening analytical thinking, leadership, and collaboration.",
-    image: "/images/classroom/homework.jpg",
+    image: "/images/new/paper-crafts.jpg",
   },
   {
     title: "Secondary School",
@@ -89,7 +89,7 @@ export function AcademicProgrammesSection() {
             className="inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-500"
           >
             LEARNING AT AVN
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-3.5" />
           </Link>
         </div>
       </div>

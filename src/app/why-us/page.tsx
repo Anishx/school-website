@@ -87,7 +87,7 @@ export default function WhyUsPage() {
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {/* Learning */}
-              <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-purple-700 opacity-40" viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l2 8h-4l2-8zm0 36l-2-8h4l-2 8zm-20-20l8 2v-4l-8 2zm40 0l-8-2v4l8-2zm-6.3-13.7l-5.7 5.7 2.8 2.8 5.7-5.7-2.8-2.8zm-27.4 27.4l5.7-5.7-2.8-2.8-5.7 5.7 2.8 2.8zm0-27.4l2.8 2.8 5.7-5.7-2.8-2.8-5.7 5.7zm27.4 27.4l-2.8-2.8-5.7 5.7 2.8 2.8 5.7-5.7z"/></svg>
                 <p className="font-display text-3xl uppercase text-ink-900 md:text-4xl">Learning</p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-900/85">
@@ -96,7 +96,7 @@ export default function WhyUsPage() {
               </div>
 
               {/* Leading */}
-              <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[280px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[280px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-yellow-400 opacity-40" viewBox="0 0 48 48" fill="currentColor"><path d="M14 8h20v6l-10 14-10-14V8z"/></svg>
                 <p className="font-display text-3xl uppercase text-white md:text-4xl">Leading</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/85">
@@ -105,7 +105,7 @@ export default function WhyUsPage() {
               </div>
 
               {/* Excelling */}
-              <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[280px] flex flex-col justify-end">
+              <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[280px] flex flex-col justify-start">
                 <svg className="absolute top-4 right-4 size-16 text-emerald-400 opacity-40" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,2 30,18 48,18 34,28 38,44 24,34 10,44 14,28 0,18 18,18"/></svg>
                 <p className="font-display text-3xl uppercase text-white md:text-4xl">Excelling</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/85">
@@ -148,7 +148,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/computer/computer-class.jpg" alt="Academic Excellence" fill quality={90} className="object-cover" sizes="50vw" />
+                <Image src="/images/new/library-books.jpg" alt="Academic Excellence" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
@@ -165,7 +165,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/sports/sports-1.jpg" alt="Leadership and Sports" fill quality={90} className="object-cover" sizes="50vw" />
+                <Image src="/images/new/girls-running.jpg" alt="Leadership and Sports" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
@@ -182,7 +182,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/campus/entrance.jpg" alt="Safe Campus" fill quality={90} className="object-cover" sizes="50vw" />
+                <Image src="/images/new/campus-plant.png" alt="Safe Campus" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
           </div>

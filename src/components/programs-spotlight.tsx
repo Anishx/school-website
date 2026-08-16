@@ -23,7 +23,7 @@ const programs: Program[] = [
       "A structured programme to enhance memory, concentration and problem-solving through proven cognitive exercises.",
     highlights: ["Abacus & mental math", "Memory techniques", "Critical thinking games"],
     featured: true,
-    img: "/images/brighter-minds/project-1.png",
+    img: "/images/new/students-posters.jpg",
   },
   {
     icon: Globe,
@@ -33,7 +33,7 @@ const programs: Program[] = [
       "Daily practice sessions that build fluency, pronunciation and confidence for rural students entering a wider world.",
     highlights: ["Daily conversation practice", "Debate & elocution", "English story sessions"],
     featured: true,
-    img: "/images/classroom/girls-class.jpg",
+    img: "/images/new/girls-reading.jpg",
   },
   {
     icon: Microscope,
@@ -42,7 +42,7 @@ const programs: Program[] = [
     description:
       "Dedicated coaching for Grade 9–10 students aiming for medical and science careers — early and structured.",
     highlights: ["NEET foundation concepts", "Lab practicals", "Career guidance sessions"],
-    img: "/images/medical/test-tube.jpg",
+    img: "/images/new/titration-lab.jpg",
   },
   {
     icon: MapPin,
@@ -51,7 +51,7 @@ const programs: Program[] = [
     description:
       "Curated visits to science centres, industries and historical sites that bring curriculum to life.",
     highlights: ["Science & tech centres", "Agricultural farms", "Cultural heritage sites"],
-    img: "/images/educational-tour/tour-1.png",
+    img: "/images/new/boy-map.jpg",
   },
 ];
 

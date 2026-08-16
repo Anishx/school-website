@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
-import Link from "next/link";
-import { Download } from "lucide-react";
 
-const tabs = ["Overview", "Teachers", "Infrastructure", "Campus Tour"];
+const tabs = ["Overview", "Teachers", "Infrastructure"];
 
 export default function AboutUsPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -53,7 +52,6 @@ export default function AboutUsPage() {
         {activeTab === 0 && <OverviewTab />}
         {activeTab === 1 && <TeachersTab />}
         {activeTab === 2 && <InfrastructureTab />}
-        {activeTab === 3 && <CampusTourTab />}
       </main>
     </>
   );
@@ -206,24 +204,30 @@ function TeachersTab() {
 
 function InfrastructureTab() {
   const facilities = [
-    { title: "Smart Classrooms", description: "Our technology-enabled classrooms create an interactive learning environment where digital resources, visual aids, and engaging teaching methods make concepts easier to understand and more enjoyable to learn." },
-    { title: "Library", description: "A well-stocked library nurtures a lifelong love for reading, research, and independent learning. Students have access to a wide range of books, reference materials, and age-appropriate resources that inspire curiosity and imagination." },
-    { title: "Computer Lab", description: "Our computer lab introduces students to digital literacy, computer applications, and technology-enabled learning, equipping them with essential skills for an increasingly digital world." },
-    { title: "Sports Facilities", description: "Apollo Vidyalayam offers dedicated spaces for athletics, football, cricket, throwball, softball, and other sporting activities, encouraging physical fitness, teamwork, discipline, and sportsmanship." },
-    { title: "Auditorium", description: "The school auditorium serves as a vibrant venue for assemblies, cultural programmes, competitions, celebrations, and student performances, providing opportunities to build confidence and showcase talent." },
-    { title: "Playground", description: "Our spacious playground provides students with ample opportunities for outdoor play, sports, recreation, and physical development in a safe and encouraging environment." },
-    { title: "Medical Room", description: "Student health and well-being remain a priority. A dedicated medical room is available on campus to provide immediate first aid and basic medical care whenever required." },
-    { title: "Transport", description: "Apollo Vidyalayam offers safe and reliable transportation services, ensuring comfortable and secure travel for students from surrounding communities." },
+    { title: "Smart Classrooms", subtitle: "Technology-enabled learning", image: "/images/new/smartboard-class.jpg" },
+    { title: "Library", subtitle: "Books & research resources", image: "/images/new/library-person.jpg" },
+    { title: "Computer Lab", subtitle: "Digital literacy & applications", image: "/images/new/projector.png" },
+    { title: "Sports Facilities", subtitle: "Athletics, football, cricket & more", image: "/images/new/playground-field.jpg" },
+    { title: "Auditorium", subtitle: "Events & performances", image: "" },
+    { title: "Playground", subtitle: "Outdoor play & recreation", image: "/images/sports/sports-2.jpg" },
+    { title: "Medical Room", subtitle: "First aid & health care", image: "/images/medical/health.png" },
+    { title: "Transport", subtitle: "Safe & reliable travel", image: "/images/medical/test-tube.jpg" },
   ];
 
   const labs = [
-    { title: "Physics Lab", description: "Hands-on experiments that bring scientific principles to life." },
-    { title: "Chemistry Lab", description: "Safe, supervised practical sessions that encourage scientific inquiry." },
-    { title: "Biology Lab", description: "Learning through real specimens, models, and interactive exploration." },
-    { title: "Mathematics Lab", description: "Activity-based learning using models and teaching aids to make abstract concepts easy to understand." },
+    { title: "Physics Lab", subtitle: "Hands-on experiments", image: "/images/brighter-minds/project-1.png" },
+    { title: "Chemistry Lab", subtitle: "Supervised practicals", image: "/images/medical/chemistry-lab.jpg" },
+    { title: "Biology Lab", subtitle: "Specimens & models", image: "/images/about/microscope.jpg" },
+    { title: "Mathematics Lab", subtitle: "Activity-based learning", image: "/images/classroom/homework.jpg" },
   ];
 
-  const corridorSpaces = ["Chess Corner", "Carrom Corner", "Library Corner", "General Knowledge (GK) Corner", "Interactive Mind Games & Learning Activities"];
+  const corridorSpaces = [
+    { title: "Chess Corner", image: "/images/classroom/studying.jpg" },
+    { title: "Carrom Corner", image: "/images/campus/kids-camera.jpg" },
+    { title: "Library Corner", image: "/images/classroom/girls-class.jpg" },
+    { title: "GK Corner", image: "/images/brighter-minds/project-2.png" },
+    { title: "Mind Games", image: "/images/brighter-minds/project-3.png" },
+  ];
 
   return (
     <>
@@ -231,15 +235,29 @@ function InfrastructureTab() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Infrastructure</h2>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-ink-600 md:text-base">
-            Learning at Apollo Vidyalayam extends far beyond the classroom. Our campus is thoughtfully designed with modern learning spaces, well-equipped facilities, and engaging environments that encourage students to explore, experiment, and grow through hands-on experiences.
+            Learning at Apollo Vidyalayam extends far beyond the classroom. Our campus is thoughtfully designed with modern learning spaces, well-equipped facilities, and engaging environments.
           </p>
 
-          {/* Main facilities grid */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 grid-cols-2 lg:grid-cols-4">
             {facilities.map((facility) => (
-              <div key={facility.title} className="border border-line-200 p-6">
-                <h3 className="font-display text-base uppercase text-teal-800">{facility.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-600">{facility.description}</p>
+              <div key={facility.title} className="group relative aspect-[3/4] overflow-hidden">
+                {facility.image ? (
+                  <Image
+                    src={facility.image}
+                    alt={facility.title}
+                    fill
+                    quality={90}
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-teal-700" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h3 className="font-display text-base uppercase text-white md:text-lg">{facility.title}</h3>
+                  <p className="mt-0.5 text-xs uppercase tracking-wide text-white/70">{facility.subtitle}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -251,13 +269,24 @@ function InfrastructureTab() {
         <div className="mx-auto max-w-7xl px-6">
           <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Science Labs</h3>
           <p className="mt-3 text-sm text-ink-600 md:text-base">
-            Our well-equipped laboratories provide students with opportunities to apply classroom learning through practical experimentation and observation. Across all laboratories, learning is interactive, experiential, and demonstration-driven, helping students develop critical thinking and scientific temper.
+            Our well-equipped laboratories provide students with opportunities to apply classroom learning through practical experimentation and observation.
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 grid-cols-2 lg:grid-cols-4">
             {labs.map((lab) => (
-              <div key={lab.title} className="bg-white border border-line-200 p-5">
-                <h4 className="font-display text-sm uppercase text-teal-800">{lab.title}</h4>
-                <p className="mt-2 text-xs leading-relaxed text-ink-600">{lab.description}</p>
+              <div key={lab.title} className="group relative aspect-[3/4] overflow-hidden">
+                <Image
+                  src={lab.image}
+                  alt={lab.title}
+                  fill
+                  quality={90}
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h4 className="font-display text-base uppercase text-white md:text-lg">{lab.title}</h4>
+                  <p className="mt-0.5 text-xs uppercase tracking-wide text-white/70">{lab.subtitle}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -269,13 +298,24 @@ function InfrastructureTab() {
         <div className="mx-auto max-w-7xl px-6">
           <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Corridor Learning &amp; Mind Games</h3>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-600 md:text-base">
-            At Apollo Vidyalayam, learning continues beyond the classroom. Our corridors are transformed into interactive learning zones where students can think, play, and collaborate during their day. These thoughtfully designed spaces encourage problem-solving, strategic thinking, creativity, and social interaction—turning every walk between classes into an opportunity to learn something new.
+            At Apollo Vidyalayam, learning continues beyond the classroom. Our corridors are transformed into interactive learning zones.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-8 grid gap-4 grid-cols-2 lg:grid-cols-5">
             {corridorSpaces.map((space) => (
-              <span key={space} className="bg-teal-800 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
-                {space}
-              </span>
+              <div key={space.title} className="group relative aspect-[3/4] overflow-hidden">
+                <Image
+                  src={space.image}
+                  alt={space.title}
+                  fill
+                  quality={90}
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h4 className="font-display text-sm uppercase text-white md:text-base">{space.title}</h4>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -284,26 +324,3 @@ function InfrastructureTab() {
   );
 }
 
-function CampusTourTab() {
-  return (
-    <section className="bg-white py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Campus Tour</h2>
-        <p className="mt-4 max-w-2xl mx-auto text-sm leading-relaxed text-ink-600 md:text-base">
-          Experience our vibrant campus. Book a visit to explore our classrooms, sports facilities, yoga hall, library, and more.
-        </p>
-        <div className="mt-10 aspect-video w-full max-w-4xl mx-auto bg-canvas-100 border border-line-200 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-lg font-semibold text-ink-400">Campus Tour Video</p>
-            <p className="mt-2 text-sm text-ink-500">Coming soon</p>
-          </div>
-        </div>
-        <div className="mt-8">
-          <a href="#campus-visit" className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-400">
-            Book a Campus Visit
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}

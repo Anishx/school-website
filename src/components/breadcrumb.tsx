@@ -9,6 +9,7 @@ const pathLabels: Record<string, string> = {
   "leadership": "Leadership",
   "programs": "Programs",
   "admissions": "Admissions",
+  "apply": "Apply Now",
   "student-life": "Student Life",
   "news-events": "News & Downloads",
   "gallery": "Gallery",

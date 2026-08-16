@@ -28,11 +28,11 @@ const tabs: TabContent[] = [
     achievements: "Apollo Vidyalayam has consistently excelled in competitive sports, with students emerging as State-Level Throwball Champions and regularly representing the school with distinction in Government-conducted sports tournaments, earning numerous accolades across disciplines.",
     sports: ["Athletics", "Football", "Throwball", "Softball", "Cricket"],
     items: [
-      { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/sports/sports-1.jpg" },
-      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/sports/sports-3.jpg" },
-      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/sports/sports-2.jpg" },
-      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/sports/badminton.jpg", objectPosition: "top" },
-      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/sports/sports-4.jpg" },
+      { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/new/shotput.jpg" },
+      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/girls-soccer.jpg" },
+      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/new/volleyball.jpg" },
+      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/new/badminton.jpg", objectPosition: "top" },
+      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/new/koko-playground.jpg" },
     ],
   },
   {
@@ -129,7 +129,7 @@ function StudentLifeContent() {
           {/* Background image */}
           <div className="relative h-[400px] md:h-[500px]">
             <Image
-              src="/hero-cover.jpg"
+              src="/hero-v2.jpg"
               alt="Student Life at Apollo Vidhyalayam"
               fill
               className="object-cover"
@@ -137,8 +137,7 @@ function StudentLifeContent() {
               priority
               quality={95}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(90deg,rgba(4, 125, 160, 1) 29%, rgba(4, 125, 160, 0.7) 62%, rgba(4, 125, 160, 0.33) 78%, rgba(4, 125, 160, 0) 99%)" }} />
 
             {/* Hero text */}
             <div className="relative z-10 flex h-full items-end">
@@ -185,19 +184,6 @@ function StudentLifeContent() {
             {tabs[activeTab].intro && (
               <div className="mt-6 max-w-3xl space-y-5 text-sm leading-relaxed text-ink-600 md:text-base">
                 <p>{tabs[activeTab].intro}</p>
-
-                {tabs[activeTab].sports && (
-                  <div>
-                    <h3 className="text-base font-bold text-ink-900">Sports Offered</h3>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {tabs[activeTab].sports!.map((sport) => (
-                        <span key={sport} className="bg-teal-800 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
-                          {sport}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
 
                 {tabs[activeTab].coaching && (
                   <div>
