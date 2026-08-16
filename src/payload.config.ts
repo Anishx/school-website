@@ -42,92 +42,48 @@ export default buildConfig({
       slug: "admissions",
       admin: {
         useAsTitle: "studentName",
-        defaultColumns: ["studentName", "grade", "parentName", "createdAt"],
+        defaultColumns: ["studentName", "grade", "fatherName", "contactNumber", "createdAt"],
       },
       fields: [
-        {
-          name: "studentName",
-          type: "text",
-          required: true,
-          label: "Student Name",
-        },
-        {
-          name: "dateOfBirth",
-          type: "date",
-          required: true,
-          label: "Date of Birth",
-        },
-        {
-          name: "gender",
-          type: "select",
-          required: true,
-          options: [
-            { label: "Male", value: "male" },
-            { label: "Female", value: "female" },
-            { label: "Other", value: "other" },
-          ],
-        },
-        {
-          name: "grade",
-          type: "select",
-          required: true,
-          label: "Grade Applying For",
-          options: [
-            { label: "Nursery", value: "nursery" },
-            { label: "LKG", value: "lkg" },
-            { label: "UKG", value: "ukg" },
-            { label: "Grade 1", value: "grade-1" },
-            { label: "Grade 2", value: "grade-2" },
-            { label: "Grade 3", value: "grade-3" },
-            { label: "Grade 4", value: "grade-4" },
-            { label: "Grade 5", value: "grade-5" },
-            { label: "Grade 6", value: "grade-6" },
-            { label: "Grade 7", value: "grade-7" },
-            { label: "Grade 8", value: "grade-8" },
-            { label: "Grade 9", value: "grade-9" },
-            { label: "Grade 10", value: "grade-10" },
-          ],
-        },
-        {
-          name: "previousSchool",
-          type: "text",
-          label: "Previous School (if any)",
-        },
-        {
-          name: "parentName",
-          type: "text",
-          required: true,
-          label: "Parent/Guardian Name",
-        },
-        {
-          name: "parentPhone",
-          type: "text",
-          required: true,
-          label: "Phone Number",
-        },
-        {
-          name: "parentEmail",
-          type: "email",
-          label: "Email Address",
-        },
-        {
-          name: "address",
-          type: "textarea",
-          required: true,
-          label: "Residential Address",
-        },
-        {
-          name: "message",
-          type: "textarea",
-          label: "Additional Information",
-        },
+        // Student Details
+        { name: "studentName", type: "text", required: true, label: "Student Full Name" },
+        { name: "grade", type: "text", required: true, label: "Class Applying For" },
+        { name: "dateOfBirth", type: "date", required: true, label: "Date of Birth" },
+        { name: "gender", type: "select", required: true, options: [
+          { label: "Male", value: "male" },
+          { label: "Female", value: "female" },
+          { label: "Other", value: "other" },
+        ]},
+        { name: "bloodGroup", type: "text", label: "Blood Group" },
+        { name: "category", type: "text", label: "Category (Gen/OBC/SC/ST/EWS)" },
+        { name: "aadharNo", type: "text", label: "Aadhar No." },
+        { name: "motherTongue", type: "text", label: "Mother Tongue / Nationality" },
+        // Previous School Details
+        { name: "previousSchool", type: "text", label: "Previous School Name" },
+        { name: "previousSchoolAddress", type: "textarea", label: "Previous School Address" },
+        { name: "board", type: "text", label: "Board" },
+        { name: "classLastStudied", type: "text", label: "Class Last Studied" },
+        { name: "transferCertificateNo", type: "text", label: "Transfer Certificate No." },
+        // Parent / Guardian Details
+        { name: "fatherName", type: "text", required: true, label: "Father's Name" },
+        { name: "fatherOccupation", type: "text", label: "Father's Occupation" },
+        { name: "fatherQualification", type: "text", label: "Father's Qualification" },
+        { name: "motherName", type: "text", required: true, label: "Mother's Name" },
+        { name: "motherOccupation", type: "text", label: "Mother's Occupation" },
+        { name: "motherQualification", type: "text", label: "Mother's Qualification" },
+        { name: "contactNumber", type: "text", required: true, label: "Contact Number" },
+        { name: "alternatePhone", type: "text", label: "Alternate Contact Number" },
+        { name: "parentEmail", type: "email", label: "Email ID" },
+        { name: "address", type: "textarea", required: true, label: "Residential Address" },
+        { name: "permanentAddress", type: "textarea", label: "Permanent Address" },
+        // Documents
+        { name: "documentsEnclosed", type: "json", label: "Documents Enclosed" },
+        // Status
         {
           name: "status",
           type: "select",
           defaultValue: "pending",
-          admin: {
-            position: "sidebar",
-          },
+          admin: { position: "sidebar" },
           options: [
             { label: "Pending", value: "pending" },
             { label: "Reviewed", value: "reviewed" },
@@ -146,16 +102,26 @@ export default buildConfig({
                   subject: `New Admission Application - ${doc.studentName}`,
                   html: `
                     <h2>New Admission Application Received</h2>
+                    <h3>Student Details</h3>
                     <p><strong>Student Name:</strong> ${doc.studentName}</p>
-                    <p><strong>Grade:</strong> ${doc.grade}</p>
-                    <p><strong>Parent/Guardian:</strong> ${doc.parentName}</p>
-                    <p><strong>Phone:</strong> ${doc.parentPhone}</p>
+                    <p><strong>Class Applying For:</strong> ${doc.grade}</p>
+                    <p><strong>Date of Birth:</strong> ${doc.dateOfBirth}</p>
+                    <p><strong>Gender:</strong> ${doc.gender}</p>
+                    <p><strong>Blood Group:</strong> ${doc.bloodGroup || "N/A"}</p>
+                    <p><strong>Category:</strong> ${doc.category || "N/A"}</p>
+                    <p><strong>Aadhar No.:</strong> ${doc.aadharNo || "N/A"}</p>
+                    <h3>Previous School</h3>
+                    <p><strong>School:</strong> ${doc.previousSchool || "N/A"}</p>
+                    <p><strong>Board:</strong> ${doc.board || "N/A"}</p>
+                    <p><strong>Class Last Studied:</strong> ${doc.classLastStudied || "N/A"}</p>
+                    <h3>Parent / Guardian Details</h3>
+                    <p><strong>Father:</strong> ${doc.fatherName} (${doc.fatherOccupation || "N/A"})</p>
+                    <p><strong>Mother:</strong> ${doc.motherName} (${doc.motherOccupation || "N/A"})</p>
+                    <p><strong>Contact:</strong> ${doc.contactNumber}</p>
                     <p><strong>Email:</strong> ${doc.parentEmail || "Not provided"}</p>
                     <p><strong>Address:</strong> ${doc.address}</p>
-                    <p><strong>Previous School:</strong> ${doc.previousSchool || "N/A"}</p>
-                    <p><strong>Message:</strong> ${doc.message || "None"}</p>
                     <hr />
-                    <p><em>This application was submitted via the Apollo Vidhyalayam website.</em></p>
+                    <p><em>Submitted via Apollo Vidhyalayam website.</em></p>
                   `,
                 });
               } catch (error) {
