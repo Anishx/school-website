@@ -106,7 +106,7 @@ export default function AdmissionsPage() {
             <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Ready to Join?</h2>
             <p className="mt-3 text-sm text-white/80">Visit our campus or contact us to begin the admission process.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a href="#apply" className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-400">
+              <a href="/apply" className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-400">
                 <FileText className="size-4" />
                 Apply Now
               </a>

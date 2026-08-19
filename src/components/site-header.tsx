@@ -35,7 +35,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <LoginDropdown />
             <Link
-              href="#"
+              href="/apply"
               className="inline-flex items-center gap-1.5 rounded-full bg-yellow-600 px-4 py-2 text-sm font-semibold text-ink-900 transition hover:bg-yellow-500"
             >
               Apply Now

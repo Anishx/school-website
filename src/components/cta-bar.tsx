@@ -9,7 +9,7 @@ export function CtaBar() {
     >
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-6 py-3 md:gap-6">
         <Link
-          href="#apply"
+          href="/apply"
           className="inline-flex items-center gap-1.5 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-ink-800"
         >
           Apply Now
