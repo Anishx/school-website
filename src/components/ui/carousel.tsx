@@ -106,11 +106,17 @@ const Carousel = React.forwardRef<
       if (!api) {
         return
       }
-      onSelect(api)
+
+      let active = true
+      queueMicrotask(() => {
+        if (active) onSelect(api)
+      })
       api.on("reInit", onSelect)
       api.on("select", onSelect)
       return () => {
-        api?.off("select", onSelect)
+        active = false
+        api.off("reInit", onSelect)
+        api.off("select", onSelect)
       }
     }, [api, onSelect])
 

@@ -1,0 +1,44 @@
+export const ERROR_CODES = {
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  FORM_UNAVAILABLE: 'FORM_UNAVAILABLE',
+  CAPACITY_REACHED: 'CAPACITY_REACHED',
+  RATE_LIMITED: 'RATE_LIMITED',
+  NOT_AUTHENTICATED: 'NOT_AUTHENTICATED',
+  NOT_AUTHORIZED: 'NOT_AUTHORIZED',
+  NOT_FOUND: 'NOT_FOUND',
+  CONFLICT: 'CONFLICT',
+  MEDIA_INVALID: 'MEDIA_INVALID',
+  MEDIA_REFERENCED: 'MEDIA_REFERENCED',
+  CMS_READ_FAILURE: 'CMS_READ_FAILURE',
+  STORAGE_FAILURE: 'STORAGE_FAILURE',
+  NOTIFICATION_FAILURE: 'NOTIFICATION_FAILURE',
+  MIGRATION_FAILURE: 'MIGRATION_FAILURE',
+  SERVICE_UNAVAILABLE: 'SERVICE_UNAVAILABLE',
+} as const
+
+export type ErrorCode = (typeof ERROR_CODES)[keyof typeof ERROR_CODES]
+
+const ERROR_CODE_VALUES: ReadonlySet<string> = new Set(Object.values(ERROR_CODES))
+
+export function isErrorCode(value: unknown): value is ErrorCode {
+  return typeof value === 'string' && ERROR_CODE_VALUES.has(value)
+}
+
+export const FIELD_ERROR_CODES = {
+  REQUIRED: 'REQUIRED',
+  INVALID: 'INVALID',
+  INVALID_FORMAT: 'INVALID_FORMAT',
+  UNSUPPORTED_VALUE: 'UNSUPPORTED_VALUE',
+  TOO_LONG: 'TOO_LONG',
+  OUT_OF_RANGE: 'OUT_OF_RANGE',
+  FILE_TYPE_MISMATCH: 'FILE_TYPE_MISMATCH',
+  FILE_NOT_ALLOWED: 'FILE_NOT_ALLOWED',
+} as const
+
+export type FieldErrorCode = (typeof FIELD_ERROR_CODES)[keyof typeof FIELD_ERROR_CODES]
+
+const FIELD_ERROR_CODE_VALUES: ReadonlySet<string> = new Set(Object.values(FIELD_ERROR_CODES))
+
+export function isFieldErrorCode(value: unknown): value is FieldErrorCode {
+  return typeof value === 'string' && FIELD_ERROR_CODE_VALUES.has(value)
+}
