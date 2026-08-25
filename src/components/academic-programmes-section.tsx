@@ -23,7 +23,7 @@ const programmes = [
     subtitle: "GRADES VI – VIII",
     description:
       "Deeper conceptual understanding with balanced curriculum strengthening analytical thinking, leadership, and collaboration.",
-    image: "/images/new/HighSchool.jpg",
+    image: "/images/new/HighSchool.JPG",
   },
   {
     title: "Secondary School",
