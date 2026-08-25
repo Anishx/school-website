@@ -20,7 +20,7 @@ type Tile = {
 
 const tiles: Tile[] = [
   // Row 1-2
-  { title: "Sports", subtext: "Athletics, Football, Throwball, Softball, Cricket", href: "/student-life?tab=sports", type: "image", image: "/images/new/koko-playground.jpg", colSpan: 1, rowSpan: 2 },
+  { title: "Sports", subtext: "Athletics, Football, Volleyball, Tennikoit, Cricket", href: "/student-life?tab=sports", type: "image", image: "/images/new/koko-playground.jpg", colSpan: 1, rowSpan: 2 },
   { title: "STEM & Innovation", subtext: "Science fairs, AI learning, Space Day winners", href: "/student-life?tab=stem", type: "color", color: "bg-purple-700", colSpan: 1, rowSpan: 1 },
   { title: "Clubs & Activities", subtext: "Art, Karadi Path, Karate, Dance, Bharatanatyam", href: "/student-life?tab=clubs", type: "image", image: "/images/new/students-play.jpg", colSpan: 1, rowSpan: 2 },
   { title: "Leadership", subtext: "House System, Student Council, POCSO & POSH Committees", href: "/student-life?tab=leadership", type: "color", color: "bg-teal-800", colSpan: 1, rowSpan: 1 },
@@ -28,7 +28,7 @@ const tiles: Tile[] = [
   { title: "Digital Learning", subtext: "28 smart classrooms, AI-enabled tools from Kindergarten", href: "/why-us", type: "color", color: "bg-yellow-500", colSpan: 1, rowSpan: 1 },
   { title: "Medical Pathways", subtext: "Apollo Medical College visits and healthcare exposure", href: "/student-life?tab=stem", type: "color", color: "bg-rose-600", colSpan: 1, rowSpan: 1 },
   // Row 3-4
-  { title: "Yoga & Wellness", subtext: "Daily sessions by Apollo Foundation Total Health Trainer", href: "/student-life?tab=clubs", type: "image", image: "/images/yoga/group-yoga.jpg", colSpan: 1, rowSpan: 1 },
+  { title: "Yoga & Wellness", subtext: "Daily sessions by Apollo Foundation Total Health Trainer", href: "/student-life?tab=clubs", type: "image", image: "/images/yoga/yoga-girls.JPG", colSpan: 1, rowSpan: 1 },
   { title: "Achievements", subtext: "State champions, INSPIRE MANAK, 7-year mandal toppers", href: "/student-life?tab=achievements", type: "image", image: "/images/impact/impact-1.jpg", colSpan: 2, rowSpan: 2 },
   { title: "Brighter Minds", subtext: "Cognitive development, memory, and creativity activation", href: "/student-life?tab=stem", type: "color", color: "bg-emerald-700", colSpan: 1, rowSpan: 1 },
   // Row 4

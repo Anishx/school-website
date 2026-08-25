@@ -4,14 +4,9 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 const quickLinks = [
   { name: "Admissions", href: "/admissions" },
-  { name: "Academics", href: "/programs" },
+  { name: "Academics", href: "/#academics" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "#contact" },
-];
-
-const portalLinks = [
-  { name: "Parent Login", href: "#", external: true },
-  { name: "Teacher Login", href: "#", external: true },
+  { name: "Contact", href: "/#contact" },
 ];
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -164,8 +159,7 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-3">
                 <li><Link href="/news-events?tab=latest" className="text-sm text-white/60 transition-colors hover:text-white">Latest News</Link></li>
                 <li><Link href="/news-events?tab=announcements" className="text-sm text-white/60 transition-colors hover:text-white">Announcements</Link></li>
-                <li><Link href="/news-events?tab=circulars" className="text-sm text-white/60 transition-colors hover:text-white">Circulars</Link></li>
-                <li><Link href="/news-events?tab=holidays" className="text-sm text-white/60 transition-colors hover:text-white">Holiday List</Link></li>
+                <li><Link href="/news-events?tab=calendar" className="text-sm text-white/60 transition-colors hover:text-white">School Calendar</Link></li>
                 <li><Link href="/news-events?tab=downloads" className="text-sm text-white/60 transition-colors hover:text-white">Downloads</Link></li>
               </ul>
             </div>
@@ -192,11 +186,11 @@ export function SiteFooter() {
                 </li>
                 <li>
                   <a
-                    href="mailto:avn.viceprincipal@gmail.com"
+                    href="mailto:principal@apollovidhyalayam.com"
                     className="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     <Mail className="size-4 shrink-0 text-white/40" />
-                    avn.viceprincipal@gmail.com
+                    principal@apollovidhyalayam.com
                   </a>
                 </li>
               </ul>

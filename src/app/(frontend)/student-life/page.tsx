@@ -16,6 +16,7 @@ type TabContent = {
   houses?: { name: string; color: string; value: string }[];
   houseDescription?: string;
   leadershipDescription?: string;
+  flagship?: { name: string; tagline: string; description: string; image: string };
   items: { title: string; description: string; image?: string; objectPosition?: string }[];
 };
 
@@ -25,24 +26,31 @@ const tabs: TabContent[] = [
     intro: "At Apollo Vidyalayam, sports are an integral part of education—not merely an extracurricular activity. We believe that physical activity builds confidence, resilience, teamwork, discipline, and the mental strength needed to overcome challenges both on and off the field. Guided by the philosophy of developing willpower and inner strength, our sports programme is led by dedicated and trained teachers who inspire every child to strive for excellence.",
     philosophy: "We believe every child has the potential to grow stronger—physically, mentally, and emotionally. Through regular training and active participation, students develop resilience, determination, leadership, and the confidence to face challenges with courage.",
     coaching: "All sporting activities are conducted under the guidance of our trained teachers, who focus on skill development, teamwork, discipline, and sportsmanship.",
-    achievements: "Apollo Vidyalayam has consistently excelled in competitive sports, with students emerging as State-Level Throwball Champions and regularly representing the school with distinction in Government-conducted sports tournaments, earning numerous accolades across disciplines.",
-    sports: ["Athletics", "Football", "Throwball", "Softball", "Cricket"],
+    achievements: "Apollo Vidyalayam has consistently excelled in competitive sports, with students emerging as State-Level Volleyball Champions and regularly representing the school with distinction in Government-conducted sports tournaments, earning numerous accolades across disciplines.",
+    sports: ["Athletics", "Football", "Volleyball", "Tennikoit", "Cricket"],
     items: [
       { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/new/shotput.jpg" },
-      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/girls-soccer.jpg" },
-      { title: "Throwball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/new/volleyball.jpg" },
-      { title: "Softball", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/new/badminton.jpg", objectPosition: "top" },
-      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/new/koko-playground.jpg" },
+      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/football-close.jpg" },
+      { title: "Volleyball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/new/volleyball.jpg" },
+      { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/new/Cricket.png" },
+      { title: "Ko-Ko", description: "Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.", image: "/images/new/koko-playground.jpg" },
+      { title: "Badminton", description: "Enhancing agility, hand-eye coordination, focus, and competitive spirit on the court.", image: "/images/new/badminton.jpg" },
+      { title: "Tennikoit", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/new/Tennikoit.png", objectPosition: "top" },
     ],
   },
   {
     label: "Clubs & Activities",
     intro: "At Apollo Vidyalayam, learning extends beyond the classroom. Our clubs and enrichment programmes encourage students to explore their interests, discover new talents, and develop confidence, creativity, discipline, and teamwork in a fun and engaging environment.",
+    flagship: {
+      name: "Karadi Path",
+      tagline: "Our Flagship Language Programme",
+      description: "Karadi Path is Apollo Vidyalayam's flagship English language programme, building strong communication skills through storytelling, songs, role-play, and interactive activities. Rooted in the natural way children acquire language, it makes learning joyful and effective—nurturing confident, expressive, and fluent young communicators.",
+      image: "/images/classroom/groupStudy.jpg",
+    },
     items: [
-      { title: "Art & Craft", description: "Students express their creativity through drawing, painting, craftwork, and hands-on projects that enhance imagination, fine motor skills, and artistic expression.", image: "/images/cultural/cultural-1.jpg" },
-      { title: "Karadi Path", description: "Our Karadi Path programme builds strong English language and communication skills through storytelling, songs, role-play, and interactive activities, making language learning enjoyable and effective.", image: "/images/classroom/reading.jpg" },
+      { title: "Art & Craft", description: "Students express their creativity through drawing, painting, craftwork, and hands-on projects that enhance imagination, fine motor skills, and artistic expression.", image: "/images/cultural/cultural-5.jpg" },
       { title: "Karate", description: "Karate helps students develop self-discipline, focus, physical fitness, confidence, and self-defence skills while instilling respect, perseverance, and mental resilience.", image: "/images/sports/sports-3.jpg" },
-      { title: "Western Dance", description: "Students explore rhythm, movement, and performance through Western dance, building coordination, creativity, teamwork, and stage confidence.", image: "/images/cultural/cultural-2.jpg" },
+      { title: "Western Dance", description: "Students explore rhythm, movement, and performance through Western dance, building coordination, creativity, teamwork, and stage confidence.", image: "/images/cultural/cultural-4.jpg" },
       { title: "Bharatanatyam", description: "Through the classical art of Bharatanatyam, students learn grace, discipline, cultural appreciation, and artistic expression while strengthening concentration and confidence.", image: "/images/cultural/cultural-3.jpg" },
     ],
   },
@@ -82,7 +90,7 @@ const tabs: TabContent[] = [
     items: [
       { title: "INSPIRE MANAK Award", description: "Recipients year after year, recognising excellence in scientific innovation and creative thinking.", image: "/images/brighter-minds/project-4.png" },
       { title: "Mandal-Level Grade 10 Toppers", description: "Toppers for seven consecutive years, reflecting sustained academic excellence.", image: "/images/classroom/studying.jpg" },
-      { title: "State-Level Throwball Champions", description: "Our students emerged as State-Level Champions in Throwball.", image: "/images/sports/sports-2.jpg" },
+      { title: "State-Level Volleyball Champions", description: "Our students emerged as State-Level Champions in Volleyball.", image: "/images/sports/sports-2.jpg" },
       { title: "Government Sports Tournaments", description: "Consistent winners and achievers in Government-conducted Mandal and District-level sports tournaments across multiple disciplines.", image: "/images/sports/sports-4.jpg" },
       { title: "International Space Day Competition", description: "Winners competing against nearly 50 schools with the innovative project \"Emergency Oxygen Producer for Astronauts.\"", image: "/images/brighter-minds/project-1.png" },
       { title: "Best School at Mandal Level", description: "Recognised for outstanding performance across sporting disciplines and holistic student development.", image: "/images/campus/entrance.jpg" },
@@ -213,10 +221,37 @@ function StudentLifeContent() {
             <div className="mt-10">
               {tabs[activeTab].sports && (
                 <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">
-                  {tabs[activeTab].sports!.length} Sports Disciplines
+                  Sports Disciplines
                 </h3>
               )}
             </div>
+
+            {/* Flagship programme (Clubs & Activities tab) */}
+            {tabs[activeTab].flagship && (
+              <div className="mt-10 overflow-hidden rounded-lg bg-teal-900 md:grid md:grid-cols-2">
+                <div className="relative aspect-[4/3] w-full md:aspect-auto md:h-full md:min-h-[320px]">
+                  <Image
+                    src={tabs[activeTab].flagship!.image}
+                    alt={tabs[activeTab].flagship!.name}
+                    fill
+                    quality={90}
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="flex flex-col justify-center p-8 md:p-10">
+                  <span className="inline-flex w-fit items-center rounded-full bg-yellow-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink-900">
+                    {tabs[activeTab].flagship!.tagline}
+                  </span>
+                  <h3 className="font-display mt-4 text-2xl uppercase text-white md:text-3xl">
+                    {tabs[activeTab].flagship!.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/80 md:text-base">
+                    {tabs[activeTab].flagship!.description}
+                  </p>
+                </div>
+              </div>
+            )}
 
             {/* Houses (Leadership tab) */}
             {tabs[activeTab].houses && (

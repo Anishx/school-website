@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 
 const categories = [
-  { title: "Academics", image: "/images/welcome/academics.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/programs" },
-  { title: "Sports", image: "/images/new/sports-soccer.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, throwball, and more.", href: "/student-life?tab=sports" },
+  { title: "Academics", image: "/images/welcome/academics.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/#academics" },
+  { title: "Sports", image: "/images/new/sports-soccer.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, Volleyball, and more.", href: "/student-life?tab=sports" },
   { title: "Yoga & Wellness", image: "/images/welcome/yoga-wellness.jpg", description: "Daily yoga sessions promoting physical, emotional, and mental well-being.", href: "/student-life?tab=clubs" },
   { title: "Student Life", image: "/images/welcome/student-life.jpg", description: "Clubs, cultural events, and leadership opportunities that build well-rounded individuals.", href: "/student-life" },
   { title: "Values & Discipline", image: "/images/new/values-marching.png", description: "Character education woven into everyday school life through Isha-affiliated values.", href: "/about-us" },

@@ -98,18 +98,14 @@ function OverviewTab() {
               <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Our Vision</p>
               <h3 className="font-display mt-2 text-2xl uppercase text-white md:text-3xl">Vision</h3>
               <p className="mt-4 text-sm leading-relaxed text-white/85 md:text-base">
-                To nurture confident, compassionate, and future-ready learners through holistic education, empowering every child to realise their fullest potential and contribute meaningfully to society.
+                To inspire young minds to learn with purpose, live with compassion, and grow into responsible individuals who make a meaningful difference.
               </p>
             </div>
             <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-start">
               <p className="text-xs font-bold uppercase tracking-widest text-teal-900">Our Mission</p>
               <h3 className="font-display mt-2 text-2xl uppercase text-ink-900 md:text-3xl">Mission</h3>
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-900/85 md:text-base">
-                <li>• Deliver a balanced education that fosters academic excellence, critical thinking, and lifelong learning.</li>
-                <li>• Cultivate character through discipline, integrity, empathy, and respect.</li>
-                <li>• Promote physical, emotional, and intellectual well-being through sports, yoga, and co-curricular learning.</li>
-                <li>• Inspire leadership, innovation, and social responsibility in every student.</li>
-                <li>• Provide a safe, inclusive, and nurturing environment where every child can learn, grow, and thrive.</li>
+                To create meaningful learning experiences that encourage every child to question, explore, create and collaborate, while nurturing empathy, integrity and a sense of responsibility.
               </ul>
             </div>
           </div>
@@ -121,7 +117,7 @@ function OverviewTab() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">From the Principal&apos;s Desk</p>
-            <h2 className="mt-3 font-display text-2xl uppercase text-white md:text-3xl">Vice-Principal / Principal&apos;s Message</h2>
+            <h2 className="mt-3 font-display text-2xl uppercase text-white md:text-3xl">Principal&apos;s Message</h2>
             <div className="mt-8 space-y-5 text-sm leading-relaxed text-white/80 md:text-base">
               <p>Every child who walks through our gates arrives with unique potential. Our responsibility is to help them discover it, nurture it, and give them the confidence to pursue their aspirations with integrity and purpose.</p>
               <p>At Apollo Vidhyalayam, learning extends far beyond textbooks. We strive to cultivate curiosity, critical thinking, resilience, and leadership while ensuring that every student feels supported, valued, and inspired to achieve their very best.</p>
@@ -267,7 +263,7 @@ function InfrastructureTab() {
       {/* Science Labs */}
       <section className="bg-canvas-50 py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Science Labs</h3>
+          <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Composite Science Lab</h3>
           <p className="mt-3 text-sm text-ink-600 md:text-base">
             Our well-equipped laboratories provide students with opportunities to apply classroom learning through practical experimentation and observation.
           </p>

@@ -50,7 +50,7 @@ Incrementally update existing Next.js components to match the new Apollo Vidhyal
   - [x] 4.1 Update `contactInfo` array in `src/components/contact-section.tsx`
     - Change address to "Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129, Chittoor District, Andhra Pradesh"
     - Change phone to "+91 81227 61667"
-    - Change email to "avn.viceprincipal@gmail.com"
+    - Change email to "principal@apollovidhyalayam.com"
     - _Requirements: 6.1, 6.2, 6.3_
 
 - [x] 5. Update About Section with Brochure Download
@@ -65,7 +65,7 @@ Incrementally update existing Next.js components to match the new Apollo Vidhyal
     - Update brand section: replace placeholder logo with `<Image src="/apollo-logo.jpg" ... />`, correct school name
     - Replace text social links with icon links: Instagram (linking to https://www.instagram.com/apollofoundation/?hl=en), LinkedIn (linking to https://www.linkedin.com/company/apollo-fnd/?originalSubdomain=in), Facebook (linking to https://www.facebook.com/aplapollofoundation/)
     - Restructure link columns to include: "Quick Links" section (Home, About Us, Gallery, Admissions, Contact Us) and "Portals" section (Parent Login, Teacher Login)
-    - Add contact info block with address "Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129, Chittoor District, Andhra Pradesh", phone "+91 81227 61667", email "avn.viceprincipal@gmail.com"
+    - Add contact info block with address "Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129, Chittoor District, Andhra Pradesh", phone "+91 81227 61667", email "principal@apollovidhyalayam.com"
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8_
 
 - [x] 7. Checkpoint - Verify existing pages render correctly

@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest'
 
 import { createAdmissionPostHandler } from '../../src/cms/admissions/public-route'
 import { createNotificationRetryPostHandler } from '../../src/cms/notifications/retry-route'
+import { ERROR_CODES } from '../../src/cms/errors/codes'
+import { StructuredError } from '../../src/cms/errors/structured-error'
 import { SENTINEL_SECRETS } from '../fixtures/sentinels'
 
 const validAdmission = {
@@ -58,6 +60,41 @@ describe('public admissions route', () => {
 
     const response = await handler(input)
     expect(response.status).toBe(status)
+    expect(await json(response)).toMatchObject({
+      ok: false,
+      error: { code: 'VALIDATION_ERROR' },
+    })
+    expect(submissions).toBe(0)
+  })
+
+  it('runs captcha verification before persistence', async () => {
+    const order: string[] = []
+    const handler = createAdmissionPostHandler({
+      createRequest: async () => payloadRequest(),
+      verifyCaptcha: async () => { order.push('captcha') },
+      submit: async () => { order.push('submit'); return { ok: true, reference: 'ADM-CAP-001' } },
+    })
+
+    const response = await handler(request(validAdmission))
+    expect(response.status).toBe(201)
+    expect(order).toEqual(['captcha', 'submit'])
+  })
+
+  it('rejects the request when captcha verification fails, without submitting', async () => {
+    let submissions = 0
+    const handler = createAdmissionPostHandler({
+      createRequest: async () => payloadRequest(),
+      verifyCaptcha: async () => {
+        throw new StructuredError({
+          code: ERROR_CODES.VALIDATION_ERROR,
+          fieldErrors: [{ field: 'captchaToken', code: 'INVALID' }],
+        })
+      },
+      submit: async () => { submissions += 1; return { ok: true, reference: 'unexpected' } },
+    })
+
+    const response = await handler(request(validAdmission))
+    expect(response.status).toBe(422)
     expect(await json(response)).toMatchObject({
       ok: false,
       error: { code: 'VALIDATION_ERROR' },

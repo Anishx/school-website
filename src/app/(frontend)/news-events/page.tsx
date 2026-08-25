@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { SchoolCalendarTab } from "@/components/school-calendar-tab";
 import Image from "next/image";
 import Link from "next/link";
 import eventsData from "@/data/events.json";
@@ -29,10 +30,12 @@ function formatDate(dateStr: string) {
   });
 }
 
-const tabList = ["Latest News", "Announcements", "Holiday List", "Downloads"];
+const tabList = ["Latest News", "Announcements", "School Calendar", "Downloads"];
 const tabMap: Record<string, number> = {
   latest: 0,
   announcements: 1,
+  calendar: 2,
+  // legacy alias — keeps existing /news-events?tab=holidays links working
   holidays: 2,
   downloads: 3,
 };
@@ -104,7 +107,7 @@ function NewsEventsContent() {
           <div className="mx-auto max-w-7xl px-6">
             {activeTab === 0 && <LatestNewsTab />}
             {activeTab === 1 && <AnnouncementsTab />}
-            {activeTab === 2 && <HolidayListTab />}
+            {activeTab === 2 && <SchoolCalendarTab />}
             {activeTab === 3 && <DownloadsTab />}
           </div>
         </section>
@@ -167,58 +170,37 @@ function AnnouncementsTab() {
   );
 }
 
-function HolidayListTab() {
-  const holidays = [
-    { date: "2025-01-26", name: "Republic Day" },
-    { date: "2025-03-14", name: "Holi" },
-    { date: "2025-04-14", name: "Ambedkar Jayanti" },
-    { date: "2025-05-01", name: "May Day" },
-    { date: "2025-08-15", name: "Independence Day" },
-    { date: "2025-09-05", name: "Teacher's Day" },
-    { date: "2025-10-02", name: "Gandhi Jayanti" },
-    { date: "2025-10-20", name: "Dussehra" },
-    { date: "2025-11-01", name: "Diwali" },
-    { date: "2025-11-14", name: "Children's Day" },
-    { date: "2025-12-25", name: "Christmas" },
-  ];
-  return (
-    <>
-      <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Holiday List 2025-26</h2>
-      <div className="mt-8 grid gap-2 sm:grid-cols-2 md:grid-cols-3">
-        {holidays.map((h) => (
-          <div key={h.name} className="flex items-center justify-between bg-canvas-50 border border-line-200 px-4 py-3">
-            <span className="text-sm font-medium text-ink-900">{h.name}</span>
-            <span className="text-xs font-semibold text-teal-800">{formatDate(h.date)}</span>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-
 function DownloadsTab() {
   const downloads = [
-    { title: "Admission Form 2025-26", type: "PDF" },
-    { title: "School Handbook", type: "PDF" },
-    { title: "Fee Structure Document", type: "PDF" },
-    { title: "Transport Route Map", type: "PDF" },
-    { title: "Academic Calendar 2025-26", type: "PDF" },
-    { title: "School Brochure", type: "PDF" },
+    { title: "Admission Form 2026-27", type: "PDF", href: "https://drive.google.com/file/d/1KIwwqlBwgSkowrojed8ah5-ptV6zA3Vj/view?usp=sharing" },
+    { title: "School Handbook", type: "PDF", href: "https://drive.google.com/file/d/1a_4tnoai3UDgONZXB1tiLBYfSqO0oLA2/view?usp=sharing" },
+    { title: "Fee Structure Document", type: "PDF", href: "https://drive.google.com/file/d/1X1ICvaiOGiyELmTJkxbplkervrpFaWIR/view?usp=drive_link" },
+    { title: "Transport Route Map", type: "PDF", href: "https://drive.google.com/file/d/1MVwR2-uWqU9l-ooO9y2hHrSFR4CzZhmf/view?usp=sharing" },
+    { title: "Academic Calendar 2026-27", type: "PDF", href: "https://drive.google.com/file/d/1r_7rhnhTr_CgCREBr6xuzBU9kedOmIPw/view?usp=drive_link" },
+    { title: "School Brochure", type: "PDF", href: "#" },
   ];
   return (
     <>
       <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Downloads</h2>
       <p className="mt-3 text-sm text-ink-600">Admission forms, School Handbook, and other resources.</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {downloads.map((d) => (
-          <a key={d.title} href="#" className="flex items-center gap-3 border border-line-200 p-5 transition hover:shadow-md hover:border-teal-800/30">
-            <Download className="size-5 shrink-0 text-teal-800" />
-            <div>
-              <h3 className="text-sm font-bold text-ink-900">{d.title}</h3>
-              <p className="mt-0.5 text-xs text-ink-500">{d.type}</p>
-            </div>
-          </a>
-        ))}
+        {downloads.map((d) => {
+          const isExternal = d.href.startsWith("http");
+          return (
+            <a
+              key={d.title}
+              href={d.href}
+              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="flex items-center gap-3 border border-line-200 p-5 transition hover:shadow-md hover:border-teal-800/30"
+            >
+              <Download className="size-5 shrink-0 text-teal-800" />
+              <div>
+                <h3 className="text-sm font-bold text-ink-900">{d.title}</h3>
+                <p className="mt-0.5 text-xs text-ink-500">{d.type}</p>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </>
   );

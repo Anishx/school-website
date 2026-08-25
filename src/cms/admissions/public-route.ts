@@ -17,6 +17,11 @@ type AdmissionRouteDependencies = Readonly<{
     input: unknown,
     req: PayloadRequest,
   ) => Promise<PublicAdmissionSubmissionResult>
+  /**
+   * Optional captcha verifier run before persistence. Should throw a
+   * StructuredError when verification fails; a no-op resolves the promise.
+   */
+  verifyCaptcha?: (input: unknown, request: Request) => Promise<void>
 }>
 
 const defaults: AdmissionRouteDependencies = {
@@ -25,8 +30,9 @@ const defaults: AdmissionRouteDependencies = {
 }
 
 export function createAdmissionPostHandler(
-  dependencies: AdmissionRouteDependencies = defaults,
+  dependencies: Partial<AdmissionRouteDependencies> = defaults,
 ): (request: Request) => Promise<Response> {
+  const { createRequest, submit, verifyCaptcha } = { ...defaults, ...dependencies }
   return async (request) => {
     const correlationId = requestCorrelationId(request)
     try {
@@ -38,7 +44,8 @@ export function createAdmissionPostHandler(
         }), correlationId)
       }
       const input = await parseBoundedJsonObject(request, PUBLIC_SUBMISSION_MAX_BYTES)
-      const result = await dependencies.submit(input, await dependencies.createRequest(request))
+      if (verifyCaptcha) await verifyCaptcha(input, request)
+      const result = await submit(input, await createRequest(request))
       if (!result.ok) return publicRouteError(new Error('Admission persistence failed.'), correlationId)
       return Response.json({ ok: true, reference: result.reference }, { status: 201 })
     } catch (error) {

@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { TurnstileWidget, isCaptchaEnabled } from "@/components/turnstile-widget";
 
 type FormData = {
   // Student Details
@@ -98,6 +100,11 @@ export default function ApplyPage() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  const handleCaptcha = useCallback((token: string | null) => {
+    setCaptchaToken(token);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -114,6 +121,13 @@ export default function ApplyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isCaptchaEnabled && !captchaToken) {
+      setErrorMessage("Please complete the captcha before submitting.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
     setErrorMessage("");
 
@@ -122,6 +136,7 @@ export default function ApplyPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          captchaToken,
           studentName: form.studentFullName,
           dateOfBirth: form.dateOfBirth,
           gender: form.gender,
@@ -154,6 +169,7 @@ export default function ApplyPage() {
       if (res.ok && isAdmissionApiResponse(data) && data.ok) {
         setStatus("success");
         setForm(initialForm);
+        setCaptchaToken(null);
       } else {
         const message = isAdmissionApiResponse(data) && !data.ok
           ? data.error?.message
@@ -189,7 +205,8 @@ export default function ApplyPage() {
 
         {/* Form */}
         <section className="bg-white py-16 md:py-20">
-          <div className="mx-auto max-w-4xl px-6">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="max-w-4xl">
             {status === "success" ? (
               <div className="text-center py-16">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
@@ -201,12 +218,15 @@ export default function ApplyPage() {
                 <p className="mt-3 text-sm text-ink-600">
                   Thank you for your application. Our admissions team will review it and contact you shortly.
                 </p>
-                <button
+                <Button
+                  type="button"
+                  variant="teal"
+                  size="md"
+                  className="mt-8"
                   onClick={() => setStatus("idle")}
-                  className="mt-8 inline-flex items-center rounded-full bg-teal-800 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700"
                 >
                   Submit Another Application
-                </button>
+                </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
@@ -379,6 +399,13 @@ export default function ApplyPage() {
                   </p>
                 </div>
 
+                {/* Captcha */}
+                {isCaptchaEnabled && (
+                  <div>
+                    <TurnstileWidget onVerify={handleCaptcha} action="admission" />
+                  </div>
+                )}
+
                 {/* Error message */}
                 {status === "error" && (
                   <div className="bg-red-50 border border-red-200 p-4 text-sm text-red-700">
@@ -388,16 +415,19 @@ export default function ApplyPage() {
 
                 {/* Submit */}
                 <div>
-                  <button
+                  <Button
                     type="submit"
+                    variant="primary"
+                    size="lg"
+                    className="font-bold"
                     disabled={status === "submitting"}
-                    className="inline-flex items-center rounded-full bg-yellow-500 px-8 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {status === "submitting" ? "Submitting..." : "Submit Application"}
-                  </button>
+                  </Button>
                 </div>
               </form>
             )}
+            </div>
           </div>
         </section>
       </main>

@@ -6,7 +6,7 @@ import { MobileNav } from "@/components/mobile-nav";
 import { AnnouncementsBar } from "@/components/announcements-bar";
 import { SearchToggle } from "@/components/search-toggle";
 import { LoginDropdown } from "@/components/login-dropdown";
-import { Breadcrumb } from "@/components/breadcrumb";
+import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -34,13 +34,12 @@ export function SiteHeader() {
           {/* Right: Login + Apply Now + Search */}
           <div className="flex items-center gap-2">
             <LoginDropdown />
-            <Link
-              href="/apply"
-              className="inline-flex items-center gap-1.5 rounded-full bg-yellow-600 px-4 py-2 text-sm font-semibold text-ink-900 transition hover:bg-yellow-500"
-            >
-              Apply Now
-              <ArrowRight className="size-3.5" />
-            </Link>
+            <Button asChild variant="primary" size="sm">
+              <Link href="/apply">
+                Apply Now
+                <ArrowRight className="size-3.5" />
+              </Link>
+            </Button>
             <SearchToggle />
           </div>
         </div>
