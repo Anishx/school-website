@@ -9,13 +9,13 @@ export function HeroSection() {
     >
       {/* Background image */}
       <Image
-        src="/hero-cover.jpg"
+        src="/hero-v2.jpg"
         alt="Apollo Vidhyalayam campus"
         fill
         priority
         quality={95}
-        className="object-cover scale-110"
-        style={{ objectPosition: "calc(50% - 230px) center" }}
+        className="object-cover scale-[1.2]"
+        style={{ objectPosition: "calc(50% - 120px) calc(50% + 175px)" }}
         sizes="100vw"
       />
 

@@ -35,9 +35,7 @@ export const navItems: NavItem[] = [
     title: "Admissions",
     compact: [
       { title: "Why Us", href: "/why-us" },
-      { title: "Programs", href: "/programs" },
       { title: "Admission Process", href: "/admissions" },
-      { title: "Fee Structure", href: "/admissions#fee-structure" },
     ],
   },
   {
@@ -55,10 +53,8 @@ export const navItems: NavItem[] = [
     compact: [
       { title: "Latest News", href: "/news-events?tab=latest" },
       { title: "Announcements", href: "/news-events?tab=announcements" },
-      { title: "Circulars", href: "/news-events?tab=circulars" },
-      { title: "Holiday List", href: "/news-events?tab=holidays" },
+      { title: "School Calendar", href: "/news-events?tab=calendar" },
       { title: "Downloads", href: "/news-events?tab=downloads" },
-      { title: "Newsletter", href: "/news-events?tab=newsletter" },
     ],
   },
   { title: "Mandatory Disclosure", href: "/mandatory-public-disclosure" },

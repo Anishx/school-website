@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "avn.viceprincipal@gmail.com",
+    value: "admissions@apollovidhyalayam.com",
   },
 ];
 

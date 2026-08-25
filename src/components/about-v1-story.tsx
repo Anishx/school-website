@@ -59,7 +59,7 @@ export function AboutV1Story() {
                 <h3 className="text-sm font-bold text-ink-900">Our Vision</h3>
                 <div className="mt-2 mb-3 h-px w-full bg-teal-800" />
                 <p className="text-sm leading-relaxed text-ink-600">
-                  To nurture confident, compassionate, and future-ready learners through holistic education, empowering every child to realise their fullest potential and contribute meaningfully to society.
+                  To inspire young minds to learn with purpose, live with compassion, and grow into responsible individuals who make a meaningful difference.
                 </p>
               </div>
 

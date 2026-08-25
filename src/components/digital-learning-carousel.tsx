@@ -11,21 +11,21 @@ const slides = [
     title: "Interactive Learning Spaces",
     description:
       "28 classrooms are equipped with smart boards, creating interactive and engaging learning experiences through multimedia content and digital teaching resources.",
-    image: "/images/computer/computer-class.jpg",
+    image: "/images/new/smartboard-class.jpg",
   },
   {
     id: "ai-learning",
     title: "AI-Enabled Learning",
     description:
       "Artificial Intelligence (AI)-based learning tools are introduced from Kindergarten onwards as part of the computer education programme, fostering digital literacy and future-ready skills from an early age.",
-    image: "/images/computer/boy-computer.jpg",
+    image: "/images/new/projector.png",
   },
   {
     id: "tech-integrated",
     title: "Technology-Integrated Education",
     description:
       "Digital resources, interactive lessons, and technology-driven teaching methodologies encourage collaboration, creativity, critical thinking, and experiential learning across subjects.",
-    image: "/images/computer/teacher-computer.jpg",
+    image: "/images/new/teacher-smartboard.jpg",
   },
 ];
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const programmes = [
   {
@@ -8,7 +9,7 @@ const programmes = [
     subtitle: "KINDERGARTEN",
     description:
       "A joyful environment where young learners develop foundational skills through play-based learning, storytelling, and creative activities.",
-    image: "/images/classroom/reading.jpg",
+    image: "/images/new/kids-playground.jpg",
   },
   {
     title: "Primary School",
@@ -22,7 +23,7 @@ const programmes = [
     subtitle: "GRADES VI – VIII",
     description:
       "Deeper conceptual understanding with balanced curriculum strengthening analytical thinking, leadership, and collaboration.",
-    image: "/images/classroom/homework.jpg",
+    image: "/images/new/HighSchool.jpg",
   },
   {
     title: "Secondary School",
@@ -35,7 +36,7 @@ const programmes = [
 
 export function AcademicProgrammesSection() {
   return (
-    <section className="bg-teal-900 py-16 md:py-24">
+    <section id="academics" className="bg-teal-900 py-16 md:py-24 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
         <div className="text-center">
@@ -52,7 +53,7 @@ export function AcademicProgrammesSection() {
           {programmes.map((prog) => (
             <Link
               key={prog.title}
-              href="/programs"
+              href="/admissions"
               className="group relative overflow-hidden block"
             >
               {/* Image */}
@@ -84,13 +85,12 @@ export function AcademicProgrammesSection() {
 
         {/* CTA button */}
         <div className="mt-10 flex justify-center">
-          <Link
-            href="/programs"
-            className="inline-flex items-center gap-2 rounded-full bg-yellow-600 px-6 py-3 text-sm font-bold text-ink-900 transition hover:bg-yellow-500"
-          >
-            LEARNING AT AVN
-            <ArrowRight className="size-4" />
-          </Link>
+          <Button asChild variant="primary" size="lg" className="gap-2 font-bold">
+            <Link href="/admissions">
+              LEARNING AT AV
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
