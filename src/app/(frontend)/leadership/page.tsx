@@ -44,22 +44,22 @@ const governed: Leader[] = [
     organization: "AHEL",
     image: "/images/leadership/joint-managing-director.jpeg",
   },
+  
+  // {
+  //   name: "Mr. Prem Anand S",
+  //   title: "Chief Executive Officer",
+  //   organization: "Apollo Foundation - Total Health",
+  //   image: "/images/leadership/ceo.jpeg",
+  // },
+];
+
+const managed: Leader[] = [
   {
     name: "Ms. Upasana Kamineni Konidela",
     title: "Vice Chairperson",
     organization: "Apollo Foundation",
     image: "/images/leadership/vice-chairperson.jpeg",
   },
-  {
-    name: "Mr. Prem Anand S",
-    title: "Chief Executive Officer",
-    organization: "Apollo Foundation - Total Health",
-    image: "/images/leadership/ceo.jpeg",
-  },
-];
-
-const managed: Leader[] = [
-  
 ];
 
 function LeaderCard({ leader }: { leader: Leader }) {
@@ -126,7 +126,7 @@ export default function LeadershipPage() {
         {/* Governed By */}
         <section className="bg-teal-800 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
-            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Governed & Managed By</h2>
+            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Our Patrons</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {governed.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
@@ -136,16 +136,16 @@ export default function LeadershipPage() {
         </section>
 
         {/* Managed By */}
-        {/* <section className="bg-teal-900 py-16 md:py-20">
+        <section className="bg-teal-900 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
-            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Managed By</h2>
+            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Governed By</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {managed.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
               ))}
             </div>
           </div>
-        </section> */}
+        </section>
       </main>
     </>
   );
