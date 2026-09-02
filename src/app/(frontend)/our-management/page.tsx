@@ -20,7 +20,7 @@ const board: Leader[] = [
     name: "Mr. Poorna Chandra Reddy",
     title: "Board Member",
     organization: "Apollo Foundation",
-    image: "/images/leadership/poornachandra_reddy.png",
+    image: "/images/leadership/poornachandraReddy.png",
   },
   {
     name: "Ms. Sangeetha Reddy",
