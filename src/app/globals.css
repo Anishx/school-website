@@ -21,6 +21,16 @@
   --header-height: 140px;
 }
 
+html,
+body {
+  max-width: 100%;
+  /* Prevent stray horizontal scrolling (e.g. sub-pixel rounding at fractional
+     display scaling like 150%, or full-bleed sections with side borders).
+     `clip` is used instead of `hidden` so it does NOT create a scroll
+     container, keeping the sticky site header working. */
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-canvas-100);
   color: var(--color-ink-800);

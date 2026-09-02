@@ -16,7 +16,7 @@ const slides: HeroSlide[] = [
     src: "/hero-v2.jpg",
     alt: "Apollo Vidhyalayam campus",
     className: "object-cover scale-[1.2]",
-    objectPosition: "calc(50% - 120px) calc(50% + 175px)",
+    objectPosition: "calc(50% - 70px) calc(50% + 100px)",
   },
   {
     src: "/hero-2.JPG",
