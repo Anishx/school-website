@@ -27,6 +27,7 @@ export const navItems: NavItem[] = [
     compact: [
       { title: "Know Us", href: "/about-us", icon: GraduationCap },
       { title: "Leadership", href: "/leadership" },
+      { title: "Our Management", href: "/our-management" },
       { title: "Gallery", href: "/gallery" },
       { title: "Download School Brochure", href: "#brochure", icon: Download },
     ],

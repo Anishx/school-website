@@ -1,23 +1,89 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
+type HeroSlide = {
+  src: string;
+  alt: string;
+  className: string;
+  objectPosition?: string;
+};
+
+// The current hero image is retained as the first slide.
+const slides: HeroSlide[] = [
+  {
+    src: "/hero-v2.jpg",
+    alt: "Apollo Vidhyalayam campus",
+    className: "object-cover scale-[1.2]",
+    objectPosition: "calc(50% - 120px) calc(50% + 175px)",
+  },
+  {
+    src: "/hero-2.JPG",
+    alt: "Students at Apollo Vidhyalayam",
+    className: "object-cover scale-[1.2]",
+    objectPosition: "left bottom",
+  },
+  {
+    src: "/hero-3.jpg",
+    alt: "Apollo Vidhyalayam school life",
+    className: "object-cover",
+    objectPosition: "center",
+  },
+   {
+    src: "/hero-4.jpg",
+    alt: "Students at Apollo Vidhyalayam",
+    className: "object-cover",
+    objectPosition: "center",
+  },
+  {
+    src: "/hero-5.png",
+    alt: "Apollo Vidhyalayam school life",
+    className: "object-cover",
+    objectPosition: "center",
+  },
+];
+
+const SLIDE_INTERVAL_MS = 5000;
+const FADE_DURATION_MS = 1000;
+
 export function HeroSection() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, SLIDE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section
       className="relative flex flex-col overflow-hidden"
       style={{ height: "calc(100svh - var(--header-height, 110px))" }}
       aria-label="Hero"
     >
-      {/* Background image */}
-      <Image
-        src="/hero-v2.jpg"
-        alt="Apollo Vidhyalayam campus"
-        fill
-        priority
-        quality={95}
-        className="object-cover scale-[1.2]"
-        style={{ objectPosition: "calc(50% - 120px) calc(50% + 175px)" }}
-        sizes="100vw"
-      />
+      {/* Background image carousel — fade only, no other animation */}
+      {slides.map((slide, index) => (
+        <Image
+          key={slide.src}
+          src={slide.src}
+          alt={slide.alt}
+          fill
+          priority={index === 0}
+          quality={95}
+          className={`${slide.className} transition-opacity ease-in-out ${
+            index === active ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            objectPosition: slide.objectPosition,
+            transitionDuration: `${FADE_DURATION_MS}ms`,
+          }}
+          sizes="100vw"
+          aria-hidden={index !== active}
+        />
+      ))}
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />

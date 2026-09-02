@@ -7,6 +7,7 @@ const pathLabels: Record<string, string> = {
   "about-us": "About Us",
   "why-us": "Why Us",
   "leadership": "Leadership",
+  "our-management": "Our Management",
   "programs": "Programs",
   "admissions": "Admissions",
   "apply": "Apply Now",
