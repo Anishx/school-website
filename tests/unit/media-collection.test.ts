@@ -1,5 +1,5 @@
 import { ValidationError, type CollectionConfig, type PayloadRequest } from 'payload'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import {
   MEDIA_MIME_TYPES,
@@ -11,6 +11,8 @@ import {
   withMediaVerificationContext,
 } from '../../src/collections/Media'
 import { buildUser } from '../fixtures'
+import { buildSyntheticImage } from '../fixtures/assets'
+import { verifyPersistedMedia } from '../../src/cms/media/verification'
 
 const NOW = new Date('2030-01-15T10:00:00.000Z')
 
@@ -43,7 +45,7 @@ describe('media collection schema and access', () => {
 
     expect(names).toEqual([
       'title', 'originalFilename', 'category', 'alt', 'decorative', 'caption',
-      'uploadedBy', 'uploadedAt', 'verificationStatus',
+      'uploadedBy', 'uploadedAt', 'verificationStatus', 'verificationMessage',
     ])
     expect(config.upload).toMatchObject({
       mimeTypes: MEDIA_MIME_TYPES,
@@ -57,10 +59,11 @@ describe('media collection schema and access', () => {
       (field) => 'name' in field && field.name === 'verificationStatus',
     )
     expect(verificationStatus).toMatchObject({
-      required: true,
       defaultValue: 'pending',
       options: MEDIA_VERIFICATION_STATUSES.map((status) => expect.objectContaining({ value: status })),
+      admin: { readOnly: true },
     })
+    expect(verificationStatus).not.toHaveProperty('required', true)
   })
 
   it('allows public reads only for verified assets and projects only rendering metadata', async () => {
@@ -122,10 +125,19 @@ describe('media metadata lifecycle', () => {
     })
 
     expect(prepared).toMatchObject({
-      title: 'Assembly photograph', originalFilename: 'assembly.png', category: 'campus life',
+      title: 'Assembly photograph', originalFilename: 'stored-assembly.png', category: 'campus life',
       alt: 'Students at assembly', decorative: false,
       uploadedBy: 'teacher-001', uploadedAt: NOW.toISOString(), verificationStatus: 'pending',
     })
+  })
+
+  it('derives the read-only original filename from Payload native upload metadata', () => {
+    const req = request(buildUser({ id: 'teacher-001', role: 'teacher', active: true }))
+    req.file = { name: 'selected-from-computer.png' } as PayloadRequest['file']
+    const data = validMedia()
+    delete data.originalFilename
+    const prepared = prepareMediaData({ data, operation: 'create', req, now: NOW })
+    expect(prepared.originalFilename).toBe('selected-from-computer.png')
   })
 
   it('normalizes decorative image accessibility and preserves immutable ownership/status on ordinary updates', () => {
@@ -159,5 +171,28 @@ describe('media metadata lifecycle', () => {
     expect(() => prepareMediaData({
       data: validMedia({ title: ' ' }), operation: 'create', req: request(buildUser()), now: NOW,
     })).toThrow(ValidationError)
+  })
+})
+
+describe('native media verification hook', () => {
+  it('verifies the created row in place instead of creating a duplicate media record', async () => {
+    const image = buildSyntheticImage('png')
+    const update = vi.fn().mockResolvedValue({})
+    const req = request(buildUser({ id: 'admin-001', role: 'admin', active: true }))
+    req.file = { name: image.filename, data: Buffer.from(image.bytes) } as PayloadRequest['file']
+    req.payload = { update } as unknown as PayloadRequest['payload']
+
+    await expect(verifyPersistedMedia({
+      id: 'media-1', filename: image.filename, originalFilename: image.filename,
+      mimeType: image.mimeType, filesize: image.bytes.length, alt: 'Students',
+      decorative: false, verificationStatus: 'pending',
+    }, req)).resolves.toMatchObject({ verificationStatus: 'verified' })
+
+    expect(update).toHaveBeenCalledOnce()
+    expect(update).toHaveBeenCalledWith(expect.objectContaining({
+      collection: 'media', id: 'media-1', data: { verificationStatus: 'verified', verificationMessage: null },
+    }))
+    expect(update.mock.calls[0][0].req.file).toBeUndefined()
+    expect(req.file?.data).toBeDefined()
   })
 })

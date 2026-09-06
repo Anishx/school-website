@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import eventsData from "@/data/events.json";
 
-type EventItem = {
+export type NewsCardItem = {
   id: string;
   title: string;
   date: string;
@@ -15,13 +15,13 @@ type EventItem = {
   image: string;
 };
 
-const events: EventItem[] = eventsData as EventItem[];
-const sortedEvents = [...events].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-);
+const events: NewsCardItem[] = eventsData as NewsCardItem[];
 
-export function NewsEventsSection() {
+export function NewsEventsSection({ items }: { items?: readonly NewsCardItem[] }) {
   const [scrollEl, setScrollEl] = useState<HTMLDivElement | null>(null);
+  const sortedEvents = [...(items === undefined ? events : items)].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   function scrollRight() {
     scrollEl?.scrollBy({ left: 320, behavior: "smooth" });

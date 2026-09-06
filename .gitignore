@@ -45,3 +45,6 @@ next-env.d.ts
 
 # local browser-automation & design artifacts
 .playwright-mcp/
+
+# local codebase analysis artifacts
+/graphify-out/

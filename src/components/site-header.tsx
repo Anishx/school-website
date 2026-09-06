@@ -7,12 +7,14 @@ import { AnnouncementsBar } from "@/components/announcements-bar";
 import { SearchToggle } from "@/components/search-toggle";
 import { LoginDropdown } from "@/components/login-dropdown";
 import { Button } from "@/components/ui/button";
+import { getAnnouncementBar } from "@/cms/public/loaders";
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const announcementBar = await getAnnouncementBar();
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-[0_1px_8px_rgba(47,49,58,0.06)]">
       {/* Announcements bar */}
-      <AnnouncementsBar />
+      <AnnouncementsBar initial={announcementBar} />
 
       {/* Logo bar */}
       <div className="border-b border-line-200">

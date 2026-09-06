@@ -130,6 +130,12 @@ function smtpValues(source: EnvironmentSource): SmtpDisabled | SmtpEnabled {
   if (secureText !== 'true' && secureText !== 'false') {
     throw new Error('Invalid server environment variable: SMTP_SECURE')
   }
+  if (port === 587 && secureText === 'true') {
+    throw new Error('Invalid SMTP configuration: SMTP_SECURE must be false when SMTP_PORT is 587')
+  }
+  if (port === 465 && secureText === 'false') {
+    throw new Error('Invalid SMTP configuration: SMTP_SECURE must be true when SMTP_PORT is 465')
+  }
 
   return Object.freeze({
     SMTP_ENABLED: true,

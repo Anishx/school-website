@@ -7,7 +7,14 @@ import { ERROR_CODES } from '../errors/codes'
 import { StructuredError } from '../errors/structured-error'
 
 export const MEDIA_REFERENCE_SOURCES = [
-  { collection: 'content-sections', kind: 'content', paths: ['media', 'replacementMedia', 'blocks.media', 'blocks.image'] },
+  {
+    collection: 'content-sections',
+    kind: 'content',
+    paths: [
+      'media', 'replacementMedia', 'blocks.media', 'blocks.image',
+      'sports.cards.image', 'clubs.flagship.image', 'clubs.cards.image',
+    ],
+  },
   { collection: 'editorial', kind: 'editorial', paths: ['image', 'media'] },
   { collection: 'documents', kind: 'document', paths: ['media', 'pdf', 'document'] },
   { collection: 'galleries', kind: 'gallery', paths: ['cover', 'coverMedia', 'images.media'] },

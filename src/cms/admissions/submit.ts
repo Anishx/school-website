@@ -85,7 +85,7 @@ export async function submitAdmission(
 
   try {
     const createdAdmission = await req.payload.create({
-      collection: 'admissions', data: admission, overrideAccess: false, req: transactionReq,
+      collection: 'admissions', data: admission as never, overrideAccess: false, req: transactionReq,
     })
     const sourceId = identifier(createdAdmission)
     reference = referenceCode(createdAdmission) ?? ''

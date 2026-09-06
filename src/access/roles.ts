@@ -7,13 +7,28 @@ export type AccessSubject = Readonly<{
   id?: unknown
   role?: unknown
   active?: unknown
+  contentAccess?: unknown
+  contentPermissions?: unknown
 }> | null | undefined
 
 export type AuthenticatedPrincipal = Readonly<{
   id: PrincipalID
   role: SupportedRole
   active: true
+  contentAccess?: 'custom'
+  contentPermissions?: readonly ContentPermission[]
 }>
+
+export const CONTENT_PERMISSIONS = ['edit', 'remove', 'approve'] as const
+export type ContentPermission = (typeof CONTENT_PERMISSIONS)[number]
+
+export function hasContentPermission(subject: AccessSubject, permission: ContentPermission): boolean {
+  const principal = resolvePrincipal(subject)
+  if (!principal) return false
+  if (principal.role === 'admin' || principal.role === 'principal') return true
+  return principal.role === 'teacher' && principal.contentAccess === 'custom'
+    && principal.contentPermissions?.includes(permission) === true
+}
 
 const supportedRoleSet: ReadonlySet<string> = new Set(SUPPORTED_ROLES)
 
@@ -34,7 +49,13 @@ export function resolvePrincipal(subject: AccessSubject): AuthenticatedPrincipal
   const role = supportedRole(subject.role)
   if (!role) return null
 
-  return Object.freeze({ id: subject.id, role, active: true })
+  return Object.freeze({ id: subject.id, role, active: true,
+    ...(subject.contentAccess === 'custom' ? {
+      contentAccess: 'custom' as const,
+      contentPermissions: Object.freeze(Array.isArray(subject.contentPermissions)
+        ? subject.contentPermissions.filter((value): value is ContentPermission => CONTENT_PERMISSIONS.includes(value)) : []),
+    } : {}),
+  })
 }
 
 export function hasRole(subject: AccessSubject, ...roles: readonly SupportedRole[]): boolean {

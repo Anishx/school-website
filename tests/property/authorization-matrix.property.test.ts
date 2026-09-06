@@ -135,9 +135,7 @@ function expectedQueryDecision(
     if (resource === 'audit-records') return false
     if (resource === 'notification-deliveries') return operation === 'read'
     if (resource === 'users') {
-      return operation === 'read' || operation === 'update'
-        ? { id: { equals: actor.id } }
-        : false
+      return operation === 'create' ? true : { role: { not_equals: 'principal' } }
     }
     return adminResources.has(resource)
   }
@@ -192,9 +190,7 @@ function expectedRecordDecision(input: Readonly<{
     if (resource === 'audit-records') return false
     if (resource === 'notification-deliveries') return operation === 'read'
     if (resource === 'users') {
-      return (operation === 'read' || operation === 'update')
-        && input.ownProfile
-        && input.targetRole !== 'principal'
+      return operation === 'create' || input.targetRole !== 'principal'
     }
     return adminResources.has(resource)
   }

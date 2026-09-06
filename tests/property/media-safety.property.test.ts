@@ -66,7 +66,7 @@ describe('media safety property', () => {
 
         await expectStructuredRejection(uploadFrom({
           ...image,
-          bytes: appendText(image.bytes, unsafeHeader),
+          bytes: Uint8Array.from([...encoder.encode(unsafeHeader), ...image.bytes]),
         }, { alt: 'Safe image description' }))
 
         await expectStructuredRejection(uploadFrom({

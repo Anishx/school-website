@@ -1,5 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { FileText } from "lucide-react";
+import { getDocuments, getWebsiteSettings } from "@/cms/public/loaders";
+import { contentForSource } from "@/cms/public/content-source";
 
 type Document = {
   title: string;
@@ -26,7 +28,10 @@ const documents: Document[] = [
   { title: "Affiliation Letter", href: "#" },
 ];
 
-export default function MandatoryPublicDisclosurePage() {
+export default async function MandatoryPublicDisclosurePage() {
+  const [allDocuments, settings] = await Promise.all([getDocuments(), getWebsiteSettings()]);
+  const managed = allDocuments.filter((item) => item.placements.includes("mandatory-disclosure"));
+  const visibleDocuments = contentForSource(settings.contentSources.mandatoryDisclosure, documents, managed, (item) => item.title);
   return (
     <>
       <SiteHeader />
@@ -64,7 +69,7 @@ export default function MandatoryPublicDisclosurePage() {
               </div>
 
               {/* Rows */}
-              {documents.map((doc, index) => (
+              {visibleDocuments.map((doc, index) => (
                 <div
                   key={doc.title}
                   className={`grid grid-cols-[60px_1fr_140px] items-center px-4 py-3 md:grid-cols-[80px_1fr_160px] ${
@@ -77,14 +82,7 @@ export default function MandatoryPublicDisclosurePage() {
                     {doc.title}
                   </span>
                   <div className="text-center">
-                    <a
-                      href={doc.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center rounded bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-sky-700"
-                    >
-                      View Document
-                    </a>
+                    {doc.href !== "#" ? <a href={doc.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-sky-700">View Document</a> : <span className="text-xs font-medium text-ink-500">Not available yet</span>}
                   </div>
                 </div>
               ))}

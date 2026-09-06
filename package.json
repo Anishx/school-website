@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +9,11 @@
     "start": "next start",
     "lint": "eslint",
     "generate:importmap": "payload generate:importmap",
+    "generate:types": "payload generate:types",
+    "payload": "payload",
+    "seed:cms": "payload run src/cms/migration/seed-editable-content.ts",
+    "seed:cms:compare": "payload run src/cms/migration/seed-editable-content.ts -- --compare",
+    "seed:cms:apply": "payload run src/cms/migration/seed-editable-content.ts -- --apply",
     "test:unit": "vitest --run tests/unit",
     "test:property": "vitest --run tests/property",
     "test:integration": "node -e \"if (process.env.RUN_DATABASE_TESTS !== 'true') { console.error('Set RUN_DATABASE_TESTS=true to run database integration tests.'); process.exit(1) }\" && vitest --run tests/integration",

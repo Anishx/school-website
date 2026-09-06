@@ -160,7 +160,7 @@ export async function createNotificationDeliveryAttempt(
 ): Promise<unknown> {
   return req.payload.create({
     collection: 'notification-deliveries',
-    data: buildDeliveryAttemptData(input, req),
+    data: buildDeliveryAttemptData(input, req) as never,
     context: trustedContext(req.context, 'create-attempt'),
     overrideAccess: false,
     req,
@@ -176,7 +176,7 @@ export async function updateNotificationDeliveryResult(
   return req.payload.update({
     collection: 'notification-deliveries',
     id,
-    data: buildDeliveryResultData(result, req),
+    data: buildDeliveryResultData(result, req) as never,
     context: trustedContext(req.context, 'update-result'),
     overrideAccess: false,
     req,

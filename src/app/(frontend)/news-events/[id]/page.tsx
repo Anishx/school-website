@@ -4,6 +4,9 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import eventsData from "@/data/events.json";
+import { getEditorial, getWebsiteSettings } from "@/cms/public/loaders";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import type { SerializedEditorState } from "lexical";
 
 type EventItem = {
   id: string;
@@ -31,7 +34,22 @@ function formatDate(dateStr: string) {
 
 export default async function EventDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const event = events.find((e) => e.id === id);
+  const [editorial, settings] = await Promise.all([getEditorial(), getWebsiteSettings()]);
+  const managed = settings.contentSources.resourcesNews !== "legacy"
+    ? editorial.find((item) => item.kind !== "announcement" && item.slug === id)
+    : undefined;
+  const legacy = events.find((item) => item.id === id);
+  const event = managed ? {
+    id: managed.slug!,
+    title: managed.title,
+    date: managed.date,
+    category: managed.category ?? (managed.kind === "event" ? "Event" : "News"),
+    featured: managed.featured ?? false,
+    image: managed.image?.src ?? "/images/campus/entrance.jpg",
+    imageAlt: managed.image?.alt || managed.title,
+    body: managed.body ?? managed.summary ?? "",
+    bodyRichText: managed.bodyRichText,
+  } : settings.contentSources.resourcesNews !== "managed" && legacy ? { ...legacy, imageAlt: legacy.title } : null;
 
   if (!event) {
     notFound();
@@ -45,7 +63,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
         <div className="relative h-[300px] md:h-[400px] lg:h-[500px]">
           <Image
             src={event.image}
-            alt={event.title}
+            alt={event.imageAlt}
             fill
             priority
             className="object-cover"
@@ -62,7 +80,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
             className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 hover:text-teal-900"
           >
             <ArrowLeft className="size-4" />
-            Back to News & Events
+            Back to Resources
           </Link>
 
           {/* Category & Date */}
@@ -80,7 +98,9 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
 
           {/* Body */}
           <div className="mt-8 text-base leading-relaxed text-ink-600 md:text-lg md:leading-relaxed">
-            <p>{event.body}</p>
+            {"bodyRichText" in event && event.bodyRichText
+              ? <RichText data={event.bodyRichText as unknown as SerializedEditorState} />
+              : event.body.split(/\n\n+/).map((paragraph) => <p className="mt-4 first:mt-0" key={paragraph}>{paragraph}</p>)}
           </div>
         </article>
       </main>

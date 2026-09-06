@@ -1,4 +1,6 @@
 import { CalendarDays, Clock, PartyPopper, Info } from "lucide-react";
+import type { CalendarDTO, ContentSource } from "@/cms/public/dto";
+import { contentForSource } from "@/cms/public/content-source";
 
 type Row = { label: string; value: string; emphasis?: boolean };
 
@@ -84,7 +86,7 @@ function DataTable({
   headers,
   labelClassName = "font-semibold text-ink-900",
 }: {
-  rows: Row[];
+  rows: readonly Row[];
   headers?: [string, string];
   labelClassName?: string;
 }) {
@@ -151,15 +153,24 @@ function SectionHeading({
   );
 }
 
-export function SchoolCalendarTab() {
+export function SchoolCalendarTab({ data, source = 'legacy' }: { data?: CalendarDTO | null; source?: ContentSource }) {
+  const rowsForSource = (legacy: readonly Row[], managed: readonly Row[] = []) =>
+    contentForSource(source, legacy, managed, (row) => row.label);
+  const visibleTermBreaks = rowsForSource(termBreaks, data?.termBreaks);
+  const visibleAssessments = rowsForSource(examTimetable, data?.assessments);
+  const visibleGradeXMeetings = rowsForSource(orientationClassX, data?.gradeXMeetings);
+  const visibleReportMeetings = rowsForSource(reportMeetings, data?.reportMeetings);
+  const visibleSpecialDays = rowsForSource(specialDays.map((day) => ({ label: day.name, value: day.date })), data?.specialDays)
+    .map((row) => ({ name: row.label, date: row.value }));
+  const visibleDailySchedule = rowsForSource(dailySchedule, data?.dailySchedule);
+  const visiblePublicHolidays = rowsForSource(publicHolidays, data?.publicHolidays);
   return (
     <>
       <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">
-        School Calendar
+        {source === 'managed' ? data?.heading ?? "School Calendar" : "School Calendar"}
       </h2>
       <p className="mt-3 max-w-2xl text-sm text-ink-600">
-        Academic year 2026&ndash;27 &mdash; term breaks, examinations, parent meetings, the daily
-        timetable and public holidays.
+        {(source === 'managed' && data?.introduction) || "Academic year 2026–27 — term breaks, examinations, parent meetings, the daily timetable and public holidays."}
       </p>
 
       {/* ============ IMPORTANT DATES TO REMEMBER ============ */}
@@ -171,7 +182,7 @@ export function SchoolCalendarTab() {
           <div>
             <GroupLabel>Terms and Term Breaks</GroupLabel>
             <div className="mt-3">
-              <DataTable rows={termBreaks} />
+              <DataTable rows={visibleTermBreaks} />
             </div>
           </div>
 
@@ -180,7 +191,7 @@ export function SchoolCalendarTab() {
             <GroupLabel>Examination Timetable for Classes I to X</GroupLabel>
             <div className="mt-3">
               <DataTable
-                rows={examTimetable}
+                rows={visibleAssessments}
                 headers={["Exam", "Date"]}
                 labelClassName="text-ink-900"
               />
@@ -191,7 +202,7 @@ export function SchoolCalendarTab() {
           <div>
             <GroupLabel>Orientation Meeting for Parents (Class X)</GroupLabel>
             <div className="mt-3">
-              <DataTable rows={orientationClassX} />
+              <DataTable rows={visibleGradeXMeetings} />
             </div>
           </div>
 
@@ -199,7 +210,7 @@ export function SchoolCalendarTab() {
           <div>
             <GroupLabel>Report Meeting for Parents (KG to Class IX)</GroupLabel>
             <div className="mt-3">
-              <DataTable rows={reportMeetings} />
+              <DataTable rows={visibleReportMeetings} />
             </div>
           </div>
         </div>
@@ -212,7 +223,7 @@ export function SchoolCalendarTab() {
             occasions for a day of celebration and connection:
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {specialDays.map((day) => (
+            {visibleSpecialDays.map((day) => (
               <div
                 key={day.name}
                 className="border border-line-200 bg-canvas-50 px-5 py-5 text-center"
@@ -233,7 +244,7 @@ export function SchoolCalendarTab() {
         <SectionHeading icon={Clock}>Daily Schedule</SectionHeading>
         <div className="mt-8 max-w-3xl">
           <DataTable
-            rows={dailySchedule}
+            rows={visibleDailySchedule}
             headers={["Time", "KG to Class X"]}
             labelClassName="text-ink-700"
           />
@@ -245,7 +256,7 @@ export function SchoolCalendarTab() {
         <SectionHeading icon={CalendarDays}>Public Holidays | 2026 &ndash; 2027</SectionHeading>
         <div className="mt-8 max-w-3xl">
           <DataTable
-            rows={publicHolidays}
+            rows={visiblePublicHolidays}
             headers={["Date", "Holiday"]}
             labelClassName="text-ink-700"
           />

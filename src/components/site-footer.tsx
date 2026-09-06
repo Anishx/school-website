@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { SVGProps } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { getContact, getWebsiteSettings } from "@/cms/public/loaders";
 
 function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -79,7 +80,9 @@ const socialLinks = [
 const footerLinkClass =
   "text-sm text-white/60 transition-colors hover:text-white";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const [contact, settings] = await Promise.all([getContact(), getWebsiteSettings()]);
+  const showContact = settings.contentSources.contact === "legacy" || contact !== null;
   return (
     <footer className="bg-teal-900 text-white">
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-12 md:pt-14">
@@ -175,38 +178,37 @@ export function SiteFooter() {
               </ul>
             </div>
 
-            <div className="min-w-0 sm:col-span-2 xl:col-span-2">
+            {showContact && <div className="min-w-0 sm:col-span-2 xl:col-span-2">
               <h3 className="text-sm font-semibold text-white">Contact</h3>
               <ul className="mt-3 space-y-2.5">
                 <li className="flex min-w-0 items-start gap-2 text-sm text-white/60">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-white/40" />
                   <span className="min-w-0">
-                    Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129,
-                    Chittoor District, Andhra Pradesh
+                    {contact?.address ?? "Apollo Vidhyalayam, Jonnagurukula Road, Aragonda — 517129, Chittoor District, Andhra Pradesh"}
                   </span>
                 </li>
                 <li className="min-w-0">
                   <a
-                    href="tel:+918122761667"
+                    href={contact?.phoneHref ?? "tel:+918122761667"}
                     className="flex min-w-0 items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     <Phone className="size-4 shrink-0 text-white/40" />
-                    <span className="min-w-0">+91 81227 61667</span>
+                    <span className="min-w-0">{contact?.phoneDisplay ?? "+91 81227 61667"}</span>
                   </a>
                 </li>
                 <li className="min-w-0">
                   <a
-                    href="mailto:principal@apollovidhyalayam.com"
+                    href={`mailto:${contact?.principalEmail ?? "principal@apollovidhyalayam.com"}`}
                     className="flex min-w-0 items-start gap-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     <Mail className="mt-0.5 size-4 shrink-0 text-white/40" />
                     <span className="min-w-0 [overflow-wrap:anywhere]">
-                      principal@apollovidhyalayam.com
+                      {contact?.principalEmail ?? "principal@apollovidhyalayam.com"}
                     </span>
                   </a>
                 </li>
               </ul>
-            </div>
+            </div>}
           </div>
         </div>
 

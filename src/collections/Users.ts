@@ -7,11 +7,11 @@ import {
 } from 'payload'
 
 import { collectionAccessDecision } from '../access/collectionAccess'
-import { fieldAccessDecision } from '../access/fieldAccess'
+import { canManageUserAccessFields, fieldAccessDecision } from '../access/fieldAccess'
 import {
   SUPPORTED_ROLES,
+  CONTENT_PERMISSIONS,
   canEnterPayloadAdmin,
-  isPrincipal,
   resolvePrincipal,
   supportedRole,
   type PrincipalID,
@@ -26,6 +26,8 @@ export type UserAccessDocument = Readonly<{
   id: PrincipalID
   role?: unknown
   active?: unknown
+  contentAccess?: unknown
+  contentPermissions?: unknown
 }>
 
 export type UserAccessAuditEvent = Readonly<{
@@ -36,6 +38,7 @@ export type UserAccessAuditEvent = Readonly<{
   changes: Readonly<{
     role?: Readonly<{ from: StoredUserRole | null; to: StoredUserRole | null }>
     active?: Readonly<{ from: boolean | null; to: boolean | null }>
+    contentAccess?: Readonly<{ from: unknown; to: unknown }>
   }>
 }>
 
@@ -109,7 +112,7 @@ export async function bootstrapFirstUser(
     return nextData
   }
 
-  if (!isPrincipal(req.user)) throw new Forbidden(req.t)
+  if (!canManageUserAccessFields(req.user)) throw new Forbidden(req.t)
   return nextData
 }
 
@@ -165,8 +168,10 @@ export function buildUserAccessAuditEvent(
   const changes: UserAccessAuditEvent['changes'] = {
     ...(fromRole !== toRole ? { role: { from: fromRole, to: toRole } } : {}),
     ...(fromActive !== toActive ? { active: { from: fromActive, to: toActive } } : {}),
+    ...(JSON.stringify(accessSummary(previous)) !== JSON.stringify(accessSummary(doc))
+      ? { contentAccess: { from: accessSummary(previous), to: accessSummary(doc) } } : {}),
   }
-  if (!changes.role && !changes.active) return null
+  if (!changes.role && !changes.active && !changes.contentAccess) return null
 
   const actor = resolvePrincipal(actorInput as Parameters<typeof resolvePrincipal>[0])
   return Object.freeze({
@@ -176,6 +181,15 @@ export function buildUserAccessAuditEvent(
     timestamp,
     changes: Object.freeze(changes),
   })
+}
+
+function accessSummary(doc?: UserAccessDocument | null) {
+  return {
+    mode: doc?.contentAccess === 'custom' ? 'custom' : 'role',
+    edit: Array.isArray(doc?.contentPermissions) && doc.contentPermissions.includes('edit'),
+    remove: Array.isArray(doc?.contentPermissions) && doc.contentPermissions.includes('remove'),
+    approve: Array.isArray(doc?.contentPermissions) && doc.contentPermissions.includes('approve'),
+  }
 }
 
 async function enforceUserMutation(args: {
@@ -198,8 +212,17 @@ async function enforceUserMutation(args: {
     && (originalDoc?.role === 'principal' || next.role === 'principal')) {
     throw new Forbidden(req.t)
   }
-  if (actor && actor.role !== 'principal' && (roleChanged || activeChanged)) {
+  const permissionsChanged = ['contentAccess', 'contentPermissions'].some((field) => hasOwn(data, field)
+    && JSON.stringify(data[field]) !== JSON.stringify(originalDoc?.[field as keyof UserAccessDocument]))
+  if (actor && !canManageUserAccessFields(req.user) && (roleChanged || activeChanged || permissionsChanged)) {
     throw new Forbidden(req.t)
+  }
+  if (hasOwn(data, 'contentAccess') && !['role', 'custom'].includes(String(data.contentAccess))) {
+    throw new ValidationError({ collection: 'users', errors: [{ path: 'contentAccess', message: 'Choose role defaults or custom permissions.' }], req })
+  }
+  if (data.contentPermissions != null && (!Array.isArray(data.contentPermissions)
+    || data.contentPermissions.some((permission) => !CONTENT_PERMISSIONS.includes(permission)))) {
+    throw new ValidationError({ collection: 'users', errors: [{ path: 'contentPermissions', message: 'Choose supported content permissions.' }], req })
   }
 
   const nextRole = storedRole(next.role)
@@ -230,6 +253,7 @@ async function enforcePrincipalDelete(args: {
     overrideAccess: true,
     req: args.req,
   }) as UserAccessDocument
+  if (resolvePrincipal(args.req.user)?.role === 'admin' && doc.role === 'principal') throw new Forbidden(args.req.t)
   if (doc.role === 'principal' && doc.active === true) {
     await assertAnotherActivePrincipal(args.req, args.id)
   }
@@ -305,6 +329,7 @@ export function createUsersCollection(
         required: true,
         defaultValue: 'parent',
         saveToJWT: true,
+        admin: { description: 'Admins can manage Admin, Teacher, and Parent accounts. Principal accounts are managed by a Principal.' },
         options: [
           ...SUPPORTED_ROLES.map((role) => ({
             label: role[0].toUpperCase() + role.slice(1),
@@ -348,6 +373,32 @@ export function createUsersCollection(
             record: doc,
             value: data?.active,
           }),
+        },
+      },
+      {
+        name: 'contentAccess', type: 'select', defaultValue: 'role',
+        label: 'Website content access',
+        options: [{ label: 'Role defaults', value: 'role' }, { label: 'Custom staff permissions', value: 'custom' }],
+        admin: { description: 'Custom permissions apply to Teachers. Administrators and Principals retain full content access; Parents cannot enter the CMS.' },
+        access: {
+          create: ({ req }) => canManageUserAccessFields(req.user),
+          update: ({ req }) => canManageUserAccessFields(req.user),
+          read: ({ req }) => canEnterPayloadAdmin(req.user),
+        },
+      },
+      {
+        name: 'contentPermissions', type: 'select', hasMany: true,
+        label: 'Website permissions',
+        options: [
+          { label: 'Create and edit content / upload images', value: 'edit' },
+          { label: 'Remove content and unused images', value: 'remove' },
+          { label: 'Approve, publish, schedule, and withdraw content', value: 'approve' },
+        ],
+        admin: { condition: (_, siblingData) => siblingData?.contentAccess === 'custom', description: 'Applies across website sections, news, downloads, and Media Library. Editing without approval is limited to drafts.' },
+        access: {
+          create: ({ req }) => canManageUserAccessFields(req.user),
+          update: ({ req }) => canManageUserAccessFields(req.user),
+          read: ({ req }) => canEnterPayloadAdmin(req.user),
         },
       },
       {

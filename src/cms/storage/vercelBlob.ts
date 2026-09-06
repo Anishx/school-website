@@ -2,6 +2,7 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import type { PayloadRequest, UploadCollectionSlug } from 'payload'
 
 import { canEnterPayloadAdmin } from '../../access/roles'
+import { collectionAccessDecision } from '../../access/collectionAccess'
 import { env, type ServerEnvironment } from '../config/env'
 
 export const MEDIA_BLOB_COLLECTION = 'media' as const
@@ -16,6 +17,7 @@ export function canRequestMediaClientUpload(args: Readonly<{
   req: PayloadRequest
 }>): boolean {
   return args.collectionSlug === MEDIA_BLOB_COLLECTION && canEnterPayloadAdmin(args.req.user)
+    && collectionAccessDecision({ user: args.req.user, resource: 'media', operation: 'create' }) === true
 }
 
 /**

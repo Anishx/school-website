@@ -7,6 +7,7 @@ import {
   type AccessSubject,
   type SupportedRole,
   resolvePrincipal,
+  hasContentPermission,
 } from './roles'
 
 export const FIELD_POLICIES = [
@@ -59,12 +60,12 @@ export function canReadSensitiveData(user: AccessSubject): boolean {
 }
 
 export function canManageUserAccessFields(user: AccessSubject): boolean {
-  return resolvePrincipal(user)?.role === 'principal'
+  const role = resolvePrincipal(user)?.role
+  return role === 'principal' || role === 'admin'
 }
 
 export function canManagePublication(user: AccessSubject): boolean {
-  const role = resolvePrincipal(user)?.role
-  return role === 'principal' || role === 'admin'
+  return hasContentPermission(user, 'approve')
 }
 
 export function canContributeToDraft(
@@ -99,9 +100,10 @@ export function fieldAccessDecision(input: FieldAccessInput): boolean {
     case 'user-role':
     case 'user-active':
       if (input.operation === 'read') {
-        return principal.role === 'principal' || canReadOwnAccountField(input)
+        return canManageUserAccessFields(principal) || canReadOwnAccountField(input)
       }
-      return principal.role === 'principal'
+      return canManageUserAccessFields(principal)
+        && (principal.role === 'principal' || (input.record?.role !== 'principal' && (input.policy !== 'user-role' || input.value !== 'principal')))
 
     case 'sensitive-submission':
     case 'notification-setting':

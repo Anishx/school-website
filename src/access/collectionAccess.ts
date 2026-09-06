@@ -5,6 +5,7 @@ import {
   type AuthenticatedPrincipal,
   type PrincipalID,
   resolvePrincipal,
+  hasContentPermission,
 } from './roles'
 
 export const ACCESS_RESOURCES = [
@@ -158,9 +159,7 @@ function adminDecision(
   if (resource === 'audit-records') return false
   if (resource === 'notification-deliveries') return operation === 'read'
   if (resource === 'users') {
-    return operation === 'read' || operation === 'update'
-      ? { id: { equals: principal.id } }
-      : false
+    return operation === 'create' ? true : { role: { not_equals: 'principal' } }
   }
   return ADMIN_RESOURCES.has(resource)
 }
@@ -178,11 +177,23 @@ function teacherDecision(
   }
 
   if (resource === 'media') {
+    if (principal.contentAccess === 'custom') {
+      if (operation === 'read') return (principal.contentPermissions?.length ?? 0) > 0
+      return hasContentPermission(principal, operation === 'delete' ? 'remove' : 'edit')
+    }
     if (operation === 'create') return true
     return uploaderWhere(principal.id)
   }
 
   if (!DRAFT_RESOURCES.has(resource)) return false
+  if (principal.contentAccess === 'custom') {
+    if (operation === 'read') return (principal.contentPermissions?.length ?? 0) > 0
+    if (operation === 'delete') return hasContentPermission(principal, 'remove')
+    if (operation === 'create') return hasContentPermission(principal, 'edit')
+      && (requestedPublicationState === 'draft' || hasContentPermission(principal, 'approve'))
+    if (hasContentPermission(principal, 'approve')) return true
+    return hasContentPermission(principal, 'edit') ? { publicationState: { equals: 'draft' } } : false
+  }
   if (operation === 'create') {
     return requestedPublicationState === 'draft'
   }
@@ -227,10 +238,7 @@ export function canAccessCollectionRecord(input: CollectionAccessInput): boolean
 
   if (principal.role === 'admin') {
     if (input.resource === 'users') {
-      return (input.operation === 'read' || input.operation === 'update')
-        && input.record != null
-        && sameID(input.record.id, principal.id)
-        && input.record.role !== 'principal'
+      return input.operation === 'create' || (input.record != null && input.record.role !== 'principal')
     }
     return adminDecision(principal, input.resource, input.operation) === true
   }
@@ -241,10 +249,15 @@ export function canAccessCollectionRecord(input: CollectionAccessInput): boolean
       && sameID(input.record.id, principal.id)
   }
   if (input.resource === 'media') {
+    if (principal.contentAccess === 'custom') return teacherDecision(principal, input.resource, input.operation, input.requestedPublicationState) === true
     return input.operation === 'create'
       || isOwner(principal, input.record, 'uploadedBy')
   }
   if (!DRAFT_RESOURCES.has(input.resource)) return false
+  if (principal.contentAccess === 'custom') {
+    const decision = teacherDecision(principal, input.resource, input.operation, input.requestedPublicationState)
+    return decision === true || (typeof decision === 'object' && isDraft(input.record))
+  }
   if (input.operation === 'create') {
     return input.requestedPublicationState === 'draft'
   }

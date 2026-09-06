@@ -208,7 +208,12 @@ describe('media relationship-safe deletion property', () => {
         const expectedAllowed = graph.summaries.length === 0
 
         const check = await checkMediaDeletion(MEDIA_ID, request)
-        expect(check).toEqual({ allowed: expectedAllowed, references: expectedReferences })
+        const byRecord = (left: MediaReferenceSummary, right: MediaReferenceSummary) =>
+          String(left.recordId).localeCompare(String(right.recordId))
+        expect({ ...check, references: [...check.references].sort(byRecord) }).toEqual({
+          allowed: expectedAllowed,
+          references: [...expectedReferences].sort(byRecord),
+        })
 
         const deletion = await attemptDeletion({ user, ownsAsset, request })
         const shouldSucceed = canDelete(user, ownsAsset) && expectedAllowed

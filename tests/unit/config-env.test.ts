@@ -60,4 +60,16 @@ describe('server environment parsing', () => {
       SMTP_SECURE: false, SMTP_FROM_EMAIL: SYNTHETIC_RECIPIENTS.sender,
     })
   })
+
+  it.each([
+    { port: '587', secure: 'true', expected: 'SMTP_SECURE must be false' },
+    { port: '465', secure: 'false', expected: 'SMTP_SECURE must be true' },
+  ])('rejects an incompatible SMTP security mode for port $port', ({ port, secure, expected }) => {
+    expect(() => parseServerEnvironment({
+      ...productionSource,
+      SMTP_HOST: 'smtp.fixture.invalid', SMTP_PORT: port, SMTP_SECURE: secure,
+      SMTP_USER: 'sentinel-smtp-user', SMTP_PASS: SENTINEL_SECRETS.smtpPassword,
+      SMTP_FROM_EMAIL: SYNTHETIC_RECIPIENTS.sender, SMTP_FROM_NAME: 'Fixture Mailer',
+    })).toThrow(expected)
+  })
 })

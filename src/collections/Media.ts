@@ -3,13 +3,17 @@ import {
   ValidationError,
   type CollectionConfig,
   type PayloadRequest,
-  type RequestContext,
   type Where,
 } from 'payload'
 
 import { collectionAccessDecision } from '../access/collectionAccess'
-import { canEnterPayloadAdmin, resolvePrincipal } from '../access/roles'
-import { assertMediaCanBeDeleted } from '../cms/media/references'
+import { canEnterPayloadAdmin, hasContentPermission, resolvePrincipal } from '../access/roles'
+import { assertMediaCanBeDeleted, enumerateMediaReferences } from '../cms/media/references'
+import { captureMediaUpload, verifyPersistedMedia } from '../cms/media/verification'
+import { isMediaVerificationContext } from '../cms/media/verification-context'
+import { afterMediaChange } from '../cms/publication/hooks'
+
+export { withMediaVerificationContext } from '../cms/media/verification-context'
 
 export const MEDIA_VERIFICATION_STATUSES = ['pending', 'verified', 'failed'] as const
 export const MEDIA_MIME_TYPES = [
@@ -45,13 +49,6 @@ export type MediaDocument = Readonly<Record<string, unknown> & {
 export type CreateMediaCollectionOptions = Readonly<{
   now?: () => Date
 }>
-
-/**
- * Allows the server-side verification finalizer to transition an uploaded asset
- * after it has checked the stored bytes. It is intentionally not exported as a
- * client-visible value and ordinary collection mutations cannot set this marker.
- */
-export const MEDIA_VERIFICATION_CONTEXT = Symbol('media-verification-context')
 
 const MAX_TITLE_LENGTH = 160
 const MAX_FILENAME_LENGTH = 255
@@ -95,15 +92,6 @@ export function publicMediaProjection(record: MediaDocument | null | undefined):
     ...(height !== undefined ? { height } : {}),
     ...(caption !== undefined ? { caption } : {}),
   })
-}
-
-export function withMediaVerificationContext(context?: RequestContext): RequestContext {
-  return { ...context, [MEDIA_VERIFICATION_CONTEXT]: true }
-}
-
-function isVerificationContext(req: Pick<PayloadRequest, 'context'>): boolean {
-  const context = req.context as Record<PropertyKey, unknown> | undefined
-  return context?.[MEDIA_VERIFICATION_CONTEXT] === true
 }
 
 function payloadValidationFailure(
@@ -194,7 +182,10 @@ export function prepareMediaData(args: Readonly<{
 }>): Record<string, unknown> {
   const raw = { ...(args.data ?? {}) }
   const merged = args.operation === 'update' ? { ...(args.originalDoc ?? {}), ...raw } : raw
-  const data = normalizedMetadata(merged, args.req)
+  const originalFilename = args.operation === 'create' || (args.req.file && !isMediaVerificationContext(args.req))
+    ? args.req.file?.name ?? raw.filename ?? raw.originalFilename
+    : args.originalDoc?.originalFilename
+  const data = normalizedMetadata({ ...merged, originalFilename }, args.req)
 
   if (args.operation === 'create') {
     const uploader = resolvePrincipal(args.req.user)
@@ -204,12 +195,13 @@ export function prepareMediaData(args: Readonly<{
       uploadedBy: uploader.id,
       uploadedAt: args.now.toISOString(),
       verificationStatus: 'pending',
+      verificationMessage: null,
     }
   }
 
-  const verificationStatus = isVerificationContext(args.req)
+  const verificationStatus = isMediaVerificationContext(args.req)
     ? data.verificationStatus
-    : args.originalDoc?.verificationStatus
+    : args.req.file ? 'pending' : args.originalDoc?.verificationStatus
   if (typeof verificationStatus !== 'string' || !verificationStatusSet.has(verificationStatus)) {
     return payloadValidationFailure(args.req, 'verificationStatus', 'Select a supported verification status.')
   }
@@ -219,6 +211,7 @@ export function prepareMediaData(args: Readonly<{
     uploadedBy: args.originalDoc?.uploadedBy,
     uploadedAt: args.originalDoc?.uploadedAt,
     verificationStatus,
+    verificationMessage: isMediaVerificationContext(args.req) ? data.verificationMessage : args.originalDoc?.verificationMessage,
   }
 }
 
@@ -240,7 +233,9 @@ export function createMediaCollection(options: CreateMediaCollectionOptions = {}
 
   return {
     slug: 'media',
+    labels: { singular: 'Media Item', plural: 'Media Library' },
     admin: {
+      group: 'Website Content',
       useAsTitle: 'title',
       defaultColumns: ['title', 'mimeType', 'filesize', 'category', 'verificationStatus', 'uploadedAt'],
       description: 'Reusable image and PDF assets become available only after server-side verification.',
@@ -263,7 +258,7 @@ export function createMediaCollection(options: CreateMediaCollectionOptions = {}
     fields: [
       { name: 'title', type: 'text', required: true, maxLength: MAX_TITLE_LENGTH },
       {
-        name: 'originalFilename', type: 'text', required: true, maxLength: MAX_FILENAME_LENGTH,
+        name: 'originalFilename', type: 'text', maxLength: MAX_FILENAME_LENGTH,
         admin: { readOnly: true },
       },
       { name: 'category', type: 'text', required: true, maxLength: MAX_CATEGORY_LENGTH },
@@ -275,33 +270,55 @@ export function createMediaCollection(options: CreateMediaCollectionOptions = {}
       },
       { name: 'caption', type: 'textarea', maxLength: MAX_CAPTION_LENGTH },
       {
-        name: 'uploadedBy', type: 'relationship', relationTo: 'users', required: true, index: true,
+        name: 'uploadedBy', type: 'relationship', relationTo: 'users', index: true,
         admin: { position: 'sidebar', readOnly: true },
       },
       {
-        name: 'uploadedAt', type: 'date', required: true, index: true,
+        name: 'uploadedAt', type: 'date', index: true,
         admin: { position: 'sidebar', readOnly: true, date: { pickerAppearance: 'dayAndTime' } },
       },
       {
-        name: 'verificationStatus', type: 'select', required: true, defaultValue: 'pending', index: true,
+        name: 'verificationStatus', type: 'select', defaultValue: 'pending', index: true,
         options: MEDIA_VERIFICATION_STATUSES.map((status) => ({
           label: status[0].toUpperCase() + status.slice(1), value: status,
         })),
         admin: { position: 'sidebar', readOnly: true },
       },
+      {
+        name: 'verificationMessage', type: 'textarea',
+        admin: { readOnly: true, description: 'Automatic file-check result. Save a failed upload to retry verification.' },
+      },
     ],
     hooks: {
       beforeChange: [
-        ({ data, operation, originalDoc, req }) => prepareMediaData({
+        async ({ data, operation, originalDoc, req }) => {
+          const actor = resolvePrincipal(req.user)
+          if (operation === 'update' && originalDoc?.id != null && actor?.contentAccess === 'custom'
+            && !hasContentPermission(actor, 'approve') && !isMediaVerificationContext(req)
+            && !req.context.skipCloudStorage) {
+            const references = await enumerateMediaReferences(originalDoc.id, req)
+            if (references.length) payloadValidationFailure(req, 'title', 'This image is already in use. Upload a new image for a draft, or ask someone with approval permission to change it.')
+          }
+          if (!isMediaVerificationContext(req)) await captureMediaUpload(req)
+          return prepareMediaData({
           data: data as Record<string, unknown> | undefined,
           operation,
           originalDoc: originalDoc as MediaDocument | undefined,
           req,
           now: now(),
-        }),
+          })
+        },
       ],
       beforeDelete: [
         ({ id, req }) => assertMediaCanBeDeleted(id, req),
+      ],
+      afterChange: [
+        async ({ doc, operation, req }) => {
+          const verified = !isMediaVerificationContext(req) && (operation === 'create' || doc.verificationStatus !== 'verified')
+            ? await verifyPersistedMedia(doc as MediaDocument, req)
+            : doc
+          return afterMediaChange(verified)
+        },
       ],
       afterRead: [
         ({ doc, req }) => !req.user

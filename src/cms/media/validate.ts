@@ -51,6 +51,8 @@ const FORMAT_EXTENSION = {
 } as const
 
 const SCRIPT_MARKERS = [
+  '#!/usr/bin',
+  '#!/bin/',
   '<script',
   '<?php',
   'javascript:',
@@ -134,58 +136,20 @@ function mimeFormatFor(mimeType: string): MediaFormat | null {
     : null
 }
 
-function indexOf(bytes: Uint8Array, marker: readonly number[], from = 0): number {
-  if (marker.length === 0 || bytes.length < marker.length) return -1
-
-  for (let index = from; index <= bytes.length - marker.length; index += 1) {
-    let matched = true
-    for (let offset = 0; offset < marker.length; offset += 1) {
-      if (bytes[index + offset] !== marker[offset]) {
-        matched = false
-        break
-      }
-    }
-    if (matched) return index
-  }
-
-  return -1
-}
-
-function hasAsciiMarker(bytes: Uint8Array, marker: string): boolean {
-  const markerBytes = new TextEncoder().encode(marker.toLowerCase())
-  if (markerBytes.length === 0 || bytes.length < markerBytes.length) return false
-
-  for (let index = 0; index <= bytes.length - markerBytes.length; index += 1) {
-    let matched = true
-    for (let offset = 0; offset < markerBytes.length; offset += 1) {
-      const byte = bytes[index + offset]
-      const lowerCaseByte = byte >= 0x41 && byte <= 0x5a ? byte + 0x20 : byte
-      if (lowerCaseByte !== markerBytes[offset]) {
-        matched = false
-        break
-      }
-    }
-    if (matched) return true
-  }
-
-  return false
-}
-
 function hasUnsafeContent(bytes: Uint8Array, format: MediaFormat): boolean {
-  if (bytes[0] === 0x23 && bytes[1] === 0x21) return true // shebang
-
-  if (EXECUTABLE_SIGNATURES.some((signature) => indexOf(bytes, signature) >= 0)) {
+  const buffer = Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength)
+  // Executable signatures identify a file header. The same short bytes occur
+  // routinely inside compressed JPEG/PNG data and are not executable content.
+  if (EXECUTABLE_SIGNATURES.some((signature) => buffer.subarray(0, signature.length).equals(Buffer.from(signature)))) {
     return true
   }
-
-  if (SCRIPT_MARKERS.some((marker) => hasAsciiMarker(bytes, marker))) return true
-
-  if (format !== 'pdf' && POLYGLOT_MARKERS.some((marker) => hasAsciiMarker(bytes, marker))) {
+  const lowerAscii = buffer.toString('latin1').toLowerCase()
+  if (SCRIPT_MARKERS.some((marker) => lowerAscii.includes(marker))) return true
+  if (format !== 'pdf' && POLYGLOT_MARKERS.some((marker) => lowerAscii.includes(marker))) {
     return true
   }
-
   return format === 'pdf'
-    && PDF_UNSAFE_MARKERS.some((marker) => hasAsciiMarker(bytes, marker))
+    && PDF_UNSAFE_MARKERS.some((marker) => lowerAscii.includes(marker))
 }
 
 function normalizeAccessibility(
