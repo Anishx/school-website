@@ -37,9 +37,12 @@ async function storedBytes(doc: PersistedMedia, req: PayloadRequest): Promise<Ui
   if (req.file?.data?.byteLength) return new Uint8Array(req.file.data)
 
   const upload = req.payload.collections?.media?.config.upload
-  if (upload && typeof upload === 'object' && !upload.disableLocalStorage) {
+  if (process.env.NODE_ENV !== 'production' && upload && typeof upload === 'object' && !upload.disableLocalStorage) {
     const filename = requiredText(doc.filename)
     if (!filename || filename !== path.basename(filename) || /[/\\]/.test(filename)) throw new Error('Invalid stored filename.')
+    // Local storage is a development fallback. Production requires Vercel Blob;
+    // excluding this branch also prevents tracing the configurable directory
+    // (and potentially the whole project) into every production CMS function.
     const directory = path.resolve(upload.staticDir ?? 'media')
     return new Uint8Array(await readFile(path.join(directory, filename)))
   }

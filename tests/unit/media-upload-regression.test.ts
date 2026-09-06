@@ -63,6 +63,22 @@ describe('real school image upload regressions', () => {
     } finally { await rm(directory, { recursive: true, force: true }) }
   })
 
+  it('retries stored media through Blob in production even when local upload settings exist', async () => {
+    const bytes = await readFile('public/apollo-logo-white.png')
+    const url = 'https://test.public.blob.vercel-storage.com/logo.png'
+    const fetchMock = vi.fn().mockResolvedValue(new Response(bytes))
+    vi.stubEnv('NODE_ENV', 'production')
+    vi.stubGlobal('fetch', fetchMock)
+    try {
+      const req = { context: {}, payload: { update: vi.fn().mockResolvedValue({}), collections: { media: { config: { upload: { staticDir: 'nonexistent-local-upload-directory' } } } } } } as unknown as PayloadRequest
+      await expect(verifyPersistedMedia({ id: 1, filename: 'logo.png', url, mimeType: 'image/png', alt: 'School logo', verificationStatus: 'failed' }, req)).resolves.toMatchObject({ verificationStatus: 'verified' })
+      expect(fetchMock).toHaveBeenCalledWith(new URL(url), expect.objectContaining({ cache: 'no-store', redirect: 'error' }))
+    } finally {
+      vi.unstubAllGlobals()
+      vi.unstubAllEnvs()
+    }
+  })
+
   it('requires replacement files to pass verification again while retaining uploader history', () => {
     const req = { user: { id: 1, role: 'admin', active: true }, context: {}, file: { name: 'replacement.png' } } as unknown as PayloadRequest
     const result = prepareMediaData({ data: {}, originalDoc: { title: 'School', category: 'Campus', alt: 'School', originalFilename: 'old.png', uploadedBy: 2, uploadedAt: '2026-01-01', verificationStatus: 'verified' }, req, operation: 'update', now: new Date() })
