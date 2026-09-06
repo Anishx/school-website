@@ -16,7 +16,7 @@ const productionSource: Record<string, string | undefined> = {
   NODE_ENV: 'production',
   DATABASE_URL: SENTINEL_SECRETS.databaseUrl,
   PAYLOAD_SECRET: SENTINEL_SECRETS.payloadSecret,
-  BLOB_READ_WRITE_TOKEN: SENTINEL_SECRETS.blobToken,
+  BLOB_READ_WRITE_TOKEN: 'vercel_blob_rw_fixture_SyntheticToken123',
 }
 
 beforeAll(async () => {
@@ -28,6 +28,31 @@ beforeAll(async () => {
 afterAll(() => vi.unstubAllEnvs())
 
 describe('server environment parsing', () => {
+  it.each(['development', 'test', 'production'])(
+    'rejects malformed Blob credentials without exposing them in %s',
+    (NODE_ENV) => {
+      const invalidToken = SENTINEL_SECRETS.blobToken
+      const parse = () => parseServerEnvironment({
+        ...productionSource, NODE_ENV, BLOB_READ_WRITE_TOKEN: invalidToken,
+      })
+      expect(parse).toThrow('Invalid server environment variable: BLOB_READ_WRITE_TOKEN')
+      expect(parse).not.toThrow(invalidToken)
+    },
+  )
+
+  it('disables Blob locally when its token is empty', () => {
+    expect(parseServerEnvironment({ NODE_ENV: 'development', BLOB_READ_WRITE_TOKEN: ' ' }))
+      .toMatchObject({ BLOB_STORAGE_ENABLED: false, BLOB_READ_WRITE_TOKEN: undefined })
+  })
+
+  it('accepts and trims a Blob token matching the installed adapter format', () => {
+    expect(parseServerEnvironment({
+      ...productionSource, BLOB_READ_WRITE_TOKEN: ` ${productionSource.BLOB_READ_WRITE_TOKEN}\n`,
+    })).toMatchObject({
+      BLOB_STORAGE_ENABLED: true, BLOB_READ_WRITE_TOKEN: productionSource.BLOB_READ_WRITE_TOKEN,
+    })
+  })
+
   it.each(['DATABASE_URL', 'PAYLOAD_SECRET', 'BLOB_READ_WRITE_TOKEN'])(
     'fails closed in production when %s is absent',
     (missingName) => {

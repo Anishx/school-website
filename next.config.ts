@@ -3,6 +3,14 @@ import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1"],
+  // Sharp loads libvips dynamically, so automatic tracing can omit its shared
+  // libraries from Vercel functions. Include both the app and Next.js copies.
+  outputFileTracingIncludes: {
+    "/*": [
+      "node_modules/@img/sharp-*/**/*",
+      "node_modules/next/node_modules/@img/sharp-*/**/*",
+    ],
+  },
   images: {
     remotePatterns: [
       {

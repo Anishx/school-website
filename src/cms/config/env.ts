@@ -165,6 +165,15 @@ export function parseServerEnvironment(
   const payloadSecret = optionalValue(source, 'PAYLOAD_SECRET')
   const blobToken = optionalValue(source, 'BLOB_READ_WRITE_TOKEN')
 
+  if (blobToken && !/^vercel_blob_rw_[a-z\d]+_[a-z\d]+$/i.test(blobToken)) {
+    throw new Error(
+      'Invalid server environment variable: BLOB_READ_WRITE_TOKEN. ' +
+      'Use a Vercel Blob store read/write token with format vercel_blob_rw_<store_id>_<random_string>. ' +
+      'For local development without Blob, leave this variable empty. ' +
+      'On Vercel, update the deployment environment variable and redeploy.',
+    )
+  }
+
   if (nodeEnvironment === 'production') {
     const missing = [
       !databaseURL && 'DATABASE_URL',
