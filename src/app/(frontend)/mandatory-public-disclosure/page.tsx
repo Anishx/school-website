@@ -13,9 +13,9 @@ const documents: Document[] = [
   { title: "Society Registration", href: "#" },
   { title: "NOC Certificate", href: "#" },
   { title: "Fire Safety Certificate", href: "#" },
-  { title: "Land Certificate", href: "#" },
-  { title: "Building Safety Certificate", href: "#" },
-  { title: "Water and Sanitary Certificate", href: "#" },
+  { title: "Land Certificate", href: "https://drive.google.com/file/d/1beY_9RafxmOlTZzzMQynxXEPWTJuUs7Y/view?usp=sharing" },
+  { title: "Building Safety Certificate", href: "https://drive.google.com/file/d/170aOd3J-lA6-BgaC16ZRa6TqTLve2uPu/view?usp=sharing" },
+  { title: "Water and Sanitary Certificate", href: "https://drive.google.com/file/d/16AAERh2pNitVfEgzxKQvY0R1CN6SYrql/view?usp=drive_link" },
   { title: "PTA", href: "#" },
   { title: "Public Disclosure", href: "#" },
   { title: "SMC", href: "#" },
@@ -23,9 +23,9 @@ const documents: Document[] = [
   { title: "Academic Calendar", href: "#" },
   { title: "Self Certificate", href: "#" },
   { title: "Mandatory Disclosure", href: "#" },
-  { title: "Water Test Report", href: "#" },
+  { title: "Water Test Report", href: "https://drive.google.com/file/d/1CXLkn6lT7APuo0S26UCpnXpYkShSgRRb/view?usp=drive_link" },
   { title: "GHMC Commissioner Letter", href: "#" },
-  { title: "Affiliation Letter", href: "#" },
+  { title: "Affiliation Letter", href: "https://drive.google.com/file/d/1oIEg2CR6Km0q_QhJxKncT8QxwuKNsoV1/view?usp=drive_link" },
 ];
 
 export default async function MandatoryPublicDisclosurePage() {

@@ -17,6 +17,7 @@ export function AnnouncementsBar({ initial }: { initial: AnnouncementBarDTO }) {
   }, []);
 
   useEffect(() => {
+    refresh();
     const onVisible = () => { if (document.visibilityState === "visible") refresh(); };
     window.addEventListener("focus", refresh);
     document.addEventListener("visibilitychange", onVisible);

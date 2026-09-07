@@ -80,7 +80,7 @@ export const Editorial: CollectionConfig = {
     {
       name: 'placements', type: 'select', hasMany: true, required: true,
       options: [...PLACEMENT_OPTIONS],
-      admin: { description: 'Latest News is the complete news list. Select “Show in homepage News & Events” to cherry-pick an item for the landing page.' },
+      admin: { description: 'Latest News is the complete news list. Select “Show in homepage News & Events” to cherry-pick a news item for the landing page. For an Announcement, select “Announcement Bar” to show its message at the top of the website once published. The bar must also be enabled in Website Settings.' },
     },
     { name: 'category', type: 'text', maxLength: 160 },
     { name: 'featured', type: 'checkbox', defaultValue: false },

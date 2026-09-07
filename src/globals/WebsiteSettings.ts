@@ -39,6 +39,7 @@ export const WebsiteSettings: GlobalConfig = {
       name: 'announcementBar',
       type: 'group',
       label: 'Announcement Bar',
+      admin: { description: 'To display the bar, publish an Announcement in News & Announcements with a message and the Announcement Bar placement. Enabling this switch shows those published messages; the bar stays hidden when there are none. Resources: Announcements below controls the resources page only.' },
       fields: [
         { name: 'enabled', type: 'checkbox', required: true, defaultValue: true, label: 'Show announcement bar' },
         {

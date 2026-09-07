@@ -497,7 +497,7 @@ export interface Editorial {
   displayOrder: number;
   priority?: number | null;
   /**
-   * Latest News is the complete news list. Select “Show in homepage News & Events” to cherry-pick an item for the landing page.
+   * Latest News is the complete news list. Select “Show in homepage News & Events” to cherry-pick a news item for the landing page. For an Announcement, select “Announcement Bar” to show its message at the top of the website once published. The bar must also be enabled in Website Settings.
    */
   placements: ('resource-news' | 'homepage-news' | 'resource-announcements' | 'header-ticker')[];
   category?: string | null;
@@ -1144,6 +1144,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface WebsiteSetting {
   id: number;
+  /**
+   * To display the bar, publish an Announcement in News & Announcements with a message and the Announcement Bar placement. Enabling this switch shows those published messages; the bar stays hidden when there are none. Resources: Announcements below controls the resources page only.
+   */
   announcementBar: {
     enabled: boolean;
     speed: 'slow' | 'normal' | 'fast';
