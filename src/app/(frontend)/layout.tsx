@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Apollo Vidhyalayam | CBSE School in Aragonda",
+  title: "Apollo Vidhyalayam",
   description: "Rural school website frontend",
 };
 
