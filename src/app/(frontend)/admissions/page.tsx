@@ -72,7 +72,6 @@ const steps: Step[] = [
 ];
 
 const ageCriteria = [
-  { class: "Pre-LKG", age: "3+ years", stage: "Pre-Primary" },
   { class: "LKG", age: "4+ years", stage: "Pre-Primary" },
   { class: "UKG", age: "5+ years", stage: "Pre-Primary" },
   { class: "Grade I", age: "6+ years", stage: "Primary" },

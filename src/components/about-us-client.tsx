@@ -258,7 +258,7 @@ function InfrastructureTab() {
       {/* Science Labs */}
       <section className="bg-canvas-50 py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Composite Science Lab</h3>
+          <h3 className="font-display text-xl uppercase text-ink-900 md:text-2xl">Labs</h3>
           <p className="mt-3 text-sm text-ink-600 md:text-base">
             Our well-equipped laboratories provide students with opportunities to apply classroom learning through practical experimentation and observation.
           </p>

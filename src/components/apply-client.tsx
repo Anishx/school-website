@@ -33,8 +33,6 @@ type FormData = {
   emailId: string;
   residentialAddress: string;
   permanentAddress: string;
-  // Documents Enclosed
-  documents: string[];
 };
 
 const initialForm: FormData = {
@@ -62,7 +60,6 @@ const initialForm: FormData = {
   emailId: "",
   residentialAddress: "",
   permanentAddress: "",
-  documents: [],
 };
 
 const classOptions = [
@@ -100,6 +97,7 @@ export function ApplyClient() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [declarationAccepted, setDeclarationAccepted] = useState(false);
 
   const handleCaptcha = useCallback((token: string | null) => {
     setCaptchaToken(token);
@@ -109,17 +107,14 @@ export function ApplyClient() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleCheckbox = (doc: string) => {
-    setForm((prev) => ({
-      ...prev,
-      documents: prev.documents.includes(doc)
-        ? prev.documents.filter((d) => d !== doc)
-        : [...prev.documents, doc],
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!declarationAccepted) {
+      setErrorMessage("Please accept the declaration before submitting.");
+      setStatus("error");
+      return;
+    }
 
     if (isCaptchaEnabled && !captchaToken) {
       setErrorMessage("Please complete the captcha before submitting.");
@@ -160,7 +155,6 @@ export function ApplyClient() {
           parentEmail: form.emailId,
           address: form.residentialAddress,
           permanentAddress: form.permanentAddress,
-          documentsEnclosed: form.documents,
         }),
       });
 
@@ -168,6 +162,7 @@ export function ApplyClient() {
       if (res.ok && isAdmissionApiResponse(data) && data.ok) {
         setStatus("success");
         setForm(initialForm);
+        setDeclarationAccepted(false);
         setCaptchaToken(null);
       } else {
         const message = isAdmissionApiResponse(data) && !data.ok
@@ -375,26 +370,31 @@ export function ApplyClient() {
                   <div className="border-l-4 border-teal-600 pl-4">
                     <h2 className="font-display text-xl uppercase text-ink-900">Documents Enclosed</h2>
                   </div>
-                  <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                  <ul className="mt-6 flex list-disc flex-wrap gap-x-8 gap-y-3 pl-5">
                     {documentOptions.map((doc) => (
-                      <label key={doc} className="flex items-center gap-2 text-sm text-ink-700 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={form.documents.includes(doc)}
-                          onChange={() => handleCheckbox(doc)}
-                          className="h-4 w-4 border-line-200 text-teal-800 focus:ring-teal-800"
-                        />
+                      <li key={doc} className="text-sm text-ink-700">
                         {doc}
-                      </label>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
                 {/* Declaration */}
                 <div className="border-t border-line-200 pt-6">
-                  <p className="text-sm italic text-teal-800">
-                    Declaration: I confirm that the details furnished above are true and correct.
-                  </p>
+                  <label htmlFor="declarationAccepted" className="flex cursor-pointer items-start gap-3 text-sm italic text-teal-800">
+                    <input
+                      type="checkbox"
+                      id="declarationAccepted"
+                      name="declarationAccepted"
+                      required
+                      checked={declarationAccepted}
+                      onChange={(e) => setDeclarationAccepted(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 shrink-0 border-line-200 accent-teal-800 focus:ring-teal-800"
+                    />
+                    <span>
+                      Declaration: I confirm that the details furnished above are true and correct. <span className="text-red-500">*</span>
+                    </span>
+                  </label>
                 </div>
 
                 {/* Captcha */}
@@ -418,7 +418,7 @@ export function ApplyClient() {
                     variant="primary"
                     size="lg"
                     className="font-bold"
-                    disabled={status === "submitting"}
+                    disabled={status === "submitting" || !declarationAccepted}
                   >
                     {status === "submitting" ? "Submitting..." : "Submit Application"}
                   </Button>

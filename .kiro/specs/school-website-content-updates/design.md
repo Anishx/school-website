@@ -89,7 +89,6 @@ All changes are **subtractive or data-replacement** — no new components, route
 2. **Update age criteria** — Replace the `ageCriteria` array with +1 year values:
    ```typescript
    const ageCriteria = [
-     { class: "Pre-LKG", age: "3+ years" },
      { class: "LKG", age: "4+ years" },
      { class: "UKG", age: "5+ years" },
      { class: "Grade I", age: "6+ years" },

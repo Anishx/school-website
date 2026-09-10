@@ -47,7 +47,7 @@ const contentSections = [
         card('football', 'Football', 'Building teamwork, agility, and strategic thinking on the field.', '/images/new/football-close.jpg'),
         card('volleyball', 'Volleyball', 'State-level champions showcasing coordination and competitive spirit.', '/images/new/volleyball.jpg'),
         card('cricket', 'Cricket', "India's beloved sport fostering patience, strategy, and team dynamics.", '/images/new/Cricket.png'),
-        card('ko-ko', 'Ko-Ko', 'Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.', '/images/new/koko-playground.jpg'),
+        card('kho-kho', 'Kho-Kho', 'Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.', '/images/new/koko-playground.jpg'),
         card('badminton', 'Badminton', 'Enhancing agility, hand-eye coordination, focus, and competitive spirit on the court.', '/images/new/badminton.jpg'),
         card('tennikoit', 'Tennikoit', 'Developing hand-eye coordination, reflexes, and sportsmanship.', '/images/new/Tennikoit.png', 'top'),
       ],
@@ -84,7 +84,7 @@ const resourceAnnouncements = [
   ['New Smart Classrooms Inaugurated', '2025-04-20'],
   ['Parent-Teacher Meeting Schedule Released', '2025-04-10'],
 ]
-const tickerAnnouncements = ['Admissions Open for 2025-26 Academic Year', 'Annual Day Celebrations on March 15th', 'Smart Classrooms Now Live in All Grades', 'Brighter Minds Program Starting Next Month', 'Sports Championships — State Level Qualifiers']
+const tickerAnnouncements = ['Admissions Open for 2025-26 Academic Year', 'Annual Day Celebrations on March 15th', 'Smart Classrooms Now Live in All Grades', 'Brighter Minds Program Starting August 2026', 'Sports Championships — State Level Qualifiers']
 const downloads = [
   ['Admission Form 2026-27', 'https://drive.google.com/file/d/1KIwwqlBwgSkowrojed8ah5-ptV6zA3Vj/view?usp=sharing'],
   ['School Handbook', 'https://drive.google.com/file/d/1a_4tnoai3UDgONZXB1tiLBYfSqO0oLA2/view?usp=sharing'],

@@ -30,21 +30,27 @@ export function AnnouncementsBar({ initial }: { initial: AnnouncementBarDTO }) {
   }, [refresh]);
 
   if (!bar.enabled || bar.messages.length === 0) return null;
-  const repeated = [...bar.messages, ...bar.messages];
 
   return (
     <aside aria-label="School announcements" className={`group overflow-hidden py-1.5 ${themeClasses[bar.theme]}`}>
-      <div
-        className="flex animate-marquee whitespace-nowrap motion-reduce:animate-none group-hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]"
-        style={{ animationDuration: durations[bar.speed] }}
-      >
-        {repeated.map((message, index) => (
-          <span key={`${message.id}-${index}`} className="mx-4 inline-flex items-center text-xs font-medium text-white/90">
-            <span className="mr-3 inline-block h-1.5 w-1.5 shrink-0 bg-yellow-500" aria-hidden="true" />
-            {message.link
-              ? <a href={message.link} className="underline-offset-2 hover:underline focus-visible:underline">{message.text}</a>
-              : message.text}
-          </span>
+      <div className="flex w-full">
+        {/* Each copy spans at least the viewport, keeping short lists from repeating side by side. */}
+        {[false, true].map((isCopy) => (
+          <div
+            key={String(isCopy)}
+            aria-hidden={isCopy ? true : undefined}
+            className={`flex w-max min-w-full shrink-0 animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:animate-none ${isCopy ? "motion-reduce:hidden" : "motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:whitespace-normal"}`}
+            style={{ animationDuration: durations[bar.speed] }}
+          >
+            {bar.messages.map((message) => (
+              <span key={message.id} className="mx-4 inline-flex shrink-0 items-center text-xs font-medium text-white/90 motion-reduce:shrink motion-reduce:max-w-[calc(100%-2rem)]">
+                <span className="mr-3 inline-block h-1.5 w-1.5 shrink-0 bg-yellow-500" aria-hidden="true" />
+                {message.link
+                  ? <a href={message.link} tabIndex={isCopy ? -1 : undefined} className="underline-offset-2 hover:underline focus-visible:underline">{message.text}</a>
+                  : message.text}
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </aside>

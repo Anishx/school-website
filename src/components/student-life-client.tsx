@@ -35,7 +35,7 @@ const legacyTabs: TabContent[] = [
       { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/football-close.jpg" },
       { title: "Volleyball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/new/volleyball.jpg" },
       { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/new/Cricket.png" },
-      { title: "Ko-Ko", description: "Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.", image: "/images/new/koko-playground.jpg" },
+      { title: "Kho-Kho", description: "Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.", image: "/images/new/koko-playground.jpg" },
       { title: "Badminton", description: "Enhancing agility, hand-eye coordination, focus, and competitive spirit on the court.", image: "/images/new/badminton.jpg" },
       { title: "Tennikoit", description: "Developing hand-eye coordination, reflexes, and sportsmanship.", image: "/images/new/Tennikoit.png", objectPosition: "top" },
     ],
