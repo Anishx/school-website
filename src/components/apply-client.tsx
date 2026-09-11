@@ -262,23 +262,23 @@ export function ApplyClient() {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="bloodGroup" className={labelClass}>Blood Group</label>
-                      <input type="text" id="bloodGroup" name="bloodGroup" value={form.bloodGroup} onChange={handleChange} className={inputClass} placeholder="e.g. O+" />
+                      <label htmlFor="bloodGroup" className={labelClass}>Blood Group <span className="text-red-500">*</span></label>
+                      <input type="text" id="bloodGroup" name="bloodGroup" required value={form.bloodGroup} onChange={handleChange} className={inputClass} placeholder="e.g. O+" />
                     </div>
                     <div>
-                      <label htmlFor="category" className={labelClass}>Category (Gen/OBC/SC/ST/EWS)</label>
-                      <select id="category" name="category" value={form.category} onChange={handleChange} className={inputClass}>
+                      <label htmlFor="category" className={labelClass}>Category (Gen/OBC/SC/ST/EWS) <span className="text-red-500">*</span></label>
+                      <select id="category" name="category" required value={form.category} onChange={handleChange} className={inputClass}>
                         <option value="">Select category</option>
                         {categoryOptions.map((c) => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="aadharNo" className={labelClass}>Aadhar No.</label>
-                      <input type="text" id="aadharNo" name="aadharNo" value={form.aadharNo} onChange={handleChange} className={inputClass} placeholder="12-digit Aadhar number" />
+                      <label htmlFor="aadharNo" className={labelClass}>Aadhar No. <span className="text-red-500">*</span></label>
+                      <input type="text" id="aadharNo" name="aadharNo" required value={form.aadharNo} onChange={handleChange} className={inputClass} placeholder="12-digit Aadhar number" />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="motherTongue" className={labelClass}>Mother Tongue / Nationality</label>
-                      <input type="text" id="motherTongue" name="motherTongue" value={form.motherTongue} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="motherTongue" className={labelClass}>Mother Tongue / Nationality <span className="text-red-500">*</span></label>
+                      <input type="text" id="motherTongue" name="motherTongue" required value={form.motherTongue} onChange={handleChange} className={inputClass} />
                     </div>
                   </div>
                 </div>
@@ -290,24 +290,24 @@ export function ApplyClient() {
                   </div>
                   <div className="mt-6 grid gap-5 sm:grid-cols-2">
                     <div className="sm:col-span-2">
-                      <label htmlFor="previousSchoolName" className={labelClass}>Name of School</label>
-                      <input type="text" id="previousSchoolName" name="previousSchoolName" value={form.previousSchoolName} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="previousSchoolName" className={labelClass}>Name of School <span className="text-red-500">*</span></label>
+                      <input type="text" id="previousSchoolName" name="previousSchoolName" required value={form.previousSchoolName} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="previousSchoolAddress" className={labelClass}>School Address</label>
-                      <textarea id="previousSchoolAddress" name="previousSchoolAddress" rows={2} value={form.previousSchoolAddress} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="previousSchoolAddress" className={labelClass}>School Address <span className="text-red-500">*</span></label>
+                      <textarea id="previousSchoolAddress" name="previousSchoolAddress" required rows={2} value={form.previousSchoolAddress} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="board" className={labelClass}>Board</label>
-                      <input type="text" id="board" name="board" value={form.board} onChange={handleChange} className={inputClass} placeholder="e.g. CBSE, State Board" />
+                      <label htmlFor="board" className={labelClass}>Board <span className="text-red-500">*</span></label>
+                      <input type="text" id="board" name="board" required value={form.board} onChange={handleChange} className={inputClass} placeholder="e.g. CBSE, State Board" />
                     </div>
                     <div>
-                      <label htmlFor="classLastStudied" className={labelClass}>Class Last Studied</label>
-                      <input type="text" id="classLastStudied" name="classLastStudied" value={form.classLastStudied} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="classLastStudied" className={labelClass}>Class Last Studied <span className="text-red-500">*</span></label>
+                      <input type="text" id="classLastStudied" name="classLastStudied" required value={form.classLastStudied} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="transferCertificateNo" className={labelClass}>Transfer Certificate No.</label>
-                      <input type="text" id="transferCertificateNo" name="transferCertificateNo" value={form.transferCertificateNo} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="transferCertificateNo" className={labelClass}>Transfer Certificate No. <span className="text-red-500">*</span></label>
+                      <input type="text" id="transferCertificateNo" name="transferCertificateNo" required value={form.transferCertificateNo} onChange={handleChange} className={inputClass} />
                     </div>
                   </div>
                 </div>
@@ -323,24 +323,24 @@ export function ApplyClient() {
                       <input type="text" id="fatherName" name="fatherName" required value={form.fatherName} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="fatherOccupation" className={labelClass}>Occupation</label>
-                      <input type="text" id="fatherOccupation" name="fatherOccupation" value={form.fatherOccupation} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="fatherOccupation" className={labelClass}>Occupation <span className="text-red-500">*</span></label>
+                      <input type="text" id="fatherOccupation" name="fatherOccupation" required value={form.fatherOccupation} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="fatherQualification" className={labelClass}>Educational Qualification</label>
-                      <input type="text" id="fatherQualification" name="fatherQualification" value={form.fatherQualification} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="fatherQualification" className={labelClass}>Educational Qualification <span className="text-red-500">*</span></label>
+                      <input type="text" id="fatherQualification" name="fatherQualification" required value={form.fatherQualification} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="motherName" className={labelClass}>Mother&apos;s Name <span className="text-red-500">*</span></label>
                       <input type="text" id="motherName" name="motherName" required value={form.motherName} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="motherOccupation" className={labelClass}>Occupation</label>
-                      <input type="text" id="motherOccupation" name="motherOccupation" value={form.motherOccupation} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="motherOccupation" className={labelClass}>Occupation <span className="text-red-500">*</span></label>
+                      <input type="text" id="motherOccupation" name="motherOccupation" required value={form.motherOccupation} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="motherQualification" className={labelClass}>Educational Qualification</label>
-                      <input type="text" id="motherQualification" name="motherQualification" value={form.motherQualification} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="motherQualification" className={labelClass}>Educational Qualification <span className="text-red-500">*</span></label>
+                      <input type="text" id="motherQualification" name="motherQualification" required value={form.motherQualification} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="contactNumber" className={labelClass}>Contact Number <span className="text-red-500">*</span></label>
@@ -351,8 +351,8 @@ export function ApplyClient() {
                       <input type="email" id="emailId" name="emailId" value={form.emailId} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="alternateContactNumber" className={labelClass}>Alternate Contact Number</label>
-                      <input type="tel" id="alternateContactNumber" name="alternateContactNumber" value={form.alternateContactNumber} onChange={handleChange} className={inputClass} />
+                      <label htmlFor="alternateContactNumber" className={labelClass}>Alternate Contact Number <span className="text-red-500">*</span></label>
+                      <input type="tel" id="alternateContactNumber" name="alternateContactNumber" required value={form.alternateContactNumber} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="residentialAddress" className={labelClass}>Residential Address <span className="text-red-500">*</span></label>

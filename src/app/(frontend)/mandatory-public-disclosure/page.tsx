@@ -24,8 +24,8 @@ const documents: Document[] = [
   { title: "Self Certificate", href: "#" },
   { title: "Mandatory Disclosure", href: "#" },
   { title: "Water Test Report", href: "https://drive.google.com/file/d/1CXLkn6lT7APuo0S26UCpnXpYkShSgRRb/view?usp=drive_link" },
-  { title: "GHMC Commissioner Letter", href: "#" },
-  { title: "Affiliation Letter", href: "https://drive.google.com/file/d/1oIEg2CR6Km0q_QhJxKncT8QxwuKNsoV1/view?usp=drive_link" },
+  { title: "GHMC Commissioner Letter", href: "https://drive.google.com/file/d/1oIEg2CR6Km0q_QhJxKncT8QxwuKNsoV1/view?usp=drive_link" },
+  { title: "Affiliation Letter", href: "#" },
   { title: "Trust Deed", href: "https://drive.google.com/file/d/1Jt1DcEXi41XgpoNQCJA6BO5VtOpk8REQ/view?usp=sharing" },
   { title: "Land Ownership Document", href: "https://drive.google.com/file/d/1RvloL5cNGaUK6nlx2q7Hr_kP7msr6Fte/view?usp=sharing" },
 ];
