@@ -499,11 +499,17 @@ export interface Editorial {
   /**
    * Latest News is the complete news list. Select “Show in homepage News & Events” to cherry-pick a news item for the landing page. For an Announcement, select “Announcement Bar” to show its message at the top of the website once published. The bar must also be enabled in Website Settings.
    */
-  placements: ('resource-news' | 'homepage-news' | 'resource-announcements' | 'header-ticker')[];
+  placements: ('resource-news' | 'homepage-news' | 'header-ticker')[];
   category?: string | null;
   featured?: boolean | null;
   displayDate?: string | null;
+  /**
+   * Select an uploaded image, or enter an Image URL below.
+   */
   image?: (number | null) | Media;
+  /**
+   * Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported.
+   */
   legacyImagePath?: string | null;
   startsAt?: string | null;
   endsAt?: string | null;
@@ -1145,7 +1151,27 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface WebsiteSetting {
   id: number;
   /**
-   * To display the bar, publish an Announcement in News & Announcements with a message and the Announcement Bar placement. Enabling this switch shows those published messages; the bar stays hidden when there are none. Resources: Announcements below controls the resources page only.
+   * Customize the website header login menu. Add, reorder, hide or delete entries. The button is hidden when no visible entries remain.
+   */
+  loginMenu: {
+    enabled?: boolean | null;
+    label: string;
+    customized?: boolean | null;
+    entries?:
+      | {
+          enabled?: boolean | null;
+          label: string;
+          /**
+           * HTTPS URL, site path (such as /admin), or page anchor. Leave blank to show the label without a link.
+           */
+          href?: string | null;
+          newTab?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * To display the bar, publish an Announcement in News & Announcements with a message and the Announcement Bar placement. Enabling this switch shows those published messages; the bar stays hidden when there are none.
    */
   announcementBar: {
     enabled: boolean;
@@ -1157,7 +1183,6 @@ export interface WebsiteSetting {
    */
   contentSources: {
     resourcesNews: 'legacy' | 'append' | 'managed';
-    resourcesAnnouncements: 'legacy' | 'append' | 'managed';
     resourcesDownloads: 'legacy' | 'append' | 'managed';
     schoolCalendar: 'legacy' | 'append' | 'managed';
     mandatoryDisclosure: 'legacy' | 'append' | 'managed';
@@ -1165,6 +1190,7 @@ export interface WebsiteSetting {
     clubs: 'legacy' | 'append' | 'managed';
     contact: 'legacy' | 'append' | 'managed';
     homepageNews: 'legacy' | 'append' | 'managed';
+    resourcesAnnouncements: 'legacy' | 'append' | 'managed';
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1197,6 +1223,22 @@ export interface NotificationSetting {
  * via the `definition` "website-settings_select".
  */
 export interface WebsiteSettingsSelect<T extends boolean = true> {
+  loginMenu?:
+    | T
+    | {
+        enabled?: T;
+        label?: T;
+        customized?: T;
+        entries?:
+          | T
+          | {
+              enabled?: T;
+              label?: T;
+              href?: T;
+              newTab?: T;
+              id?: T;
+            };
+      };
   announcementBar?:
     | T
     | {
@@ -1208,7 +1250,6 @@ export interface WebsiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         resourcesNews?: T;
-        resourcesAnnouncements?: T;
         resourcesDownloads?: T;
         schoolCalendar?: T;
         mandatoryDisclosure?: T;
@@ -1216,6 +1257,7 @@ export interface WebsiteSettingsSelect<T extends boolean = true> {
         clubs?: T;
         contact?: T;
         homepageNews?: T;
+        resourcesAnnouncements?: T;
       };
   updatedAt?: T;
   createdAt?: T;

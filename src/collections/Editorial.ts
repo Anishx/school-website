@@ -6,19 +6,19 @@ import { publicationFields } from '../cms/publication/fields'
 import { preparePublicationChange } from '../cms/publication/model'
 import { afterPublishedContentChange, afterPublishedContentDelete } from '../cms/publication/hooks'
 import { assertVerifiedMedia } from '../cms/media/publish'
+import { isExternalArticleImage, validateArticleImageURL } from '../cms/public/article-image'
 
 export const EDITORIAL_KINDS = ['news', 'event', 'announcement'] as const
-export const EDITORIAL_PLACEMENTS = ['resource-news', 'homepage-news', 'resource-announcements', 'header-ticker'] as const
+export const EDITORIAL_PLACEMENTS = ['resource-news', 'homepage-news', 'header-ticker'] as const
 
 const KIND_OPTIONS = [
   { label: 'News article', value: 'news' },
   { label: 'School event', value: 'event' },
-  { label: 'Announcement', value: 'announcement' },
+  { label: 'Header announcement', value: 'announcement' },
 ] as const
 const PLACEMENT_OPTIONS = [
   { label: 'Latest News', value: 'resource-news' },
   { label: 'Show in homepage News & Events', value: 'homepage-news' },
-  { label: 'Resources: Announcements', value: 'resource-announcements' },
   { label: 'Announcement Bar', value: 'header-ticker' },
 ] as const
 
@@ -32,6 +32,8 @@ function error(req: PayloadRequest, path: string, message: string): never {
 }
 
 async function validateEditorial(data: Record<string, unknown>, req: PayloadRequest): Promise<void> {
+  const imageURLValidation = validateArticleImageURL(data.legacyImagePath)
+  if (imageURLValidation !== true) error(req, 'legacyImagePath', imageURLValidation)
   const kind = data.kind
   if (!EDITORIAL_KINDS.includes(kind as never)) error(req, 'kind', 'Choose news, event, or announcement.')
   const readyForPublic = data.publicationState === 'published' || data.publicationState === 'scheduled'
@@ -49,7 +51,7 @@ async function validateEditorial(data: Record<string, unknown>, req: PayloadRequ
     if (!data.startsAt || !data.endsAt || !data.location) error(req, 'startsAt', 'Events require start, end, and location.')
     if (Date.parse(String(data.endsAt)) < Date.parse(String(data.startsAt))) error(req, 'endsAt', 'Event end cannot precede its start.')
   }
-  if (data.image) {
+  if (data.image && !isExternalArticleImage(data.legacyImagePath)) {
     await assertVerifiedMedia(req, data.image, 'image', 'image')
   }
 }
@@ -85,15 +87,30 @@ export const Editorial: CollectionConfig = {
     { name: 'category', type: 'text', maxLength: 160 },
     { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'displayDate', type: 'date', index: true, admin: { date: { pickerAppearance: 'dayOnly' } } },
-    { name: 'image', type: 'relationship', relationTo: 'media' },
-    { name: 'legacyImagePath', type: 'text', maxLength: 500 },
+    { name: 'image', type: 'relationship', relationTo: 'media', label: 'Uploaded image', admin: { description: 'Select an uploaded image, or enter an Image URL below.' } },
+    {
+      name: 'legacyImagePath', type: 'text', maxLength: 2000, label: 'Image URL',
+      validate: validateArticleImageURL,
+      hooks: { beforeValidate: [({ value }) => typeof value === 'string' ? value.trim() : value] },
+      admin: { description: 'Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported.' },
+    },
     { name: 'startsAt', type: 'date', index: true },
     { name: 'endsAt', type: 'date' },
     { name: 'location', type: 'text', maxLength: 500 },
     ...publicationFields,
   ],
   hooks: {
-    beforeValidate: [async ({ data, originalDoc, req }) => { await validateEditorial({ ...(originalDoc as Record<string, unknown> | undefined), ...((data ?? {}) as Record<string, unknown>) }, req); return data }],
+    beforeValidate: [async ({ data, originalDoc, req }) => {
+      const input = { ...((data ?? {}) as Record<string, unknown>) }
+      const previous = originalDoc as Record<string, unknown> | undefined
+      const placements = input.placements ?? previous?.placements
+      // Old records may still carry the retired Resources placement.
+      if (Array.isArray(placements) && placements.includes('resource-announcements')) {
+        input.placements = placements.filter((placement) => placement !== 'resource-announcements')
+      }
+      await validateEditorial({ ...previous, ...input }, req)
+      return input
+    }],
     beforeChange: [({ data, operation, originalDoc, req }) => {
       const input = { ...((data ?? {}) as Record<string, unknown>) }
       if (input.kind !== 'announcement' && input.slug && !input.publicPathKey) input.publicPathKey = input.slug

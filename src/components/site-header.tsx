@@ -7,10 +7,10 @@ import { AnnouncementsBar } from "@/components/announcements-bar";
 import { SearchToggle } from "@/components/search-toggle";
 import { LoginDropdown } from "@/components/login-dropdown";
 import { Button } from "@/components/ui/button";
-import { getAnnouncementBar } from "@/cms/public/loaders";
+import { getAnnouncementBar, getWebsiteSettings } from "@/cms/public/loaders";
 
 export async function SiteHeader() {
-  const announcementBar = await getAnnouncementBar();
+  const [announcementBar, settings] = await Promise.all([getAnnouncementBar(), getWebsiteSettings()]);
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-[0_1px_8px_rgba(47,49,58,0.06)]">
       {/* Announcements bar */}
@@ -36,7 +36,7 @@ export async function SiteHeader() {
           {/* Right: Login + Apply Now + Search */}
           <div className="group flex items-center gap-2">
             <div className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:block">
-              <LoginDropdown />
+              <LoginDropdown menu={settings.loginMenu} />
             </div>
             <Button asChild variant="primary" size="sm" className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:inline-flex">
               <Link href="/apply">

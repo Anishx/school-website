@@ -15,13 +15,6 @@ export const legacyNews: EditorialDTO[] = eventsData.map((event) => ({
   placements: ["resource-news", "homepage-news"],
 }));
 
-export const legacyAnnouncements: EditorialDTO[] = [
-  ["Admissions Open for 2025-26 Academic Year", "2025-06-01"],
-  ["CBSE Transition — Academic Continuity Update", "2025-05-15"],
-  ["New Smart Classrooms Inaugurated", "2025-04-20"],
-  ["Parent-Teacher Meeting Schedule Released", "2025-04-10"],
-].map(([title, date], index) => ({ id: `legacy-announcement-${index}`, kind: "announcement", title, message: title, date, priority: 0, placements: ["resource-announcements"] }));
-
 export const legacyDownloads: DocumentDTO[] = [
   ["Admission Form 2026-27", "https://drive.google.com/file/d/1KIwwqlBwgSkowrojed8ah5-ptV6zA3Vj/view?usp=sharing"],
   ["School Handbook", "https://drive.google.com/file/d/1a_4tnoai3UDgONZXB1tiLBYfSqO0oLA2/view?usp=sharing"],

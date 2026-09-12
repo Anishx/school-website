@@ -5,6 +5,8 @@ import { getPayload } from 'payload'
 
 import config from '@payload-config'
 import { logOperationalError } from '../errors/log'
+import { isExternalArticleImage } from './article-image'
+import { loginMenuFromRecord } from './login-menu'
 import type {
   AnnouncementBarDTO,
   CalendarDTO,
@@ -72,9 +74,10 @@ function errorCode(scope: string, cause: unknown): void {
 }
 
 const LEGACY_WEBSITE_SETTINGS: WebsiteSettingsDTO = Object.freeze({
+  loginMenu: loginMenuFromRecord(undefined),
   announcementBar: Object.freeze({ enabled: true, speed: 'normal', theme: 'teal' }),
   contentSources: Object.freeze({
-    resourcesNews: 'legacy', resourcesAnnouncements: 'legacy', resourcesDownloads: 'legacy',
+    resourcesNews: 'legacy', resourcesDownloads: 'legacy',
     schoolCalendar: 'legacy', mandatoryDisclosure: 'legacy', sports: 'legacy', clubs: 'legacy',
     contact: 'legacy', homepageNews: 'legacy',
   }),
@@ -94,8 +97,9 @@ async function websiteSettingsRecord(): Promise<WebsiteSettingsDTO> {
     const theme = bar?.theme === 'navy' || bar?.theme === 'maroon' ? bar.theme : 'teal'
     return {
       announcementBar: { enabled: bar?.enabled !== false, speed, theme },
+      loginMenu: loginMenuFromRecord(raw.loginMenu),
       contentSources: {
-        resourcesNews: source(sources?.resourcesNews), resourcesAnnouncements: source(sources?.resourcesAnnouncements),
+        resourcesNews: source(sources?.resourcesNews),
         resourcesDownloads: source(sources?.resourcesDownloads), schoolCalendar: source(sources?.schoolCalendar),
         mandatoryDisclosure: source(sources?.mandatoryDisclosure), sports: source(sources?.sports),
         clubs: source(sources?.clubs), contact: source(sources?.contact), homepageNews: source(sources?.homepageNews),
@@ -138,7 +142,8 @@ async function editorialRecords(): Promise<EditorialDTO[]> {
         priority: typeof record.priority === 'number' ? record.priority : 0,
         displayOrder: typeof record.displayOrder === 'number' ? record.displayOrder : 0,
         ...(text(record.link) ? { link: text(record.link) } : {}),
-        ...(image(record.image, record.legacyImagePath) ? { image: image(record.image, record.legacyImagePath) } : {}),
+        ...(image(isExternalArticleImage(record.legacyImagePath) ? null : record.image, record.legacyImagePath)
+          ? { image: image(isExternalArticleImage(record.legacyImagePath) ? null : record.image, record.legacyImagePath) } : {}),
         placements: Array.isArray(record.placements) ? record.placements.filter((value): value is string => typeof value === 'string') : [],
       }
     }).filter((entry) => entry.title)
@@ -219,7 +224,7 @@ function cards(value: unknown): StudentLifeCardDTO[] {
 
 export const getEditorial = unstable_cache(editorialRecords, ['cms-editorial'], { revalidate: CMS_CACHE_SECONDS, tags: [CMS_TAGS.editorial] })
 export const getDocuments = unstable_cache(documentRecords, ['cms-documents'], { revalidate: CMS_CACHE_SECONDS, tags: [CMS_TAGS.documents] })
-export const getWebsiteSettings = unstable_cache(websiteSettingsRecord, ['cms-website-settings'], { revalidate: CMS_CACHE_SECONDS, tags: [CMS_TAGS.settings] })
+export const getWebsiteSettings = unstable_cache(websiteSettingsRecord, ['cms-website-settings-login-menu-v1'], { revalidate: CMS_CACHE_SECONDS, tags: [CMS_TAGS.settings] })
 
 export async function getAnnouncementBar(): Promise<AnnouncementBarDTO> {
   const [settings, editorial] = await Promise.all([getWebsiteSettings(), getEditorial()])

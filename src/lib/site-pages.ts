@@ -23,7 +23,6 @@ export const sitePages: SiteEntry[] = [
   { title: 'Gallery', href: '/gallery', category: 'School', description: 'Browse photographs of our campus, students and school activities.', keywords: 'photos pictures' },
   { title: 'Future Vision', href: '/future-vision', category: 'School', description: 'Learn about our vision for the future of the school.' },
   { title: 'News & Events', href: '/news-events', category: 'Resources', description: 'Read the latest school news and events.' },
-  { title: 'Announcements', href: '/news-events?tab=announcements', category: 'Resources', description: 'Read school announcements, notices and updates.' },
   { title: 'School Calendar', href: '/news-events?tab=calendar', category: 'Resources', description: 'View the academic calendar, holidays, assessments and meeting schedules.' },
   { title: 'Downloads', href: '/news-events?tab=downloads', category: 'Resources', description: 'Find admission forms, the school handbook, fee structure and transport route map.' },
   { title: 'Mandatory Public Disclosure', href: '/mandatory-public-disclosure', category: 'Resources', description: 'Access school information, certificates, affiliation details and mandatory documents.', keywords: 'CBSE safety recognition NOC staff committee' },

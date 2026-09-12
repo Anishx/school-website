@@ -24,12 +24,12 @@ const slides: MetricSlide[] = [
     stat: "Daily",
     description: "Yoga sessions guided by the Apollo Foundation Total Health Yoga Trainer, promoting physical and emotional well-being.",
   },
-  {
-    title: "CBSE Transition",
-    image: "/images/classroom/classroom.jpg",
-    stat: "CBSE",
-    description: "Transitioning to CBSE, building on a strong academic foundation with nationally benchmarked standards.",
-  },
+  // {
+  //   title: "CBSE Transition",
+  //   image: "/images/classroom/classroom.jpg",
+  //   stat: "CBSE",
+  //   description: "Transitioning to CBSE, building on a strong academic foundation with nationally benchmarked standards.",
+  // },
   {
     title: "State-Level Sports Achievers",
     image: "/images/sports/sports-1.jpg",

@@ -28,7 +28,7 @@ export default async function SearchPage({ searchParams }: {
       <section className="bg-teal-900 py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
           <h1 className="font-display text-4xl uppercase text-white md:text-5xl">Search</h1>
-          <p className="mt-4 text-white/80">Find school information, news, announcements and downloads.</p>
+          <p className="mt-4 text-white/80">Find school information, news and downloads.</p>
           <form role="search" aria-label="Search results" action="/search" method="get" className="mt-6">
             <label htmlFor="search-query" className="mb-2 block text-sm font-semibold text-white">Search the website</label>
             <div className="flex gap-2">

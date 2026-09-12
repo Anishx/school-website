@@ -62,16 +62,16 @@ function OverviewTab() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Highlights</h2>
           <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4">
-            <div className="relative overflow-hidden bg-yellow-500 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
-              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-purple-700" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="relative overflow-hidden bg-yellow-500 p-3 pt-8 aspect-[1/0.294] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-3 right-3 size-7 text-purple-700" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M24 12C18 8 11 7 5 9v29c6-2 13-1 19 3 6-4 13-5 19-3V9c-6-2-13-1-19 3v29" />
                 <path d="M11 16c3 0 5 .5 8 2m-8 5c3 0 5 .5 8 2m10-7c3-1.5 5-2 8-2m-8 9c3-1.5 5-2 8-2" />
               </svg>
               <p className="font-display text-3xl text-ink-900 md:text-4xl">12+</p>
               <p className="mt-1 text-xs font-semibold text-ink-900">Years of Nurturing Young Minds Through Isha-Affiliated Value-Based Education</p>
             </div>
-            <div className="relative overflow-hidden bg-purple-700 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
-              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-yellow-500" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="relative overflow-hidden bg-purple-700 p-3 pt-8 aspect-[1/0.294] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-3 right-3 size-7 text-yellow-500" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="6" y="10" width="36" height="32" rx="4" />
                 <path d="M15 5v10M33 5v10M6 20h36m-25 11 5 5 10-10" />
               </svg>
@@ -83,8 +83,8 @@ function OverviewTab() {
               <p className="font-display text-3xl text-ink-900 md:text-4xl">CBSE</p>
               <p className="mt-1 text-xs font-semibold text-ink-900">Transitioning to CBSE, Strong Academic Foundation</p>
             </div> */}
-            <div className="relative overflow-hidden bg-pink-400 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
-              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-teal-800" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="relative overflow-hidden bg-pink-400 p-3 pt-8 aspect-[1/0.294] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-3 right-3 size-7 text-teal-800" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 7h20v12a10 10 0 0 1-20 0V7Zm0 4H6v5a9 9 0 0 0 9 9m19-14h8v5a9 9 0 0 1-9 9M24 29v8m-8 5v-5h16v5H16Z" />
                 <path d="m24 11 2 4 4 .5-3 3 .7 4-3.7-2-3.7 2 .7-4-3-3 4-.5 2-4Z" fill="currentColor" stroke="none" />
               </svg>

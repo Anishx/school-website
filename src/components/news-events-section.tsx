@@ -62,6 +62,7 @@ export function NewsEventsSection({ items }: { items?: readonly NewsCardItem[] }
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas-100">
                   <Image
                     src={event.image}
+                    unoptimized={event.image.startsWith("https://")}
                     alt={event.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"

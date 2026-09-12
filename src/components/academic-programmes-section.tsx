@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 
 const programmes = [
   {
-    title: "Pre-Primary",
-    subtitle: "KINDERGARTEN",
+    title: "Nursery",
+    subtitle: "Pre-primary",
     description:
       "A joyful environment where young learners develop foundational skills through play-based learning, storytelling, and creative activities.",
     image: "/images/new/kids-playground.jpg",

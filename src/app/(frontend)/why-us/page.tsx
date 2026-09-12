@@ -32,7 +32,7 @@ const reasons: WhyUsItem[] = [
     title: "Academic Excellence",
     icon: GraduationCap,
     description:
-      "Apollo Vidhyalayam is committed to providing a strong academic foundation through engaging classroom experiences, structured learning methodologies, and continuous assessment. As the school transitions to the CBSE curriculum, students benefit from a future-ready education that develops conceptual understanding, analytical thinking, and problem-solving skills while maintaining high academic standards.",
+      "Apollo Vidhyalayam is committed to providing a strong academic foundation through engaging classroom experiences, structured learning methodologies, and continuous assessment. As the school transitions to a strong curriculum, students benefit from a future-ready education that develops conceptual understanding, analytical thinking, and problem-solving skills while maintaining high academic standards.",
   },
   {
     title: "Leadership Opportunities",
@@ -138,10 +138,10 @@ export default function WhyUsPage() {
             <div className="flex flex-col gap-10 md:flex-row-reverse md:items-center">
               <div className="md:w-1/2">
                 <h3 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Academic Excellence &amp; Future-Ready Learning</h3>
-                <p className="mt-4 text-sm leading-relaxed text-ink-600 md:text-base">Our evolving CBSE curriculum combines strong academic foundations with innovative teaching methodologies to help students become independent thinkers and lifelong learners.</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink-600 md:text-base">Our evolving curriculum combines strong academic foundations with innovative teaching methodologies to help students become independent thinkers and lifelong learners.</p>
                 <p className="mt-4 text-sm font-semibold text-ink-800">Our academic approach includes:</p>
                 <ul className="mt-3 space-y-2 text-sm text-ink-600">
-                  <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-800" />Concept-based learning aligned with the CBSE curriculum</li>
+                  <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-800" />Concept-based learning aligned with our curriculum</li>
                   <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-800" />Interactive classrooms and technology-enabled teaching</li>
                   <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-800" />Continuous assessment to strengthen understanding and critical thinking</li>
                   <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-800" />Digital learning tools that prepare students for an evolving world</li>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 
 const categories = [
-  { title: "Academics", image: "/images/welcome/academics-2.jpg", description: "Strong CBSE foundation through engaging classroom experiences and structured learning.", href: "/#academics" },
+  { title: "Academics", image: "/images/welcome/academics-3.jpg", description: "Strong foundation through engaging classroom experiences and structured learning.", href: "/#academics" },
   { title: "Sports", image: "/images/new/sports-soccer.jpg", description: "Building confidence, resilience, and teamwork through athletics, football, Volleyball, and more.", href: "/student-life?tab=sports" },
   { title: "Yoga & Wellness", image: "/images/welcome/yoga-wellness.jpg", description: "Daily yoga sessions promoting physical, emotional, and mental well-being.", href: "/student-life?tab=clubs" },
   { title: "Student Life", image: "/images/welcome/student-life-3.jpeg", description: "Clubs, cultural events, and leadership opportunities that build well-rounded individuals.", href: "/student-life" },

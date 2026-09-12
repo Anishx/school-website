@@ -53,7 +53,6 @@ export const navItems: NavItem[] = [
     title: "Resources",
     compact: [
       { title: "Latest News", href: "/news-events?tab=latest" },
-      { title: "Announcements", href: "/news-events?tab=announcements" },
       { title: "School Calendar", href: "/news-events?tab=calendar" },
       { title: "Downloads", href: "/news-events?tab=downloads" },
     ],

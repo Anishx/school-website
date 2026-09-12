@@ -49,7 +49,6 @@ const aboutLinks = [
 
 const resourceLinks = [
   { name: "Latest News", href: "/news-events?tab=latest" },
-  { name: "Announcements", href: "/news-events?tab=announcements" },
   { name: "School Calendar", href: "/news-events?tab=calendar" },
   { name: "Downloads", href: "/news-events?tab=downloads" },
 ];

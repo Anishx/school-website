@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const initiatives = [
   "Transition to Apollo Vidhyalayam Brand",
-  "CBSE Academic Excellence Roadmap",
+  // "CBSE Academic Excellence Roadmap",
   "School Infrastructure Upgrades",
   "Additional School Buses",
   "Teacher Capacity Building Programs",

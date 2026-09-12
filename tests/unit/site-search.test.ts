@@ -25,7 +25,7 @@ describe('site search', () => {
 
   it.each(['legacy', 'managed', 'append'] as const)('respects %s news source and existing detail routes', async (source) => {
     vi.mocked(getWebsiteSettings).mockResolvedValue({ contentSources: {
-      resourcesNews: source, resourcesAnnouncements: source, resourcesDownloads: source,
+      resourcesNews: source, resourcesDownloads: source,
     } } as WebsiteSettingsDTO);
     const managed: EditorialDTO[] = [
       { id: 'cms-1', slug: legacyNews[0].slug, kind: 'news', title: 'Updated school story', date: '', placements: [] },
@@ -41,7 +41,7 @@ describe('site search', () => {
     expect(new Set(news.map((item) => item.slug)).size).toBe(news.length);
     expect(index.some((item) => item.title === 'No detail route' || item.title === 'Unplaced notice')).toBe(false);
     expect(index.some((item) => item.title === 'Science Fair')).toBe(source !== 'legacy');
-    expect(index.some((item) => item.title === 'School notice')).toBe(source !== 'legacy');
+    expect(index.some((item) => item.title === 'School notice')).toBe(false);
     if (source === 'legacy') expect(news).toEqual(legacyNews);
     else {
       expect(news.find((item) => item.slug === legacyNews[0].slug)?.title).toBe('Updated school story');

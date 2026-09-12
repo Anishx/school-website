@@ -2,7 +2,7 @@ import 'server-only';
 
 import { getDocuments, getEditorial, getWebsiteSettings } from './loaders';
 import { contentForSource } from './content-source';
-import { legacyAnnouncements, legacyDownloads, legacyNews } from './legacy-resources';
+import { legacyDownloads, legacyNews } from './legacy-resources';
 import { sitePages, type SiteEntry } from '../../lib/site-pages';
 
 // Use only the public loaders: they enforce publication dates and anonymous access.
@@ -14,12 +14,9 @@ export async function getPublicNews() {
 }
 
 export async function getSiteSearchEntries(): Promise<SiteEntry[]> {
-  const [news, editorial, documents, settings] = await Promise.all([
-    getPublicNews(), getEditorial(), getDocuments(), getWebsiteSettings(),
+  const [news, documents, settings] = await Promise.all([
+    getPublicNews(), getDocuments(), getWebsiteSettings(),
   ]);
-  const announcements = contentForSource(settings.contentSources.resourcesAnnouncements, legacyAnnouncements,
-    editorial.filter((item) => item.kind === 'announcement' && item.placements.includes('resource-announcements')),
-    (item) => item.id);
   const downloads = contentForSource(settings.contentSources.resourcesDownloads, legacyDownloads,
     documents.filter((item) => item.placements.includes('downloads')), (item) => item.id);
   return [
@@ -29,8 +26,6 @@ export async function getSiteSearchEntries(): Promise<SiteEntry[]> {
       description: item.summary ?? item.body ?? '', category: 'News & Events',
       keywords: `${item.body ?? ''} ${item.category ?? ''}`,
     })),
-    ...announcements.map((item) => ({ title: item.title, href: '/news-events?tab=announcements',
-      description: item.message ?? item.summary ?? '', category: 'Announcements' })),
     ...downloads.map((item) => ({ title: item.title, href: '/news-events?tab=downloads',
       description: item.description ?? 'View this document in school downloads.', category: 'Downloads',
       keywords: `${item.category ?? ''} ${item.academicYear ?? ''}` })),

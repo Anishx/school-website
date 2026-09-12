@@ -25,6 +25,7 @@ export type EditorialDTO = Readonly<{
 
 export type ContentSource = 'legacy' | 'append' | 'managed'
 export type WebsiteSettingsDTO = Readonly<{
+  loginMenu: import('./login-menu').LoginMenuDTO
   announcementBar: Readonly<{
     enabled: boolean
     speed: 'slow' | 'normal' | 'fast'
@@ -32,7 +33,6 @@ export type WebsiteSettingsDTO = Readonly<{
   }>
   contentSources: Readonly<{
     resourcesNews: ContentSource
-    resourcesAnnouncements: ContentSource
     resourcesDownloads: ContentSource
     schoolCalendar: ContentSource
     mandatoryDisclosure: ContentSource

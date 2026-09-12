@@ -38,7 +38,7 @@ const features: Feature[] = [
   {
     icon: Brain,
     title: "Future-Ready Education",
-    description: "CBSE curriculum with life skills, critical thinking and career guidance.",
+    description: "Strong curriculum with life skills, critical thinking and career guidance.",
   },
 ];
 
@@ -124,7 +124,7 @@ export function AboutSection() {
             <h3 className="text-lg font-semibold uppercase text-ink-800">What We Do</h3>
             <div className="mt-1 h-[3px] w-20 bg-gradient-to-r from-teal-800 to-teal-800/20" />
             <p className="mt-6">
-              We provide quality CBSE education from Pre-Primary to Grade 10, combining academic rigour
+              We provide quality education from Nursery to Grade 10, combining academic rigour
               with holistic development programs that build confidence and character.
             </p>
             <p className="mt-4">

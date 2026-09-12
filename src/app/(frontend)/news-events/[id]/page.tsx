@@ -63,6 +63,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ id
         <div className="relative h-[300px] md:h-[400px] lg:h-[500px]">
           <Image
             src={event.image}
+            unoptimized={event.image.startsWith("https://")}
             alt={event.imageAlt}
             fill
             priority

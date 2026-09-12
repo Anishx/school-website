@@ -36,7 +36,7 @@ const stages: Stage[] = [
     title: "Grade 1 – 5",
     subtitle: "Primary School",
     grades: "Ages 6 – 10",
-    features: ["CBSE curriculum", "Activity-based classrooms", "Spoken English program", "Sports & arts"],
+    features: ["State curriculum", "Activity-based classrooms", "Spoken English program", "Sports & arts"],
     color: "border-teal-600/30 hover:border-teal-600/60",
     iconBg: "bg-teal-800/10 text-teal-800",
     tagColor: "bg-teal-800/10 text-teal-800",

@@ -80,7 +80,7 @@ const contentSections = [
 
 const resourceAnnouncements = [
   ['Admissions Open for 2025-26 Academic Year', '2025-06-01'],
-  ['CBSE Transition — Academic Continuity Update', '2025-05-15'],
+  // ['CBSE Transition — Academic Continuity Update', '2025-05-15'],
   ['New Smart Classrooms Inaugurated', '2025-04-20'],
   ['Parent-Teacher Meeting Schedule Released', '2025-04-10'],
 ]
@@ -133,7 +133,7 @@ async function main() {
     const missingAssets = assets.filter((asset) => !asset.exists)
     console.log(JSON.stringify({
       mode: 'source-validation', manifestVersion: source, baseline: LEGACY_BASELINE,
-      plannedRecords: 4 + events.length + 8 + downloads.length + disclosures.length,
+      plannedRecords: 4 + events.length + tickerAnnouncements.length + downloads.length + disclosures.length,
       assets: { total: assets.length, missing: missingAssets },
       valid: missingAssets.length === 0,
       next: 'Run with --compare for a database comparison, then --apply only against a backed-up, reviewed target database.',
@@ -148,7 +148,8 @@ async function main() {
     kind: 'news', title: event.title, slug: event.id, publicPathKey: event.id, summary: event.body.slice(0, 500), body: lexicalParagraph(event.body), displayDate: event.date, category: event.category, featured: event.featured, legacyImagePath: event.image, placements: ['resource-news', 'homepage-news'],
   }, summary)
   for (const [title, date] of resourceAnnouncements) {
-    const placements = tickerAnnouncements.includes(title) ? ['resource-announcements', 'header-ticker'] : ['resource-announcements']
+    if (!tickerAnnouncements.includes(title)) continue
+    const placements = ['header-ticker']
     await createIfMissing(payload, 'editorial', `announcement:${hash(title).slice(0, 16)}`, { title: { equals: title } }, { kind: 'announcement', title, message: title, displayDate: date, displayOrder: 0, priority: 0, placements }, summary)
   }
   for (const title of tickerAnnouncements.filter((title) => !resourceAnnouncements.some(([resourceTitle]) => resourceTitle === title))) {
