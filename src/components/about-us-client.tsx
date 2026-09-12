@@ -61,26 +61,68 @@ function OverviewTab() {
       <section className="bg-white py-16 md:py-20 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">Highlights</h2>
-          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <div className="relative overflow-hidden bg-yellow-500 p-5 aspect-[1/0.7] flex flex-col justify-end">
-              <svg className="absolute top-3 right-3 size-12 text-purple-700 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l2 8h-4l2-8zm0 36l-2-8h4l-2 8zm-20-20l8 2v-4l-8 2zm40 0l-8-2v4l8-2zm-6.3-13.7l-5.7 5.7 2.8 2.8 5.7-5.7-2.8-2.8zm-27.4 27.4l5.7-5.7-2.8-2.8-5.7 5.7 2.8 2.8zm0-27.4l2.8 2.8 5.7-5.7-2.8-2.8-5.7 5.7zm27.4 27.4l-2.8-2.8-5.7 5.7 2.8 2.8 5.7-5.7z"/></svg>
+          <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4">
+            <div className="relative overflow-hidden bg-yellow-500 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-purple-700" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M24 12C18 8 11 7 5 9v29c6-2 13-1 19 3 6-4 13-5 19-3V9c-6-2-13-1-19 3v29" />
+                <path d="M11 16c3 0 5 .5 8 2m-8 5c3 0 5 .5 8 2m10-7c3-1.5 5-2 8-2m-8 9c3-1.5 5-2 8-2" />
+              </svg>
               <p className="font-display text-3xl text-ink-900 md:text-4xl">12+</p>
               <p className="mt-1 text-xs font-semibold text-ink-900">Years of Nurturing Young Minds Through Isha-Affiliated Value-Based Education</p>
             </div>
-            <div className="relative overflow-hidden bg-purple-700 p-5 aspect-[1/0.7] flex flex-col justify-end">
-              <svg className="absolute top-3 right-3 size-12 text-yellow-500 opacity-80" viewBox="0 0 48 48" fill="currentColor"><path d="M14 8h20v6l-10 10-10-10V8z"/></svg>
+            <div className="relative overflow-hidden bg-purple-700 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-yellow-500" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="6" y="10" width="36" height="32" rx="4" />
+                <path d="M15 5v10M33 5v10M6 20h36m-25 11 5 5 10-10" />
+              </svg>
               <p className="font-display text-3xl text-white md:text-4xl">Daily</p>
               <p className="mt-1 text-xs font-semibold text-white/90">Yoga Sessions by Apollo Foundation Total Health Trainer</p>
             </div>
-            <div className="relative overflow-hidden bg-emerald-500 p-5 aspect-[1/0.7] flex flex-col justify-end">
+            {/* <div className="relative overflow-hidden bg-emerald-500 p-5 aspect-[1/0.7] flex flex-col justify-end">
               <svg className="absolute top-3 right-3 size-12 text-purple-500 opacity-80" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="4"><circle cx="24" cy="20" r="12"/></svg>
               <p className="font-display text-3xl text-ink-900 md:text-4xl">CBSE</p>
               <p className="mt-1 text-xs font-semibold text-ink-900">Transitioning to CBSE, Strong Academic Foundation</p>
-            </div>
-            <div className="relative overflow-hidden bg-pink-400 p-5 aspect-[1/0.7] flex flex-col justify-end">
-              <svg className="absolute top-3 right-3 size-12 text-teal-800 opacity-80" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/></svg>
+            </div> */}
+            <div className="relative overflow-hidden bg-pink-400 p-5 pt-20 aspect-[1/0.49] flex flex-col justify-end">
+              <svg aria-hidden="true" className="absolute top-5 right-5 size-12 text-teal-800" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 7h20v12a10 10 0 0 1-20 0V7Zm0 4H6v5a9 9 0 0 0 9 9m19-14h8v5a9 9 0 0 1-9 9M24 29v8m-8 5v-5h16v5H16Z" />
+                <path d="m24 11 2 4 4 .5-3 3 .7 4-3.7-2-3.7 2 .7-4-3-3 4-.5 2-4Z" fill="currentColor" stroke="none" />
+              </svg>
               <p className="font-display text-3xl text-ink-900 md:text-4xl">State</p>
               <p className="mt-1 text-xs font-semibold text-ink-900">Level Sports Achievers — Sporty, Brave, Disciplined</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Principal Message */}
+      <section className="bg-teal-900 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Principal&apos;s Message</h2>
+          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-4">
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <Image
+                  src="/images/leadership/AV Principal_website.jpeg"
+                  alt="Principal of Apollo Vidhyalayam"
+                  fill
+                  quality={90}
+                  className="object-cover object-top"
+                  sizes="(max-width: 1023px) calc(100vw - 48px), (max-width: 1279px) 33vw, 384px"
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-yellow-500">From the Principal&apos;s Desk</p>
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-white/85">
+                <p>Every child who walks through our gates arrives with unique potential. Our responsibility is to help them discover it, nurture it, and give them the confidence to pursue their aspirations with integrity and purpose.</p>
+                <p>At Apollo Vidhyalayam, learning extends far beyond textbooks. We strive to cultivate curiosity, critical thinking, resilience, and leadership while ensuring that every student feels supported, valued, and inspired to achieve their very best.</p>
+                <p>I invite you to visit Apollo Vidhyalayam, interact with our students and faculty, and experience the vibrant learning environment that makes our school a place where every child is encouraged to grow, excel, and thrive.</p>
+              </div>
+              <div className="mt-8 border-l-4 border-yellow-500 pl-4">
+                  <p className="font-display text-lg uppercase text-white">Sireesha Reddy</p>
+                  <p className="mt-1 text-sm text-white/70">Principal, Apollo Vidhyalayam</p>
+              </div>
             </div>
           </div>
         </div>
@@ -109,20 +151,6 @@ function OverviewTab() {
         </div>
       </section>
 
-      {/* Principal Message */}
-      <section className="bg-teal-900 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">From the Principal&apos;s Desk</p>
-            <h2 className="mt-3 font-display text-2xl uppercase text-white md:text-3xl">Principal&apos;s Message</h2>
-            <div className="mt-8 space-y-5 text-sm leading-relaxed text-white/80 md:text-base">
-              <p>Every child who walks through our gates arrives with unique potential. Our responsibility is to help them discover it, nurture it, and give them the confidence to pursue their aspirations with integrity and purpose.</p>
-              <p>At Apollo Vidhyalayam, learning extends far beyond textbooks. We strive to cultivate curiosity, critical thinking, resilience, and leadership while ensuring that every student feels supported, valued, and inspired to achieve their very best.</p>
-              <p>I invite you to visit Apollo Vidhyalayam, interact with our students and faculty, and experience the vibrant learning environment that makes our school a place where every child is encouraged to grow, excel, and thrive.</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
@@ -197,27 +225,25 @@ function InfrastructureTab() {
   const facilities = [
     { title: "Smart Classrooms", subtitle: "Technology-enabled learning", image: "/images/new/smartboard-class.jpg" },
     { title: "Library", subtitle: "Books & research resources", image: "/images/new/library-person.jpg" },
-    { title: "Computer Lab", subtitle: "Digital literacy & applications", image: "/images/new/Computer-lab.jpg" },
     { title: "Sports Facilities", subtitle: "Athletics, football, cricket & more", image: "/images/new/playground-field.jpg" },
     { title: "Auditorium", subtitle: "Events & performances", image: "/images/new/auditorium.jpg" },
-    { title: "Playground", subtitle: "Outdoor play & recreation", image: "/images/sports/sports-2.jpg" },
-    { title: "Medical Room", subtitle: "First aid & health care", image: "/images/medical/health.png" },
+    { title: "Playground", subtitle: "Outdoor play & recreation", image: "/images/sports/playground.jpg" },
+    { title: "Medical Room", subtitle: "First aid & health care", image: "/images/medical/camp-1.jpg" },
     { title: "Transport", subtitle: "Safe & reliable travel", image: "/images/medical/test-tube.jpg" },
   ];
 
   const labs = [
-    { title: "Physics Lab", subtitle: "Hands-on experiments", image: "/images/brighter-minds/project-1.png" },
-    { title: "Chemistry Lab", subtitle: "Supervised practicals", image: "/images/medical/chemistry-lab.jpg" },
-    { title: "Biology Lab", subtitle: "Specimens & models", image: "/images/about/microscope.jpg" },
-    { title: "Mathematics Lab", subtitle: "Activity-based learning", image: "/images/classroom/homework.jpg" },
+    { title: "Composite Science Lab", subtitle: "Specimens & models", image: "/images/about/microscope.jpg" },
+    { title: "Computer Lab", subtitle: "Digital literacy & applications", image: "/images/new/Computer-lab.jpg" },
+    { title: "Mathematics Lab", subtitle: "Activity-based learning", image: "/images/classroom/mathLab.png" },
   ];
 
   const corridorSpaces = [
-    { title: "Chess Corner", image: "/images/classroom/studying.jpg" },
-    { title: "Carrom Corner", image: "/images/campus/kids-camera.jpg" },
-    { title: "Library Corner", image: "/images/classroom/girls-class.jpg" },
+    { title: "Chess Corner", image: "/images/campus/chess.jpg" },
+    { title: "Carrom Corner", image: "/images/campus/carrom.PNG" },
+    { title: "Library Corner", image: "/images/campus/library.jpg" },
     { title: "GK Corner", image: "/images/brighter-minds/project-2.png" },
-    { title: "Mind Games", image: "/images/brighter-minds/project-3.png" },
+    { title: "Mind Games", image: "/images/brighter-minds/mind-games.png" },
   ];
 
   return (

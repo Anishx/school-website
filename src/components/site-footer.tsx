@@ -218,6 +218,9 @@ export async function SiteFooter() {
             reserved.
           </p>
           <div className="flex items-center gap-4">
+            <Link href="/sitemap" className="text-xs text-white/50 transition-colors hover:text-white">
+              Sitemap
+            </Link>
             <Link
               href="#privacy"
               className="text-xs text-white/50 transition-colors hover:text-white"

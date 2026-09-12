@@ -35,6 +35,9 @@ export default buildConfig({
   admin: {
     user: 'users',
     importMap: { baseDir: path.resolve(dirname) },
+    components: {
+      graphics: { Logo: '/components/payload/ApolloLogo#ApolloLogo' },
+    },
   },
   collections: [
     Users,

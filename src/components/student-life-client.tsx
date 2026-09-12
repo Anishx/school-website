@@ -82,7 +82,7 @@ const legacyTabs: TabContent[] = [
       { title: "Student Council", description: "School Captain, Vice Captain, and house leaders elected by peers.", image: "/images/campus/kids-camera.jpg" },
       { title: "POCSO Awareness Committee", description: "Student-led safety awareness and peer support.", image: "/images/classroom/teacher.jpg" },
       { title: "POSH Awareness Committee", description: "Promoting respectful and inclusive behaviour across campus.", image: "/images/classroom/girls-class.jpg" },
-      { title: "School Management Committee", description: "Students contributing to school governance and decision-making.", image: "/images/campus/walking.jpg" },
+      { title: "School Management Committee", description: "Students contributing to school governance and decision-making.", image: "/images/campus/SMC.jpeg" },
       { title: "Inter-House Competitions", description: "Cultural, sports, and academic events fostering healthy competition and school spirit.", image: "/images/sports/sports-1.jpg" },
     ],
   },

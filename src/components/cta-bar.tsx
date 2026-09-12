@@ -16,12 +16,6 @@ export function CtaBar() {
           </Link>
         </Button>
         <Button asChild variant="outline" size="md" className="font-bold">
-          <Link href="#campus-visit">
-            <MapPin className="size-4" />
-            Campus Visit
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="md" className="font-bold">
           <Link href="#brochure">
             <Download className="size-4" />
             Brochure

@@ -34,9 +34,11 @@ export async function SiteHeader() {
           </div>
 
           {/* Right: Login + Apply Now + Search */}
-          <div className="flex items-center gap-2">
-            <LoginDropdown />
-            <Button asChild variant="primary" size="sm">
+          <div className="group flex items-center gap-2">
+            <div className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:block">
+              <LoginDropdown />
+            </div>
+            <Button asChild variant="primary" size="sm" className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:inline-flex">
               <Link href="/apply">
                 Apply Now
                 <ArrowRight className="size-3.5" />

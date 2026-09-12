@@ -96,13 +96,13 @@ export function HeroSection() {
             <p className="text-lg font-semibold italic text-yellow-500 md:text-2xl">
               Learning. Leading. Excelling.
             </p>
-            <h1 className="font-display mt-2 text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-7xl">
+            <h1 className="font-display mt-2 text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-6xl">
               Rooted in <span className="text-yellow-500">Aragonda</span>
             </h1>
-            <h1 className="font-display text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-7xl">
+            <h1 className="font-display text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-6xl">
               Raised with <span className="text-yellow-500">Discipline</span>
             </h1>
-            <h1 className="font-display text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-7xl">
+            <h1 className="font-display text-4xl uppercase leading-[1.1] text-white md:text-6xl lg:text-6xl">
               Excelling with <span className="text-yellow-500">Strength</span>
             </h1>
           </div>

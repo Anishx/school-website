@@ -16,7 +16,7 @@ const programmes = [
     subtitle: "GRADES I – V",
     description:
       "Strong academic foundation in languages, mathematics, science, and environmental studies through activity-based learning.",
-    image: "/images/classroom/hands-up.jpg",
+    image: "/images/classroom/primary-school.png",
   },
   {
     title: "Middle School",

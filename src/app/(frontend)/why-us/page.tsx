@@ -131,7 +131,7 @@ export default function WhyUsPage() {
                 </ul>
               </div>
               <div className="relative aspect-[4/3] md:w-1/2">
-                <Image src="/images/yoga/group-yoga.jpg" alt="Holistic Learning" fill quality={90} className="object-cover" sizes="50vw" />
+                <Image src="/images/collage/photo-collage.png" alt="Holistic Learning" fill quality={90} className="object-cover" sizes="50vw" />
               </div>
             </div>
 
