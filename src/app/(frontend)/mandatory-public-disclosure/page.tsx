@@ -39,9 +39,9 @@ export default async function MandatoryPublicDisclosurePage() {
               </div>
 
               {/* Column headers */}
-              <div className="grid grid-cols-[60px_1fr_140px] items-center bg-sky-600 px-4 py-2.5 md:grid-cols-[80px_1fr_160px]">
+              <div className="grid grid-cols-[32px_minmax(0,1fr)_88px] items-center gap-2 bg-sky-600 px-3 py-2.5 md:grid-cols-[80px_1fr_160px] md:gap-0 md:px-4">
                 <span className="text-xs font-bold uppercase text-white">Sl No.</span>
-                <span className="text-xs font-bold uppercase text-white">Document / Information</span>
+                <span className="min-w-0 [overflow-wrap:anywhere] text-xs font-bold uppercase text-white">Document / Information</span>
                 <span className="text-center text-xs font-bold uppercase text-white">Action</span>
               </div>
 
@@ -49,14 +49,14 @@ export default async function MandatoryPublicDisclosurePage() {
               {visibleDocuments.map((doc, index) => (
                 <div
                   key={doc.title}
-                  className={`grid grid-cols-[60px_1fr_140px] items-center px-4 py-3 md:grid-cols-[80px_1fr_160px] ${
+                  className={`grid grid-cols-[32px_minmax(0,1fr)_88px] items-center gap-2 px-3 py-3 md:grid-cols-[80px_1fr_160px] md:gap-0 md:px-4 ${
                     index % 2 === 0 ? "bg-white" : "bg-canvas-50"
                   }`}
                 >
                   <span className="text-sm text-ink-600">{index + 1}</span>
-                  <span className="flex items-center gap-2 text-sm font-medium text-ink-900">
+                  <span className="flex min-w-0 items-center gap-2 text-sm font-medium text-ink-900">
                     <FileText className="size-4 shrink-0 text-ink-400" />
-                    {doc.title}
+                    <span className="min-w-0 [overflow-wrap:anywhere]">{doc.title}</span>
                   </span>
                   <div className="text-center">
                     {doc.href !== "#" ? <a href={doc.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-sky-700">View Document</a> : <span className="text-xs font-medium text-ink-500">Not available yet</span>}

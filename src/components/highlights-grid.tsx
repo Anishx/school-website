@@ -54,18 +54,14 @@ export function HighlightsGrid() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[160px]">
+        <div className="grid grid-cols-1 gap-1 md:grid-cols-4 md:auto-rows-[160px]">
           {tiles.map((tile) => (
             <Link
               key={tile.title}
               href={tile.href}
-              className={`group relative overflow-hidden min-h-[160px] sm:min-h-0 transition-transform duration-300 hover:scale-[1.02] hover:z-10 hover:shadow-xl ${
+              className={`group relative overflow-hidden min-h-[160px] md:min-h-0 transition-transform duration-300 hover:scale-[1.02] hover:z-10 hover:shadow-xl ${
                 tile.type === "color" ? tile.color : ""
-              } md:col-span-${tile.colSpan} md:row-span-${tile.rowSpan}`}
-              style={{
-                gridColumn: `span ${tile.colSpan}`,
-                gridRow: `span ${tile.rowSpan}`,
-              }}
+              } ${tile.colSpan === 2 ? "md:col-span-2" : "md:col-span-1"} ${tile.rowSpan === 2 ? "md:row-span-2" : "md:row-span-1"}`}
             >
               {tile.type === "image" && (
                 <>
@@ -75,7 +71,7 @@ export function HighlightsGrid() {
                     fill
                     quality={90}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+                    sizes="(max-width: 767px) 100vw, 25vw"
                   />
                   {/* Default gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-300 group-hover:opacity-0" />

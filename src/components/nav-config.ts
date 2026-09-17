@@ -29,7 +29,7 @@ export const navItems: NavItem[] = [
       { title: "Leadership", href: "/leadership" },
       { title: "Our Management", href: "/our-management" },
       { title: "Gallery", href: "/gallery" },
-      { title: "Download School Brochure", href: "#brochure", icon: Download },
+      { title: "Download School Brochure", href: "/news-events?tab=downloads", icon: Download },
     ],
   },
   {

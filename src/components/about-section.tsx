@@ -144,7 +144,7 @@ export function AboutSection() {
                 <ArrowRight className="size-3.5" />
               </Link>
               <Link
-                href="#brochure"
+                href="/news-events?tab=downloads"
                 className="inline-flex items-center gap-2 rounded-full border border-teal-800 px-6 py-2.5 text-sm font-semibold text-teal-800 transition hover:bg-teal-800/5"
               >
                 <Download className="size-4" />

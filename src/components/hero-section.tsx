@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ChevronsDown } from "lucide-react";
 
 type HeroSlide = {
   src: string;
@@ -15,7 +16,7 @@ const slides: HeroSlide[] = [
   {
     src: "/hero-v2.jpg",
     alt: "Apollo Vidhyalayam campus",
-    className: "object-cover scale-[1.2]",
+    className: "object-cover scale-[1.44] md:scale-[1.2]",
     objectPosition: "calc(50% - 70px) calc(50% + 100px)",
   },
   {
@@ -92,7 +93,7 @@ export function HeroSection() {
       {/* Content — fills remaining space, text above the sticky bar */}
       <div className="relative z-10 flex flex-1 items-end justify-end pb-24 md:pb-28">
         <div className="mx-auto w-full max-w-7xl px-6">
-          <div className="ml-auto max-w-3xl text-right">
+          <div className="mx-auto max-w-3xl text-center md:ml-auto md:mr-0 md:text-right">
             <p className="text-lg font-semibold italic text-yellow-500 md:text-2xl">
               Learning. Leading. Excelling.
             </p>
@@ -108,6 +109,23 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+      <button
+        type="button"
+        aria-label="Scroll down to explore"
+        onClick={(event) => {
+          const nextSection = event.currentTarget.closest("section")?.nextElementSibling;
+          if (!nextSection) return;
+          const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+          window.scrollBy({
+            top: nextSection.getBoundingClientRect().top - headerHeight,
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+          });
+        }}
+        className="absolute bottom-5 left-1/2 z-20 flex min-h-11 min-w-11 -translate-x-1/2 flex-col items-center justify-center gap-1 rounded-lg text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:hidden"
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
+        <ChevronsDown aria-hidden="true" className="size-6 motion-safe:animate-bounce" />
+      </button>
     </section>
   );
 }

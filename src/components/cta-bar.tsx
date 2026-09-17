@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, MapPin, Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function CtaBar() {
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 bg-yellow-600 shadow-[0_-4px_12px_rgba(0,0,0,0.15)]"
+      className="fixed bottom-0 left-0 right-0 z-50 hidden bg-yellow-600 shadow-[0_-4px_12px_rgba(0,0,0,0.15)] md:block"
       style={{ borderLeft: "10px solid var(--color-teal-900)", borderRight: "10px solid var(--color-teal-900)" }}
     >
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-6 py-3 md:gap-6">
@@ -16,7 +16,7 @@ export function CtaBar() {
           </Link>
         </Button>
         <Button asChild variant="outline" size="md" className="font-bold">
-          <Link href="#brochure">
+          <Link href="/news-events?tab=downloads">
             <Download className="size-4" />
             Brochure
           </Link>

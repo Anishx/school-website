@@ -18,11 +18,11 @@ export async function SiteHeader() {
 
       {/* Logo bar */}
       <div className="border-b border-line-200">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        <div className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between px-6 py-3">
           {/* Left: hamburger (mobile) + logo */}
           <div className="flex items-center gap-3">
             <MobileNav />
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="absolute left-1/2 flex -translate-x-1/2 items-center md:static md:translate-x-0">
               <Image
                 src="/apollo-logo.png"
                 alt="Apollo Vidhyalayam"
@@ -34,11 +34,11 @@ export async function SiteHeader() {
           </div>
 
           {/* Right: Login + Apply Now + Search */}
-          <div className="group flex items-center gap-2">
+          <div className="group relative flex items-center gap-2">
             <div className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:block">
               <LoginDropdown menu={settings.loginMenu} />
             </div>
-            <Button asChild variant="primary" size="sm" className="group-has-[[data-search-expanded=true]]:hidden sm:group-has-[[data-search-expanded=true]]:inline-flex">
+            <Button asChild variant="primary" size="sm" className="hidden md:inline-flex">
               <Link href="/apply">
                 Apply Now
                 <ArrowRight className="size-3.5" />
