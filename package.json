@@ -4,6 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "predev": "npm run generate:search",
+    "prebuild": "npm run generate:search",
+    "generate:search": "node scripts/generate-search-content.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

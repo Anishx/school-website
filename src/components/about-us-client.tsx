@@ -6,8 +6,8 @@ import { Breadcrumb } from "@/components/breadcrumb";
 
 const tabs = ["Overview", "Teachers", "Infrastructure"];
 
-export function AboutUsClient() {
-  const [activeTab, setActiveTab] = useState(0);
+export function AboutUsClient({ initialTab = 0 }: { initialTab?: number }) {
+  const [activeTab, setActiveTab] = useState(initialTab);
 
   return (
     <>

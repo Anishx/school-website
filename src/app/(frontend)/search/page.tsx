@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/site-header';
 import { getSiteSearchEntries } from '@/cms/public/site-index';
-import { searchEntries } from '@/lib/site-pages';
+import { searchEntries, searchExcerpt } from '@/lib/site-pages';
 
 export const metadata: Metadata = {
   title: 'Search | Apollo Vidhyalayam',
@@ -47,7 +47,7 @@ export default async function SearchPage({ searchParams }: {
               {results.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((entry) => <li key={`${entry.href}-${entry.title}`} className="py-6">
                 <p className="text-xs font-semibold uppercase tracking-wide text-teal-800">{entry.category}</p>
                 <h3 className="mt-1 text-xl font-semibold"><Link href={entry.href} className="text-ink-900 hover:text-teal-800 hover:underline">{entry.title}</Link></h3>
-                <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-ink-600">{entry.description.length > 220 ? `${entry.description.slice(0, 220)}…` : entry.description}</p>
+                <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-ink-600">{searchExcerpt(entry, query)}</p>
               </li>)}
             </ul>
             {pageCount > 1 && <nav aria-label="Search pagination" className="mt-8 flex items-center justify-between gap-4 text-sm text-teal-800">

@@ -4,11 +4,14 @@ export type SiteEntry = {
   description: string;
   category: string;
   keywords?: string;
+  content?: string;
 };
 
 export const sitePages: SiteEntry[] = [
   { title: 'Home', href: '/', category: 'School', description: 'Welcome to Apollo Vidhyalayam in Aragonda, Chittoor. Discover our school, academics and community.', keywords: 'education Andhra Pradesh rural primary secondary' },
   { title: 'About Us', href: '/about-us', category: 'School', description: 'Learn about our history, vision, mission and approach to education.', keywords: 'know us values' },
+  { title: 'Our Faculty', href: '/about-us?tab=teachers', category: 'School', description: 'Meet our teachers and learn about their qualifications and experience.' },
+  { title: 'Infrastructure', href: '/about-us?tab=infrastructure', category: 'School', description: 'Explore our classrooms, laboratories and campus facilities.' },
   { title: 'Leadership', href: '/leadership', category: 'School', description: 'Meet the leaders guiding Apollo Vidhyalayam.', keywords: 'principal chairman' },
   { title: 'Our Management', href: '/our-management', category: 'School', description: 'Meet our school management and the Apollo Foundation.', keywords: 'trust board' },
   { title: 'Why Us', href: '/why-us', category: 'Admissions', description: 'Explore our academic programmes, facilities and holistic approach to learning.', keywords: 'CBSE curriculum smart classrooms library laboratories brighter minds' },
@@ -35,7 +38,7 @@ export function searchEntries(entries: readonly SiteEntry[], query: string): Sit
   if (!terms.length) return [];
   return entries.map((entry, index) => {
     const title = entry.title.toLocaleLowerCase();
-    const haystack = `${title} ${entry.description} ${entry.category} ${entry.keywords ?? ''}`.toLocaleLowerCase();
+    const haystack = `${title} ${entry.description} ${entry.category} ${entry.keywords ?? ''} ${entry.content ?? ''}`.toLocaleLowerCase();
     const score = terms.every((term) => haystack.includes(term))
       ? 1 + (title === normalized ? 100 : 0) + (title.includes(normalized) ? 20 : 0) + terms.filter((term) => title.includes(term)).length * 5
       : 0;
@@ -43,4 +46,19 @@ export function searchEntries(entries: readonly SiteEntry[], query: string): Sit
   }).filter(({ score }) => score > 0)
     .sort((a, b) => b.score - a.score || a.index - b.index)
     .map(({ entry }) => entry);
+}
+
+export function searchExcerpt(entry: SiteEntry, query: string, limit = 220): string {
+  const text = (entry.content || entry.description).replace(/\s+/g, ' ').trim();
+  const terms = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const lower = text.toLocaleLowerCase();
+  const matches = terms.map((term) => lower.indexOf(term)).filter((index) => index >= 0);
+  const first = matches.length ? Math.min(...matches) : 0;
+  let start = Math.max(0, first - 60);
+  if (start > 0) {
+    const boundary = text.indexOf(' ', start);
+    if (boundary >= 0 && boundary < first) start = boundary + 1;
+  }
+  const snippet = text.slice(start, start + limit).trim();
+  return `${start ? '…' : ''}${snippet}${start + limit < text.length ? '…' : ''}`;
 }
