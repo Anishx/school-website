@@ -124,6 +124,8 @@ export function WelcomeSection() {
           className="flex gap-4 overflow-x-auto overflow-y-visible pb-4 scrollbar-hide"
           style={{
             scrollbarWidth: "none",
+            maskImage: "linear-gradient(to right, transparent, black clamp(24px, 6vw, 96px), black calc(100% - clamp(24px, 6vw, 96px)), transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black clamp(24px, 6vw, 96px), black calc(100% - clamp(24px, 6vw, 96px)), transparent)",
             paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))",
             paddingRight: "3rem",
           }}
