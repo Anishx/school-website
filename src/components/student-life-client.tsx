@@ -320,20 +320,24 @@ function StudentLifeContent({ sports, clubs, sportsSource, clubsSource, visibili
                       alt={item.title}
                       fill
                       quality={90}
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: item.objectPosition || "center" }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/20 to-transparent" />
                   </div>
                   {/* Default visible: title only */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transition-transform duration-300 group-hover:-translate-y-12">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transition-opacity duration-500 group-hover:opacity-0">
                     <h4 className="font-display text-base uppercase text-white">{item.title}</h4>
                   </div>
-                  {/* Hidden details: slides up from bottom on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-teal-900/90 p-4 transition-transform duration-300 group-hover:translate-y-0">
-                    <h4 className="font-display text-sm uppercase text-white">{item.title}</h4>
-                    <p className="mt-2 text-xs leading-relaxed text-white/80">{item.description}</p>
+                  {/* Details expand upward and fade in, like the Our Faculty cards. */}
+                  <div className="absolute bottom-0 left-0 right-0 grid grid-rows-[0fr] bg-teal-900/90 opacity-0 transition-[grid-template-rows,opacity] duration-500 group-hover:grid-rows-[1fr] group-hover:opacity-100">
+                    <div className="overflow-hidden">
+                      <div className="p-4">
+                        <h4 className="font-display text-sm uppercase text-white">{item.title}</h4>
+                        <p className="mt-2 text-xs leading-relaxed text-white/80">{item.description}</p>
+                      </div>
+                    </div>
                   </div>
                   {/* Bottom accent line */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 z-10" />
