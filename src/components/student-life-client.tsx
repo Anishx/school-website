@@ -33,7 +33,7 @@ const legacyTabs: TabContent[] = [
     sports: ["Athletics", "Football", "Volleyball", "Tennikoit", "Cricket"],
     items: [
       { title: "Athletics", description: "100m race champions, shot put and disc throw winners at mandal level.", image: "/images/new/shotput.jpg" },
-      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/football-close.jpg" },
+      { title: "Football", description: "Building teamwork, agility, and strategic thinking on the field.", image: "/images/new/football-close.JPG" },
       { title: "Volleyball", description: "State-level champions showcasing coordination and competitive spirit.", image: "/images/new/volleyball.jpg" },
       { title: "Cricket", description: "India's beloved sport fostering patience, strategy, and team dynamics.", image: "/images/new/Cricket.png" },
       { title: "Kho-Kho", description: "Building speed, agility, quick reflexes, and strategic teamwork through fast-paced play.", image: "/images/new/koko-playground.jpg" },
