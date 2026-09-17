@@ -1,5 +1,5 @@
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
-import type { PayloadRequest, UploadCollectionSlug } from 'payload'
+import type { PayloadRequest, Plugin, UploadCollectionSlug } from 'payload'
 
 import { canEnterPayloadAdmin } from '../../access/roles'
 import { collectionAccessDecision } from '../../access/collectionAccess'
@@ -25,8 +25,8 @@ export function canRequestMediaClientUpload(args: Readonly<{
  * happens in task 9.1; keeping it here makes the secure media adapter reusable
  * without changing global configuration prematurely.
  */
-export function createVercelBlobStoragePlugin(environment: ServerEnvironment = env) {
-  return vercelBlobStorage({
+export function createVercelBlobStoragePlugin(environment: ServerEnvironment = env): Plugin {
+  const plugin = vercelBlobStorage({
     collections: {
       [MEDIA_BLOB_COLLECTION]: {
         disableLocalStorage: true,
@@ -34,12 +34,27 @@ export function createVercelBlobStoragePlugin(environment: ServerEnvironment = e
     },
     access: 'public',
     addRandomSuffix: true,
-    clientUploads: {
+    // Local uploads go through Payload so browser CORS/network restrictions on
+    // vercel.com cannot block them. Production keeps direct uploads to avoid
+    // the Vercel Function request body limit for larger documents.
+    clientUploads: environment.NODE_ENV === 'production' ? {
       access: canRequestMediaClientUpload,
-    },
+    } : false,
     enabled: environment.BLOB_STORAGE_ENABLED,
     token: environment.BLOB_READ_WRITE_TOKEN,
   })
+
+  return async (config) => {
+    const result = await plugin(config)
+    // Keep the plugin's authenticated token endpoint and provider props, but
+    // bound client retries so Payload can display an error and unlock the form.
+    result.admin!.components!.providers = result.admin!.components!.providers?.map((provider) =>
+      typeof provider === 'object' && provider.path === '@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler'
+        ? { ...provider, path: '/components/payload/MediaClientUploadHandler#MediaClientUploadHandler' }
+        : provider,
+    )
+    return result
+  }
 }
 
 export const vercelBlobStoragePlugin = createVercelBlobStoragePlugin()
