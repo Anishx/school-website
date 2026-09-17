@@ -5,6 +5,7 @@ import { canManageAllContent } from '../access/roles'
 import { logOperationalError } from '../cms/errors/log'
 import { CMS_TAGS } from '../cms/public/cache-tags'
 import { DEFAULT_LOGIN_ENTRIES, validateLoginLink } from '../cms/public/login-menu'
+import { STUDENT_LIFE_TABS } from '../cms/public/student-life'
 
 export const CONTENT_SOURCE_FIELDS = [
   ['resourcesNews', 'Resources: News & Events'],
@@ -35,6 +36,13 @@ export const WebsiteSettings: GlobalConfig = {
     update: ({ req }) => canManageAllContent(req.user),
   },
   fields: [
+    {
+      name: 'studentLife', type: 'group', label: 'Student Life',
+      admin: { description: 'Choose which tabs appear on the Student Life page. Hiding a tab also hides its content. Links to hidden tabs open the first visible tab. Sports and Clubs content can be edited in Content Sections.' },
+      fields: STUDENT_LIFE_TABS.map(({ key, label }) => ({
+        name: key, type: 'checkbox' as const, defaultValue: true, label: `Show ${label}`,
+      })),
+    },
     {
       name: 'loginMenu', type: 'group', label: 'Login Button & Dropdown',
       admin: { description: 'Customize the website header login menu. Add, reorder, hide or delete entries. The button is hidden when no visible entries remain.' },

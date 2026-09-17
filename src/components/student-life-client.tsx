@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Breadcrumb } from "@/components/breadcrumb";
 import type { ClubsDTO, SportsDTO } from "@/cms/public/dto";
 import type { ContentSource } from "@/cms/public/dto";
 import { contentForSource } from "@/cms/public/content-source";
+import { resolveStudentLifeTab, visibleStudentLifeTabIndices, type StudentLifeVisibility } from "@/cms/public/student-life";
 
 type TabContent = {
   label: string;
@@ -100,15 +101,8 @@ const legacyTabs: TabContent[] = [
   },
 ];
 
-const studentLifeTabMap: Record<string, number> = {
-  sports: 0,
-  clubs: 1,
-  stem: 2,
-  leadership: 3,
-  achievements: 4,
-};
-
 export function StudentLifeClient(props: {
+  visibility: StudentLifeVisibility;
   sports: SportsDTO | null;
   clubs: ClubsDTO | null;
   sportsSource: ContentSource;
@@ -121,7 +115,8 @@ export function StudentLifeClient(props: {
   );
 }
 
-function StudentLifeContent({ sports, clubs, sportsSource, clubsSource }: {
+function StudentLifeContent({ sports, clubs, sportsSource, clubsSource, visibility }: {
+  visibility: StudentLifeVisibility;
   sports: SportsDTO | null;
   clubs: ClubsDTO | null;
   sportsSource: ContentSource;
@@ -129,7 +124,7 @@ function StudentLifeContent({ sports, clubs, sportsSource, clubsSource }: {
 }) {
   const searchParams = useSearchParams();
   const tabParam = searchParams.get("tab");
-  const [contentTabs] = useState<TabContent[]>(() => {
+  const contentTabs = useMemo<TabContent[]>(() => {
     const next = [...legacyTabs];
     if (sportsSource !== "legacy" && sports) {
       const managedSports: TabContent = {
@@ -155,18 +150,15 @@ function StudentLifeContent({ sports, clubs, sportsSource, clubsSource }: {
       } : managedClubs;
     } else if (clubsSource === "managed") next[1] = { label: "Clubs & Activities", intro: "", items: [] };
     return next;
-  });
+  }, [sports, clubs, sportsSource, clubsSource]);
 
-  const [activeTab, setActiveTab] = useState(() => {
-    return tabParam && studentLifeTabMap[tabParam] !== undefined ? studentLifeTabMap[tabParam] : 0;
-  });
-
-  useEffect(() => {
-    if (!tabParam || studentLifeTabMap[tabParam] === undefined) return;
-
-    const timeoutId = window.setTimeout(() => setActiveTab(studentLifeTabMap[tabParam]), 0);
-    return () => window.clearTimeout(timeoutId);
-  }, [tabParam]);
+  const visibleTabs = visibleStudentLifeTabIndices(visibility);
+  const [selection, setSelection] = useState({ param: tabParam, index: resolveStudentLifeTab(tabParam, visibleTabs) });
+  if (selection.param !== tabParam) {
+    setSelection({ param: tabParam, index: resolveStudentLifeTab(tabParam, visibleTabs) });
+  }
+  const activeTab = selection.param === tabParam && visibleTabs.includes(selection.index)
+    ? selection.index : resolveStudentLifeTab(tabParam, visibleTabs);
 
   return (
     <>
@@ -198,30 +190,31 @@ function StudentLifeContent({ sports, clubs, sportsSource, clubsSource }: {
           </div>
 
           {/* Tabs bar */}
-          <div className="bg-teal-900">
+          {visibleTabs.length > 0 && <div className="bg-teal-900">
             <div className="mx-auto max-w-7xl px-6">
-              <div className="flex items-center justify-center gap-2 py-4 md:gap-6">
-                {contentTabs.map((tab, idx) => (
+              <div className="flex flex-wrap items-center justify-center gap-2 py-4 md:gap-6">
+                {visibleTabs.map((idx) => (
                   <button
-                    key={tab.label}
+                    key={idx}
                     type="button"
-                    onClick={() => setActiveTab(idx)}
+                    onClick={() => setSelection({ param: tabParam, index: idx })}
+                    aria-pressed={activeTab === idx}
                     className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200 md:text-sm ${
                       activeTab === idx
                         ? "bg-yellow-500 text-ink-900"
                         : "text-white/80 hover:text-white"
                     }`}
                   >
-                    {tab.label}
+                    {contentTabs[idx].label}
                   </button>
                 ))}
               </div>
             </div>
-          </div>
+          </div>}
         </section>
 
         {/* Tab content */}
-        <section className="bg-white py-16 md:py-20">
+        {activeTab >= 0 && <section className="bg-white py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
             <h2 className="font-display text-2xl uppercase text-ink-900 md:text-3xl">
               {contentTabs[activeTab].label}
@@ -348,7 +341,7 @@ function StudentLifeContent({ sports, clubs, sportsSource, clubsSource }: {
               ))}
             </div>
           </div>
-        </section>
+        </section>}
       </main>
     </>
   );

@@ -7,6 +7,7 @@ import config from '@payload-config'
 import { logOperationalError } from '../errors/log'
 import { isExternalArticleImage } from './article-image'
 import { loginMenuFromRecord } from './login-menu'
+import { studentLifeVisibilityFromRecord } from './student-life'
 import type {
   AnnouncementBarDTO,
   CalendarDTO,
@@ -74,6 +75,7 @@ function errorCode(scope: string, cause: unknown): void {
 }
 
 const LEGACY_WEBSITE_SETTINGS: WebsiteSettingsDTO = Object.freeze({
+  studentLife: studentLifeVisibilityFromRecord(undefined),
   loginMenu: loginMenuFromRecord(undefined),
   announcementBar: Object.freeze({ enabled: true, speed: 'normal', theme: 'teal' }),
   contentSources: Object.freeze({
@@ -98,6 +100,7 @@ async function websiteSettingsRecord(): Promise<WebsiteSettingsDTO> {
     return {
       announcementBar: { enabled: bar?.enabled !== false, speed, theme },
       loginMenu: loginMenuFromRecord(raw.loginMenu),
+      studentLife: studentLifeVisibilityFromRecord(raw.studentLife),
       contentSources: {
         resourcesNews: source(sources?.resourcesNews),
         resourcesDownloads: source(sources?.resourcesDownloads), schoolCalendar: source(sources?.schoolCalendar),

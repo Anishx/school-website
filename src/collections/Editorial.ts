@@ -92,7 +92,7 @@ export const Editorial: CollectionConfig = {
       name: 'legacyImagePath', type: 'text', maxLength: 2000, label: 'Image URL',
       validate: validateArticleImageURL,
       hooks: { beforeValidate: [({ value }) => typeof value === 'string' ? value.trim() : value] },
-      admin: { description: 'Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported.' },
+      admin: { description: 'Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported. - Use direct link generators for google drive images - example. https://sheetany.com/google-drive-image-direct-link-generator' },
     },
     { name: 'startsAt', type: 'date', index: true },
     { name: 'endsAt', type: 'date' },

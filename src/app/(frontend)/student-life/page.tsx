@@ -8,6 +8,7 @@ export default async function StudentLifePage() {
     <>
       <SiteHeader />
       <StudentLifeClient
+        visibility={settings.studentLife}
         sports={sports}
         clubs={clubs}
         sportsSource={settings.contentSources.sports}

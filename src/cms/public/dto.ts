@@ -25,6 +25,7 @@ export type EditorialDTO = Readonly<{
 
 export type ContentSource = 'legacy' | 'append' | 'managed'
 export type WebsiteSettingsDTO = Readonly<{
+  studentLife: import('./student-life').StudentLifeVisibility
   loginMenu: import('./login-menu').LoginMenuDTO
   announcementBar: Readonly<{
     enabled: boolean

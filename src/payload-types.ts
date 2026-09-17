@@ -508,7 +508,7 @@ export interface Editorial {
    */
   image?: (number | null) | Media;
   /**
-   * Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported.
+   * Paste a direct HTTPS link to a publicly accessible image, not a sharing page. An HTTPS URL takes priority over the uploaded image. Clear it to use the upload. Existing local image paths are also supported. - Use direct link generators for google drive images - example. https://sheetany.com/google-drive-image-direct-link-generator
    */
   legacyImagePath?: string | null;
   startsAt?: string | null;
@@ -1151,6 +1151,16 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface WebsiteSetting {
   id: number;
   /**
+   * Choose which tabs appear on the Student Life page. Hiding a tab also hides its content. Links to hidden tabs open the first visible tab. Sports and Clubs content can be edited in Content Sections.
+   */
+  studentLife?: {
+    sports?: boolean | null;
+    clubs?: boolean | null;
+    stem?: boolean | null;
+    leadership?: boolean | null;
+    achievements?: boolean | null;
+  };
+  /**
    * Customize the website header login menu. Add, reorder, hide or delete entries. The button is hidden when no visible entries remain.
    */
   loginMenu: {
@@ -1223,6 +1233,15 @@ export interface NotificationSetting {
  * via the `definition` "website-settings_select".
  */
 export interface WebsiteSettingsSelect<T extends boolean = true> {
+  studentLife?:
+    | T
+    | {
+        sports?: T;
+        clubs?: T;
+        stem?: T;
+        leadership?: T;
+        achievements?: T;
+      };
   loginMenu?:
     | T
     | {

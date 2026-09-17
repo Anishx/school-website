@@ -120,7 +120,7 @@ function OverviewTab() {
                 <p>I invite you to visit Apollo Vidhyalayam, interact with our students and faculty, and experience the vibrant learning environment that makes our school a place where every child is encouraged to grow, excel, and thrive.</p>
               </div>
               <div className="mt-8 border-l-4 border-yellow-500 pl-4">
-                  <p className="font-display text-lg uppercase text-white">Sireesha Reddy</p>
+                  <p className="font-display text-lg uppercase text-white">V C Sireesha</p>
                   <p className="mt-1 text-sm text-white/70">Principal, Apollo Vidhyalayam</p>
               </div>
             </div>
