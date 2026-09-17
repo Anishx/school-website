@@ -29,7 +29,7 @@ const tiles: Tile[] = [
   { title: "Medical Pathways", subtext: "Apollo Medical College visits and healthcare exposure", href: "/student-life?tab=stem", type: "color", color: "bg-rose-600", colSpan: 1, rowSpan: 1 },
   // Row 3-4
   { title: "Yoga & Wellness", subtext: "Daily sessions by Apollo Foundation Total Health Trainer", href: "/student-life?tab=clubs", type: "image", image: "/images/yoga/yoga-girls.JPG", colSpan: 1, rowSpan: 1 },
-  { title: "Achievements", subtext: "State champions, INSPIRE MANAK, 7-year mandal toppers", href: "/student-life?tab=achievements", type: "image", image: "/images/impact/impact-1.jpg", colSpan: 2, rowSpan: 2 },
+  { title: "Achievements", subtext: "State champions, INSPIRE MANAK, 7-year mandal toppers", href: "/student-life?tab=achievements", type: "image", image: "/images/impact/impact-4.jpg", colSpan: 2, rowSpan: 2 },
   { title: "Brighter Minds", subtext: "Cognitive development, memory, and creativity activation", href: "/student-life?tab=stem", type: "color", color: "bg-emerald-700", colSpan: 1, rowSpan: 1 },
   // Row 4
   { title: "Campus Life", subtext: "Corridor learning, chess, carrom, GK corners", href: "/about-us", type: "image", image: "/images/new/school-stairway.jpg", colSpan: 1, rowSpan: 1 },
