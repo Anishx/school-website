@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { DigitalLearningCarousel } from "@/components/digital-learning-carousel";
 import Image from "next/image";
 import {
+  BookOpen,
   GraduationCap,
   Shield,
   Users,
@@ -88,7 +89,7 @@ export default function WhyUsPage() {
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {/* Learning */}
               <div className="relative overflow-hidden bg-yellow-500 p-8 min-h-[280px] flex flex-col justify-start">
-                <svg className="absolute top-4 right-4 size-16 text-purple-700 opacity-40" viewBox="0 0 48 48" fill="currentColor"><path d="M24 4l2 8h-4l2-8zm0 36l-2-8h4l-2 8zm-20-20l8 2v-4l-8 2zm40 0l-8-2v4l8-2zm-6.3-13.7l-5.7 5.7 2.8 2.8 5.7-5.7-2.8-2.8zm-27.4 27.4l5.7-5.7-2.8-2.8-5.7 5.7 2.8 2.8zm0-27.4l2.8 2.8 5.7-5.7-2.8-2.8-5.7 5.7zm27.4 27.4l-2.8-2.8-5.7 5.7 2.8 2.8 5.7-5.7z"/></svg>
+                <BookOpen aria-hidden="true" className="absolute top-4 right-4 size-10 text-yellow-700" />
                 <p className="font-display text-3xl uppercase text-ink-900 md:text-4xl">Learning</p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-900/85">
                   We foster a culture of curiosity, inquiry, and academic excellence, encouraging students to think critically, explore confidently, and develop a lifelong love for learning.
@@ -97,7 +98,7 @@ export default function WhyUsPage() {
 
               {/* Leading */}
               <div className="relative overflow-hidden bg-teal-800 p-8 min-h-[280px] flex flex-col justify-start">
-                <svg className="absolute top-4 right-4 size-16 text-yellow-400 opacity-40" viewBox="0 0 48 48" fill="currentColor"><path d="M14 8h20v6l-10 14-10-14V8z"/></svg>
+                <Flag aria-hidden="true" className="absolute top-4 right-4 size-10 text-teal-300" />
                 <p className="font-display text-3xl uppercase text-white md:text-4xl">Leading</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/85">
                   Leadership begins with character. Through responsibility, collaboration, discipline, and service, we empower students to lead with confidence, empathy, and integrity in every aspect of life.
@@ -106,7 +107,7 @@ export default function WhyUsPage() {
 
               {/* Excelling */}
               <div className="relative overflow-hidden bg-purple-700 p-8 min-h-[280px] flex flex-col justify-start">
-                <svg className="absolute top-4 right-4 size-16 text-emerald-400 opacity-40" viewBox="0 0 48 48" fill="currentColor"><polygon points="24,2 30,18 48,18 34,28 38,44 24,34 10,44 14,28 0,18 18,18"/></svg>
+                <Trophy aria-hidden="true" className="absolute top-4 right-4 size-10 text-purple-300" />
                 <p className="font-display text-3xl uppercase text-white md:text-4xl">Excelling</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/85">
                   Excellence is not just about achieving high grades—it&apos;s about striving to become the best version of oneself. We encourage every student to pursue excellence in academics, sports, the arts, and personal growth, celebrating effort, resilience, and continuous improvement.
