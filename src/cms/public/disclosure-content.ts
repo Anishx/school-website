@@ -19,6 +19,5 @@ export const legacyDisclosureDocuments: Document[] = [
   { title: "Water Test Report", href: "https://drive.google.com/file/d/1CXLkn6lT7APuo0S26UCpnXpYkShSgRRb/view?usp=drive_link" },
   { title: "GHMC Commissioner Letter", href: "https://drive.google.com/file/d/1oIEg2CR6Km0q_QhJxKncT8QxwuKNsoV1/view?usp=drive_link" },
   { title: "Affiliation Letter", href: "#" },
-  { title: "Land Ownership Document", href: "#" },
 ];
 
