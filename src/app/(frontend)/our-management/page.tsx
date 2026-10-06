@@ -23,10 +23,10 @@ const board: Leader[] = [
     image: "/images/leadership/poornachandraReddy.png",
   },
   {
-    name: "Ms. Sangeetha Reddy",
+    name: "Dr. Preetha Reddy",
     title: "Board Member",
     organization: "Apollo Foundation",
-    image: "/images/leadership/joint-managing-director.jpeg",
+    image: "/images/leadership/executive-vice-chairperson.jpeg",
   },
 ];
 
