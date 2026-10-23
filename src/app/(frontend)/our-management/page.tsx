@@ -42,7 +42,7 @@ const correspondent: Leader[] = [
 const management: Leader[] = [
   {
     name: "Mr. PremAnand Satgunam",
-    title: "School Manager",
+    title: "School President",
     organization: "Apollo Foundation",
     image: "/images/leadership/ceo.jpeg",
   },
