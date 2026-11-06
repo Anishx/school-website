@@ -9,24 +9,12 @@ type Leader = {
   image: string;
 };
 
-const board: Leader[] = [
+const managed: Leader[] = [
   {
-    name: "Dr. Prathap C. Reddy",
-    title: "Chairman",
-    organization: "Apollo Hospitals Enterprise Limited (AHEL)",
-    image: "/images/leadership/chairman.jpeg",
-  },
-  {
-    name: "Mr. Poorna Chandra Reddy",
-    title: "Board Member",
+    name: "Ms. Upasana Kamineni Konidela",
+    title: "Vice Chairperson",
     organization: "Apollo Foundation",
-    image: "/images/leadership/poornachandraReddy.png",
-  },
-  {
-    name: "Dr. Preetha Reddy",
-    title: "Board Member",
-    organization: "Apollo Foundation",
-    image: "/images/leadership/executive-vice-chairperson.jpeg",
+    image: "/images/leadership/vice-chairperson.jpeg",
   },
 ];
 
@@ -50,7 +38,7 @@ const management: Leader[] = [
 
 function LeaderCard({ leader }: { leader: Leader }) {
   return (
-    <div className="group relative aspect-[3/4] overflow-hidden">
+    <div className="group relative aspect-[3/4] w-full overflow-hidden sm:w-72">
       {leader.image ? (
         <Image
           src={leader.image}
@@ -67,7 +55,7 @@ function LeaderCard({ leader }: { leader: Leader }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
       {/* Text content at bottom */}
-      <div className="absolute inset-x-0 bottom-0 p-5">
+      <div className="absolute inset-x-0 bottom-0 p-5 text-center">
         <h3 className="font-display text-lg uppercase text-white md:text-xl">
           {leader.name}
         </h3>
@@ -86,12 +74,14 @@ export default function OurManagementPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-teal-900 py-16 md:py-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <Breadcrumb />
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <div className="[&_ol]:justify-center">
+              <Breadcrumb />
+            </div>
             <h1 className="mt-3 font-display text-4xl uppercase text-white md:text-5xl lg:text-6xl">
               Our Management
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
               The board, correspondent, and management team steering Apollo Vidhyalayam with vision and integrity.
             </p>
           </div>
@@ -99,10 +89,10 @@ export default function OurManagementPage() {
 
         {/* Our Board */}
         <section className="bg-teal-900 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-6">
-            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Our Board</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {board.map((leader) => (
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Governed By</h2>
+            <div className="mt-8 flex flex-wrap justify-center gap-5">
+              {managed.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
               ))}
             </div>
@@ -111,9 +101,9 @@ export default function OurManagementPage() {
 
         {/* School Correspondent */}
         <section className="bg-teal-800 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 className="font-display text-2xl uppercase text-white md:text-3xl">School Correspondent</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 flex flex-wrap justify-center gap-5">
               {correspondent.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
               ))}
@@ -123,9 +113,9 @@ export default function OurManagementPage() {
 
         {/* School Management */}
         <section className="bg-teal-900 py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 className="font-display text-2xl uppercase text-white md:text-3xl">School Management</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 flex flex-wrap justify-center gap-5">
               {management.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
               ))}

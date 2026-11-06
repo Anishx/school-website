@@ -43,14 +43,29 @@ const governed: Leader[] = [
   // },
 ];
 
-const managed: Leader[] = [
+
+const board: Leader[] = [
   {
-    name: "Ms. Upasana Kamineni Konidela",
-    title: "Vice Chairperson",
+    name: "Dr. Prathap C. Reddy",
+    title: "Chairman",
+    organization: "Apollo Hospitals Enterprise Limited (AHEL)",
+    image: "/images/leadership/chairman.jpeg",
+  },
+  {
+    name: "Mr. Poorna Chandra Reddy",
+    title: "Board Member",
     organization: "Apollo Foundation",
-    image: "/images/leadership/vice-chairperson.jpeg",
+    image: "/images/leadership/poornachandraReddy.png",
+  },
+  {
+    name: "Dr. Preetha Reddy",
+    title: "Board Member",
+    organization: "Apollo Foundation",
+    image: "/images/leadership/executive-vice-chairperson.jpeg",
   },
 ];
+
+
 
 function LeaderCard({ leader }: { leader: Leader }) {
   return (
@@ -172,9 +187,9 @@ export default function LeadershipPage() {
         {/* Managed By */}
         <section className="bg-teal-900 py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6">
-            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Governed By</h2>
+            <h2 className="font-display text-2xl uppercase text-white md:text-3xl">Our Board</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {managed.map((leader) => (
+              {board.map((leader) => (
                 <LeaderCard key={leader.name} leader={leader} />
               ))}
             </div>
